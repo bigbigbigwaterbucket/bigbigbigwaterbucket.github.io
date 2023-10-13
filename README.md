@@ -1,2 +1,0 @@
-# bigbigbigwaterbucket.github.io
-blog

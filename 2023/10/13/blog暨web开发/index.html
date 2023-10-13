@@ -165,43 +165,39 @@
                 </div>
 
                 <div id="main">
-                    
-<div id="archives">
-    
-    <a-timeline>
-        <a-timeline-item timestamp="2023/10/13" placement="top" color="#a5c2f5">
-            <a-card hoverable>
-                <div class="item-time">2023/10/13</div>
-                <a href="/2023/10/13/blog暨web开发/">
-                    <h3></h3>
-                </a>
-                <div class="info">
-                    
+                     
+<link rel="stylesheet" href="/css/post-body.css">
+<div class="article">
+    <div>
+        <h1> </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2023/10/13
+        </span>
 
-                    
-                </div>
-            </a-card>
-        </a-timeline-item>
-    </a-timeline>
-    
-    <a-timeline>
-        <a-timeline-item timestamp="2023/10/13" placement="top" color="#a5c2f5">
-            <a-card hoverable>
-                <div class="item-time">2023/10/13</div>
-                <a href="/2023/10/13/Python学习路线/">
-                    <h3></h3>
-                </a>
-                <div class="info">
-                    
+        
 
-                    
-                </div>
-            </a-card>
-        </a-timeline-item>
-    </a-timeline>
+        
+    </div>
+
+    <div class="content" v-pre>
+        <h3 id="blog部署一般步骤"><a href="#blog部署一般步骤" class="headerlink" title="blog部署一般步骤"></a>blog部署一般步骤</h3><p>1.改2个配置文件<br>2.hexo g根据配置生成静态页面，生成只是覆盖或生成一些特定文件夹，不会覆盖新创建的未指定文件夹<br>3.把public文档的css和js文件移到project文件夹<br>4.git push</p>
+<h3 id="web开发技巧"><a href="#web开发技巧" class="headerlink" title="web开发技巧"></a>web开发技巧</h3><p>f12使用浏览器自带的开发者工具，通过网络抓包查看部署问题</p>
+
+    </div>
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <div id="comment">
+        <div id="gitalk-container">
+        </div>
+    </div>
     
 </div>
-
                      
 <footer id="footer">
     <div class="footer-wrap">
@@ -264,6 +260,21 @@
             }
         }
     })
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: 'hexo-theme-particle',      // The repository of store comments,
+        owner: 'korilin',
+        admin: ['korilin'],
+        language: 'en',
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: true  // Facebook-like distraction free mode
+    })
+    gitalk.render('gitalk-container')
 </script>
 
 </body>
