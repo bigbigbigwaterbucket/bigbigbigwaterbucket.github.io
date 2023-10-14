@@ -2,7 +2,7 @@
 <html lang="zh">
     <head>
         <meta charset="utf-8">
-        <title>About | waterbucket の小窝</title>
+        <title>Categories | Argvchs の小窝</title>
         <meta name="author" content="Argvchs">
         <meta name="description" content="">
         <meta name="keywords" content="">
@@ -126,105 +126,32 @@
                 <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
             </transition>
             <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-                <div class="article">
-                    <div>
-                        <h1>About</h1>
-                    </div>
-                    <div class="info">
-                        <span class="date">
-                            <span class="icon">
-                                <i class="fa-solid fa-calendar fa-fw"></i>
-                            </span>
-                            2022/4/11
+                <div id="archives">
+                    <div class="categories-tags">
+                        <span>
+                            <a href="/categories/tutorial/" style="background:#00bcd4">
+                                <span class="icon">
+                                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                                </span>
+                                教程 
+                            </a>
                         </span>
-                    </div>
-                    <div class="content" v-pre>
-                        <h1 id="hi-there">
-                            Hi there <span class="emoji" data-emoji="wave">👋</span>
-                        </h1>
-                        <hr>
-                        <blockquote>
-                            <p>
-                                Tell me... Does <strong>Argvchs the God</strong>
-                                bleed?<br>
-                                No. But <strong>you</strong>
-                                will.
-                            </p>
-                        </blockquote>
-                        <h2 id="语言">
-                            <span class="emoji" data-emoji="bulb">💡</span>
-                            语言
-                        </h2>
-                        <ul>
-                            <li>
-                                <span class="emoji" data-emoji="unicorn">🦄</span>
-                                C/C++
-                            </li>
-                            <li>
-                                <span class="emoji" data-emoji="snake">🐍</span>
-                                Python
-                            </li>
-                            <li>
-                                <span class="emoji" data-emoji="baby_chick">🐤</span>
-                                Node.js
-                            </li>
-                            <li>
-                                <span class="emoji" data-emoji="whale">🐳</span>
-                                Bash
-                            </li>
-                        </ul>
-                        <h2 id="帐号">
-                            <span class="emoji" data-emoji="sparkles">✨</span>
-                            帐号
-                        </h2>
-                        <table>
-                            <colgroup>
-                                <col style="width:9%">
-                                <col style="width:90%">
-                            </colgroup>
-                            <thead>
-                                <tr class="header">
-                                    <th style="text-align:center">网站</th>
-                                    <th style="text-align:left">帐号</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="odd">
-                                    <td style="text-align:center">QQ</td>
-                                    <td style="text-align:left">
-                                        <a target="_blank" rel="noopener" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3364555156&amp;site=qq&amp;menu=yes">3364555156</a>
-                                    </td>
-                                </tr>
-                                <tr class="even">
-                                    <td style="text-align:center">GitHub</td>
-                                    <td style="text-align:left">
-                                        <a target="_blank" rel="noopener" href="https://github.com/argvchs">argvchs</a>
-                                    </td>
-                                </tr>
-                                <tr class="odd">
-                                    <td style="text-align:center">Twitter</td>
-                                    <td style="text-align:left">
-                                        <a target="_blank" rel="noopener" href="https://twitter.com/argvchs">argvchs</a>
-                                    </td>
-                                </tr>
-                                <tr class="even">
-                                    <td style="text-align:center">洛谷</td>
-                                    <td style="text-align:left">
-                                        <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/533270">533270</a>
-                                    </td>
-                                </tr>
-                                <tr class="odd">
-                                    <td style="text-align:center">Florr.io</td>
-                                    <td style="text-align:left">Noooooob</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p>
-                            <img src="https://static-argvchs.netlify.app/images/avatar.jpg" style="border-radius:50%;width:50%" alt="avatar">
-                        </p>
-                    </div>
-                    <div id="comment">
-                        <div id="giscus-container" class="giscus"></div>
+                        <span>
+                            <a href="/categories/other/" style="background:#00a596">
+                                <span class="icon">
+                                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                                </span>
+                                其他 
+                            </a>
+                        </span>
+                        <span>
+                            <a href="/categories/oi/" style="background:#ffa2c4">
+                                <span class="icon">
+                                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                                </span>
+                                OI
+                            </a>
+                        </span>
                     </div>
                 </div>
                 <footer id="footer">
@@ -257,6 +184,5 @@
                 document.body.append(document.createRange().createContextualFragment(t))
             }
         </script>
-        <script src="https://giscus.app/client.js" data-repo="argvchs/giscus-comments" data-repo-id="R_kgDOI_uC-w" data-category="Announcements" data-category-id="DIC_kwDOI_uC-84CUToF" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="https://static-argvchs.netlify.app/css/giscus.css" data-lang="zh-CN" crossorigin async></script>
     </body>
 </html>
