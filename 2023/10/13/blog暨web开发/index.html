@@ -1,282 +1,237 @@
 
 <!DOCTYPE html>
-<html lang="en ">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>天机工程 || </title>
-    <meta name="author" content="Bigbigbigwaterbucket">
-    <meta name="description" content="科技不是一题一解的死板学识，而是令我们超凡脱俗的产物。 ">
-    <meta name="keywords" content=" ">
-    <link rel="icon" href="/project/images/avatar.png">
-    <link rel="stylesheet" href="/project/css/antd.min.css">
-    
-    <link rel="stylesheet" href="/project/css/maiden-theme.css">
-    
-    <script src="/project/js/vue.js"></script>
-    <script src="/project/js/antd.min.js"></script>
+    <meta charset="utf-8" />
+    <title> | 天机工程</title>
+    <meta name="author" content="bigbigbigwaterbucket" />
+    <meta name="description" content="科技不是一题一解的死板学识，而是令我们超凡脱俗的产物。" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/project/images/avatar.jpg" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/project/js/lib/highlight.js"></script>
+
+
+
+<script src="/project/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/project/css/main.css" />
+
 <meta name="generator" content="Hexo 6.3.0"></head>
-
 <body>
-
-    <div id="loading"
-        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
-        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
-        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
-        <div
-            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
-            <div id="loadcontent"
-                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;">
-                <div>
-                    <h2>LOADING...</h2>
-                    <p>加载过慢请开启缓存(浏览器默认开启)</p>
-                    <div>
-                        <img src="/project/dancingkitty.gif" alt="loading">
-                    </div>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/project/images/loading.gif" />
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div id="layout">
-        <transition name="into">
-            <div v-show="show_page" style="display: none;">
-                <div id="menu_show">
-                     
-<nav id="menu">
-    <div class="desktop-menu">
-        <a href="/project/">
-            <span class="title">天机工程</span>
-        </a>
-        
-        <a href="/">
-            <span>
-                <a-icon type="" theme="filled" />
-            </span>
-            <span>home</span>
-        </a>
-        
-        <a href="/about">
-            <span>
-                <a-icon type="idcard" theme="filled" />
-            </span>
-            <span>about</span>
-        </a>
-        
-        <a href="/archives">
-            <span>
-                <a-icon type="folder" theme="filled" />
-            </span>
-            <span>archives</span>
-        </a>
-        
-        <a href="/like/categories">
-            <span>
-                <a-icon type="book" theme="filled" />
-            </span>
-            <span>categories</span>
-        </a>
-        
-        <a href="/like/tags">
-            <span>
-                <a-icon type="tags" theme="filled" />
-            </span>
-            <span>tags</span>
-        </a>
-        
-        <a href="">
-            <span>
-                <a-icon type="compass" theme="filled" />
-            </span>
-            <span>英文博客</span>
-        </a>
-        
-    </div>
-
-    <div :class="'phone-menu ' + menu_show" id="phone-menu">
-        <div :class="'title'" @click="menu_show=!menu_show">
-            <span style="margin-right: 10px;">
-                <a-icon type="appstore" theme="filled" />
-            </span>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/project/">
             <span>天机工程</span>
+        </a>
+        
+        <a href="/project/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/project/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/project/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/project/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/project/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;天机工程</span>
         </div>
-        <div class="items" v-show="menu_show">
-            
-            <a href="/">
-                <div class="item">
-                    <div style="min-width:20px; max-width:50px; width: 10%">
-                        <a-icon type="" theme="filled" />
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/project/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
                     </div>
-                    <div style="min-width:100px;max-width: 150%;width: 20%;">home</div>
-                </div>
-            </a>
-            
-            <a href="/about">
-                <div class="item">
-                    <div style="min-width:20px; max-width:50px; width: 10%">
-                        <a-icon type="idcard" theme="filled" />
+                </a>
+                
+                <a href="/project/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
                     </div>
-                    <div style="min-width:100px;max-width: 150%;width: 20%;">about</div>
-                </div>
-            </a>
-            
-            <a href="/archives">
-                <div class="item">
-                    <div style="min-width:20px; max-width:50px; width: 10%">
-                        <a-icon type="folder" theme="filled" />
+                </a>
+                
+                <a href="/project/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
                     </div>
-                    <div style="min-width:100px;max-width: 150%;width: 20%;">archives</div>
-                </div>
-            </a>
-            
-            <a href="/like/categories">
-                <div class="item">
-                    <div style="min-width:20px; max-width:50px; width: 10%">
-                        <a-icon type="book" theme="filled" />
+                </a>
+                
+                <a href="/project/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
                     </div>
-                    <div style="min-width:100px;max-width: 150%;width: 20%;">categories</div>
-                </div>
-            </a>
-            
-            <a href="/like/tags">
-                <div class="item">
-                    <div style="min-width:20px; max-width:50px; width: 10%">
-                        <a-icon type="tags" theme="filled" />
+                </a>
+                
+                <a href="/project/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
                     </div>
-                    <div style="min-width:100px;max-width: 150%;width: 20%;">tags</div>
-                </div>
-            </a>
-            
-            <a href="">
-                <div class="item">
-                    <div style="min-width:20px; max-width:50px; width: 10%">
-                        <a-icon type="compass" theme="filled" />
-                    </div>
-                    <div style="min-width:100px;max-width: 150%;width: 20%;">英文博客</div>
-                </div>
-            </a>
-            
-        </div>
-        <div class="curtain" v-show="menu_show"></div>
-    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
 
-</nav>
-                </div>
-
-                <div id="main">
-                     
-<link rel="stylesheet" href="/project/css/post-body.css">
-<div class="article">
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
     <div>
-        <h1> </h1>
+        <h1></h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
-                <a-icon type="calendar" theme="filled" />
+                <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
             2023/10/13
         </span>
-
         
-
         
     </div>
-
+    
     <div class="content" v-pre>
         <h3 id="blog部署一般步骤"><a href="#blog部署一般步骤" class="headerlink" title="blog部署一般步骤"></a>blog部署一般步骤</h3><p>1.改2个配置文件<br>2.hexo g根据配置生成静态页面，生成只是覆盖或生成一些特定文件夹，不会覆盖新创建的未指定文件夹<br>3.把public文档的css和js文件移到project文件夹<br>4.git push</p>
 <h3 id="web开发技巧"><a href="#web开发技巧" class="headerlink" title="web开发技巧"></a>web开发技巧</h3><p>f12使用浏览器自带的开发者工具，通过网络抓包查看部署问题</p>
 
     </div>
-
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    
+    
+    
     <div id="comment">
-        <div id="gitalk-container">
-        </div>
+        <div id="giscus-container" class="giscus"></div>
     </div>
+    
+    
+    
     
 </div>
-                     
-<footer id="footer">
-    <div class="footer-wrap">
+
+            <footer id="footer">
+    <div id="footer-wrap">
         <div>
-            © 2018 - 2023 天机工程
-            <span class="footer-icon">
-                <a-icon type="flag" theme="filled" /></span>
-            @Bigbigbigwaterbucket
+            &copy;
+            2022 - 2023 天机工程
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;bigbigbigwaterbucket
         </div>
-        <div></div>
-        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
-                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
         
     </div>
-
 </footer>
 
-<script src="/project/js/highlight.min.js"></script>
-<script src="/project/js/particle.js"></script>
-                </div>
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
             </div>
         </transition>
+        
     </div>
+    <script src="/project/js/main.js"></script>
+    
+    
+<script
+    src="https://giscus.app/client.js"
+    data-repo="bigbigbigwaterbucket/bigbigbigwaterbucket.github.io"
+    data-repo-id="R_kgDOKFcnSw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKFcnS84CaIBo"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
 
-    <script>
-    new Vue({
-        el: "#layout",
-        data: {
-            show_page: false,
-            onload_menu: false,
-            menu_show: false,
-            card_top: 100
-        },
-        created: function () {
-            var that = this
-            window.onload = function () {
-                that.show_page = true
-                document.getElementById("loadcontent").style.opacity = 0
-                setTimeout(function () {
-                    document.getElementById("loadleft").style.width = 0
-                    document.getElementById("loadright").style.width = 0
-                }, 300)
-                setTimeout(function () {
-                    document.getElementById("loading").style = "display:none"
-                }, 600)
-            }
-        },
-        mounted: function () {
-            var that = this
-            window.addEventListener('scroll', function (e) {
-                that.menu_show = false
-            })
-        },
-        methods: {
-            home_click: function () {
-                window.scrollTo({
-                    top: window.innerHeight - 80,
-                    behavior: "smooth",
-                });
-            }
-        }
-    })
-</script>
 
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script>
-    const gitalk = new Gitalk({
-        clientID: '',
-        clientSecret: '',
-        repo: 'hexo-theme-particle',      // The repository of store comments,
-        owner: 'korilin',
-        admin: ['korilin'],
-        language: 'en',
-        id: location.pathname,      // Ensure uniqueness and length less than 50
-        distractionFreeMode: true  // Facebook-like distraction free mode
-    })
-    gitalk.render('gitalk-container')
-</script>
 
+
+
+    
 </body>
-
 </html>
