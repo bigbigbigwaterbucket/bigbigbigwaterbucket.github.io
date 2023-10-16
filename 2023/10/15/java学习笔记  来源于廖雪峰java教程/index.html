@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>天机工程</title>
+    <title> | 天机工程</title>
     <meta name="author" content="bigbigbigwaterbucket" />
     <meta name="description" content="科技不是一题一解的死板学识，而是令我们超凡脱俗的产物。" />
     <meta name="keywords" content="" />
@@ -36,7 +36,9 @@
 
 
 
-<script src="/js/lib/home.js"></script>
+
+
+
 
 <link rel="stylesheet" href="/css/main.css" />
 
@@ -146,32 +148,11 @@
 </transition>
 
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div id="home-head">
-    <div id="home-background" ref="homeBackground" data-images="/images/background.jpg,/images/background2.jpg,/images/background3.jpg,/images/background4.jpg"></div>
-    <div id="home-info" @click="homeClick">
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="info">
-            <div class="wrap">
-                <h1>天机工程</h1>
-                <h3></h3>
-                <h5>科技不是一题一解的死板学识，而是令我们超凡脱俗的产物。</h5>
-            </div>
-        </span>
+            <div class="article">
+    <div>
+        <h1></h1>
     </div>
-</div>
-<div id="home-posts-wrap" true ref="homePostsWrap">
-    <div id="home-posts">
-        
-
-<div class="post">
-    <a href="/2023/10/15/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20%20%E6%9D%A5%E6%BA%90%E4%BA%8E%E5%BB%96%E9%9B%AA%E5%B3%B0java%E6%95%99%E7%A8%8B/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
+    <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
@@ -181,10 +162,9 @@
         
         
     </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="java学习笔记-来源于廖雪峰java教程"><a href="#java学习笔记-来源于廖雪峰java教程" class="headerlink" title="java学习笔记  来源于廖雪峰java教程"></a>java学习笔记  来源于廖雪峰java教程</h2><p>Java <strong>包括C、Python等各种语言</strong> 程序对格式没有明确的要求，多几个空格或者回车不影响程序的正确性，但是我们要养成良好的编程习惯，注意遵守Java社区约定的编码格式。</p>
+    
+    <div class="content" v-pre>
+        <h2 id="java学习笔记-来源于廖雪峰java教程"><a href="#java学习笔记-来源于廖雪峰java教程" class="headerlink" title="java学习笔记  来源于廖雪峰java教程"></a>java学习笔记  来源于廖雪峰java教程</h2><p>Java <strong>包括C、Python等各种语言</strong> 程序对格式没有明确的要求，多几个空格或者回车不影响程序的正确性，但是我们要养成良好的编程习惯，注意遵守Java社区约定的编码格式。</p>
 <p>那约定的编码格式有哪些要求呢？其实我们在前面介绍的Eclipse IDE提供了快捷键<code>Ctrl+Shift+F</code>（macOS是<code>⌘+⇧+F</code>）帮助我们快速格式化代码的功能，Eclipse就是按照约定的编码格式对代码进行格式化的，所以只需要看看格式化后的代码长啥样就行了。具体的代码格式要求可以在Eclipse的设置中<code>Java</code>-<code>Code Style</code>查看。</p>
 <p>IDEA 设置格式化代码快捷键: File-Settings-Keymap-搜索Reformat Code-右击Add Keyboard Shortcut-按下新快捷键</p>
 <p>在Java中，变量分为两种：<strong>基本类型</strong>的变量和<strong>引用类型</strong>的变量。</p>
@@ -827,58 +807,17 @@ bin src
 Hello, world!
 </code></pre>
 
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2023/10/15/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20%20%E6%9D%A5%E6%BA%90%E4%BA%8E%E5%BB%96%E9%9B%AA%E5%B3%B0java%E6%95%99%E7%A8%8B/" class="go-post">阅读全文</a>
-</div>
-
-
-        <div class="page-current">
-    
-    <span class="current">1</span>
-    
-    
-    
-    
-</div>
-
     </div>
     
-    <div id="home-card">
-        <div id="card-style">
-    <div id="card-div">
-        <div class="avatar">
-            <img src="/images/avatar.jpg" alt="avatar" />
-        </div>
-        <div class="name">bigbigbigwaterbucket</div>
-        <div class="description">
-            <p>Description<br>至死方休</p>
-
-        </div>
-        
-        
-        <div class="friend-links">
-            
-            <div class="friend-link">
-                <a target="_blank" rel="noopener" href="https://argvchs.github.io">Argvchs</a>
-            </div>
-            
-            <div class="friend-link">
-                <a target="_blank" rel="noopener" href="https://innoy-qwq.github.io">Noytown</a>
-            </div>
-            
-        </div>
-        
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
     </div>
-</div>
-
-    </div>
+    
+    
+    
     
 </div>
 
@@ -910,6 +849,29 @@ Hello, world!
         
     </div>
     <script src="/js/main.js"></script>
+    
+    
+<script
+    src="https://giscus.app/client.js"
+    data-repo="bigbigbigwaterbucket/bigbigbigwaterbucket.github.io"
+    data-repo-id="R_kgDOKFcnSw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKFcnS84CaIBo"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="https://static-argvchs.netlify.app/css/giscus.css"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
+
+
+
+
+
     
 </body>
 </html>
