@@ -1,0 +1,560 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title> | 天机工程</title>
+    <meta name="author" content="bigbigbigwaterbucket" />
+    <meta name="description" content="科技不是一题一解的死板学识，而是令我们超凡脱俗的产物。" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>天机工程</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;天机工程</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1></h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/21
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="每日1-1题-有效的字母异位词-两个数组的交集-java学习反思"><a href="#每日1-1题-有效的字母异位词-两个数组的交集-java学习反思" class="headerlink" title="每日1+1题(有效的字母异位词+两个数组的交集)+java学习反思"></a>每日1+1题(有效的字母异位词+两个数组的交集)+java学习反思</h1><p>进入哈希表的学习章节，做了两题还没有发现哈希表的特殊之处，或许时间稍微快了点?</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/valid-anagram/">力扣题目链接(opens new window)</a></p>
+<span id="more"></span>
+
+<p>给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。</p>
+<p>示例 1: 输入: s &#x3D; “anagram”, t &#x3D; “nagaram” 输出: true</p>
+<p>示例 2: 输入: s &#x3D; “rat”, t &#x3D; “car” 输出: false</p>
+<p><strong>说明:</strong> 你可以假设字符串只包含小写字母。</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/intersection-of-two-arrays/">力扣题目链接(opens new window)</a></p>
+<p>题意：给定两个数组，编写一个函数来计算它们的交集。</p>
+<p><img src="https://code-thinking-1253855093.file.myqcloud.com/pics/20200818193523911.png" alt="349. 两个数组的交集"></p>
+<p><strong>说明：</strong> 输出结果中的每个元素一定是唯一的。 我们可以不考虑输出结果的顺序。</p>
+<pre><code>//有效的字母异位词
+// Created by 徐昊岩 on 2023/10/21.
+//两个数组的交集
+#include &quot;string&quot;
+#include &quot;vector&quot;
+#include &quot;unordered_set&quot;
+using namespace std;
+class Solution &#123;
+public:
+    bool isAnagram(string s, string t) &#123;
+        int count[26]=&#123;0&#125;;
+        int i=0;
+        for(i=0;i&lt;s.size();i++) count[s[i]-&#39;a&#39;]++;   //有时候只需要一个相对值，并不需要去记住&#39;a&#39;的asc2编码
+        for(i=0;i&lt;t.size();i++) count[t[i]-97]--;
+        for(i=0;i&lt;26;i++) if(count[i]!=0) return false;
+        return true;
+    &#125;
+&#125;;
+class Solution2 &#123;
+public:
+    vector&lt;int&gt; intersection(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) &#123;
+        unordered_set&lt;int&gt; uset1(nums1.begin(),nums1.end());
+        unordered_set&lt;int&gt; uset2(nums2.begin(),nums2.end());
+        vector&lt;int&gt; result;
+        for(auto it=uset1.begin();it!=uset1.end();it++)&#123;
+            if(uset2.find(*it)!=uset2.end())&#123;
+                result.push_back(*it);
+            &#125;
+        &#125;
+        return result;
+    &#125;
+&#125;;
+//失败优化,但好歹学到了一些stl的使用
+class Solution3 &#123;
+public:
+    vector&lt;int&gt; intersection(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) &#123;
+        unordered_set&lt;int&gt; uset(nums1.begin(),nums1.end());
+        vector&lt;int&gt; result;
+        for(auto it=uset.begin();it!=uset.end();it++)&#123;
+            for(int num:nums2)&#123;  //for each循环，对任何可迭代对象(实现了迭代器)都能从头遍历
+                if(uset.find(num)!=uset.end()) result.push_back(num);
+            &#125;
+        &#125;
+        return result;   //也可以创造vector&lt;int&gt;(a.begin(),a.end())匿名变量
+    &#125;
+&#125;;
+</code></pre>
+<h1 id="java学习反思"><a href="#java学习反思" class="headerlink" title="java学习反思"></a>java学习反思</h1><h3 id="这两天或者说这几个月，总感觉java学习太过囫囵吞枣，学了会尚硅谷的java0基础，感觉太过0基础，跳了很多前面的类C语法，也2倍速看了好多面向对象视频，而且光是看，懒得去写。结果尚硅谷面向对象还没咋看完，又感觉自己需要实践实践感受编程的乐趣，于是又去看黑马程序员的Springboot项目-也跳了前面的前端部分-，结果看了不到1-3又感觉自己java语法不行了，来回倒腾之后又摆烂了好久，感觉自己已经过了“编程语言的学习红利期”，即掌握了一定语法后，对其它语言语法感觉很类似，于是失去了学习的热情。-之后跟着廖雪峰的文档学完了git，边敲边看文档这种方式感觉还挺让我沉浸的，遂转战廖雪峰的java教程"><a href="#这两天或者说这几个月，总感觉java学习太过囫囵吞枣，学了会尚硅谷的java0基础，感觉太过0基础，跳了很多前面的类C语法，也2倍速看了好多面向对象视频，而且光是看，懒得去写。结果尚硅谷面向对象还没咋看完，又感觉自己需要实践实践感受编程的乐趣，于是又去看黑马程序员的Springboot项目-也跳了前面的前端部分-，结果看了不到1-3又感觉自己java语法不行了，来回倒腾之后又摆烂了好久，感觉自己已经过了“编程语言的学习红利期”，即掌握了一定语法后，对其它语言语法感觉很类似，于是失去了学习的热情。-之后跟着廖雪峰的文档学完了git，边敲边看文档这种方式感觉还挺让我沉浸的，遂转战廖雪峰的java教程" class="headerlink" title="这两天或者说这几个月，总感觉java学习太过囫囵吞枣，学了会尚硅谷的java0基础，感觉太过0基础，跳了很多前面的类C语法，也2倍速看了好多面向对象视频，而且光是看，懒得去写。结果尚硅谷面向对象还没咋看完，又感觉自己需要实践实践感受编程的乐趣，于是又去看黑马程序员的Springboot项目(也跳了前面的前端部分)，结果看了不到1&#x2F;3又感觉自己java语法不行了，来回倒腾之后又摆烂了好久，感觉自己已经过了“编程语言的学习红利期”，即掌握了一定语法后，对其它语言语法感觉很类似，于是失去了学习的热情。 之后跟着廖雪峰的文档学完了git，边敲边看文档这种方式感觉还挺让我沉浸的，遂转战廖雪峰的java教程"></a>这两天或者说这几个月，总感觉java学习太过囫囵吞枣，学了会尚硅谷的java0基础，感觉太过0基础，跳了很多前面的类C语法，也2倍速看了好多面向对象视频，而且光是看，懒得去写。结果尚硅谷面向对象还没咋看完，又感觉自己需要实践实践感受编程的乐趣，于是又去看黑马程序员的Springboot项目(也跳了前面的前端部分)，结果看了不到1&#x2F;3又感觉自己java语法不行了，来回倒腾之后又摆烂了好久，感觉自己已经过了“编程语言的学习红利期”，即掌握了一定语法后，对其它语言语法感觉很类似，于是失去了学习的热情。 之后跟着廖雪峰的文档学完了git，边敲边看文档这种方式感觉还挺让我沉浸的，遂转战廖雪峰的java教程</h3><h3 id="然而，又由于之前学了尚硅谷的java语法，看文档又失去了耐心，属于是捡了芝麻又丢了芝麻。"><a href="#然而，又由于之前学了尚硅谷的java语法，看文档又失去了耐心，属于是捡了芝麻又丢了芝麻。" class="headerlink" title="然而，又由于之前学了尚硅谷的java语法，看文档又失去了耐心，属于是捡了芝麻又丢了芝麻。"></a>然而，又由于之前学了尚硅谷的java语法，看文档又失去了耐心，属于是捡了芝麻又丢了芝麻。</h3><h3 id="最近才回想起《动手学深度学习v2》的作者沐神的教诲，学习编程的关键就在于“动手学”，如果你不亲自上手敲一遍代码，那不叫学编程。“动手学”不仅可以增加你对代码的理解、熟练度，还能让你更加专注"><a href="#最近才回想起《动手学深度学习v2》的作者沐神的教诲，学习编程的关键就在于“动手学”，如果你不亲自上手敲一遍代码，那不叫学编程。“动手学”不仅可以增加你对代码的理解、熟练度，还能让你更加专注" class="headerlink" title="最近才回想起《动手学深度学习v2》的作者沐神的教诲，学习编程的关键就在于“动手学”，如果你不亲自上手敲一遍代码，那不叫学编程。“动手学”不仅可以增加你对代码的理解、熟练度，还能让你更加专注"></a>最近才回想起《动手学深度学习v2》的作者沐神的教诲，学习编程的关键就在于“动手学”，如果你不亲自上手敲一遍代码，那不叫学编程。“动手学”不仅可以增加你对代码的理解、熟练度，还能让你更加专注</h3><h3 id="于是决定重学部分廖雪峰java教程，就从java核心类开始，希望我能秉持-“动手学”-的精神，将其贯彻到每一种语言的学习中！"><a href="#于是决定重学部分廖雪峰java教程，就从java核心类开始，希望我能秉持-“动手学”-的精神，将其贯彻到每一种语言的学习中！" class="headerlink" title="于是决定重学部分廖雪峰java教程，就从java核心类开始，希望我能秉持  “动手学” 的精神，将其贯彻到每一种语言的学习中！"></a>于是决定重学部分廖雪峰java教程，就从java核心类开始，希望我能秉持  “动手学” 的精神，将其贯彻到每一种语言的学习中！</h3><pre><code>package java_learning;
+
+import java.io.UnsupportedEncodingException;
+
+public class core_learning &#123;
+    /*
+    public static void main(String[] args) &#123;
+        String s1=&quot;Hello&quot;;
+        String s2=new String(&quot;Hello&quot;); //new 类() 中的()一般是用于初始化对象
+        String s3=new String(new char[]&#123;&#39;H&#39;,&#39;e&#39;,&#39;l&#39;,&#39;l&#39;,&#39;o&#39;&#125;);
+        String s4=&quot;Hello&quot;;
+        System.out.println(s1.toUpperCase()+&#39;\n&#39;+s2+&#39;\n&#39;+s3+&#39;\n&#39;+s1);
+        //s1.toUpperCase()返回s1字符串的大写形式，但并不修改s1本身
+        //或许方法要么是自修改，要么是返回修改
+        System.out.println(s1==s3);
+        System.out.println(s1==s4);
+        //或许像C语言一样只有字符串可以视为常量地址,注意new是新创建
+        System.out.println(s1.equals(s3));  //equals比较的才是字符串值的大小
+        &quot;Hello&quot;.startsWith(&quot;He&quot;); // true
+        &quot;Hello&quot;.endsWith(&quot;lo&quot;); // true
+        System.out.println(&quot;Hello&quot;.substring(2));// &quot;llo&quot;
+        //substring接收两个参数，必须给出开头index,默认给出结尾index
+        System.out.println(&#39;\u3000&#39;+&quot; \tHello\r\n &quot;.trim());
+        //注意：trim()并没有改变字符串的内容，而是返回了一个新字符串。
+        //&#39;\u3000&#39;类似中文的空格字符，可以被strip消除
+        &quot;&quot;.isEmpty(); // true，因为字符串长度为0
+        &quot;  &quot;.isEmpty(); // false，因为字符串长度不为0
+        &quot;  \n&quot;.isBlank(); // true，因为只包含空白字符
+        &quot; Hello &quot;.isBlank(); // false，因为包含非空白字符
+        System.out.println(s1.replace(&quot;ello&quot;,&quot;i&quot;));
+        //replace方法既可以替换字符，也可以替换字符串
+        //返回修改式正则表达式替换，稍后再研究
+        System.out.println(s1.replaceAll(&quot;[\\s]+&quot;, &quot;,&quot;)); // &quot;A,B,C,D&quot;
+        //String的join方法，除第一个参数外，还可以给出一个字符数组
+        System.out.println(String.join(&quot;&amp;&quot;,s1,s2,s3));
+        //后缀.formatted() 类python
+        System.out.println(&quot;我名为:%s，%d岁&quot;.formatted(&quot;徐昊岩&quot;,20));
+
+        //好在基本类型仍然遵从c语言格式的类型转换
+        int n1=(int)2.5;
+        //字符串类型与基本类型互相转化,包装类的parse+xxx方法
+        int i1=Integer.parseInt(&quot;0123&quot;);
+        int n2 = Integer.parseInt(&quot;ff&quot;, 16); // 按十六进制转换，255
+        System.out.println(i1);
+        boolean b1=Boolean.parseBoolean(&quot;true&quot;);
+        //System.out.println(boolean instanceof Boolean);  编译错误，说是Boolean是一个包装类，至于包装类和基本数据类型有什么区别，以后再来判断
+
+
+        //要特别注意，Integer有个getInteger(String)方法，
+        //它不是将字符串转换为int，而是把该字符串对应的&quot;系统变量&quot;转换为Integer：
+
+        Integer.getInteger(&quot;java.version&quot;);// 版本号，11
+
+        //String类型具有不可变特性，你不能通过索引的方式直接修改String某个元素的值，但是字符数组char[]可以
+        //注：写算法还是使用char[]吧
+        char[] chs=new char[]&#123;&#39;1&#39;,&#39;2&#39;&#125;;
+        chs[0]=&#39;4&#39;;
+        String s5=new String(chs); //复制式赋值
+        //通过new String(char[])创建新的String实例时，它并不会直接引用传入的char[]数组，而是会复制一份，
+        //所以，修改外部的char[]数组不会影响String实例内部的char[]数组，因为这是两个不同的数组。
+
+        //赋值的两种方法：引用式赋值&amp;复制式赋值，引用式会共享地址，随赋值者改变而改变
+
+        //byte 是 Java 中的一个基本数据类型，用于表示 8 位的有符号整数。
+        byte[] byte1=&quot;Hello&quot;.getBytes();  //默认方式转码
+        System.out.println(byte1);
+        //如果不使用默认转码方式，java强制你去检查一个编译时异常
+        //否则会报错
+        try &#123;
+            //编码
+            byte[] byte2=&quot;Hello&quot;.getBytes(&quot;UTF-8&quot;);  //UTF-8方式转码
+            System.out.println(byte2);
+            //解码
+            String from_byte=new String(byte2,&quot;UTF-8&quot;);
+            System.out.println(from_byte);
+        &#125;
+        catch (UnsupportedEncodingException e)&#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+    */
+
+
+    /*
+    public static void main(String[] args)&#123;
+        //Java编译器对String做了特殊处理，使得我们可以直接用+拼接字符串。
+        //虽然可以直接拼接字符串，但是，在循环中，每次循环都会创建新的字符串对象，然后扔掉旧的字符串。这样，绝大部分字符串都是临时对象，不但浪费内存，还会影响GC效率。
+        //为了能高效拼接字符串，Java标准库提供了StringBuilder，它是一个可变对象，可以预分配缓冲区，这样，往StringBuilder中新增字符时，不会创建新的临时对象：
+        StringBuilder sb1=new StringBuilder(&quot;Hello,&quot;);
+
+        //可以StringBuilder理解为一个动态字符串，相比char[]，其内存可以动态增加
+        for(int i=0;i&lt;3;i++)&#123;
+            sb1.append(i)
+                    .append(&quot;徐&quot;)
+                    .append(&quot;好&quot;)
+                    .append(&quot;眼&quot;)
+                    .insert(0+i,i);  //每执行一遍就加一个
+        &#125;
+        //上述代码写法称为  “链式操作”，原因是.append()方法返回this指针,即当前对象
+        //明白了原理，你也可以写一个链式操作
+        //链式操作的好处:关键在于多种链式操作叠加使用更加方便，代码间接性、可读性更高
+        //不需要一个操作写一行
+        System.out.println(sb1);
+        //注意：对于普通的字符串+操作，并不需要我们将其改写为StringBuilder，因为Java编译器在编译时就自动把多个连续的+操作编码为StringConcatFactory的操作。在运行期，StringConcatFactory会自动把字符串连接操作优化为数组复制或者StringBuilder操作。
+
+        String[] fields = &#123; &quot;name&quot;, &quot;position&quot;, &quot;salary&quot; &#125;;
+        String table = &quot;employee&quot;;
+        String insert = buildInsertSql(table, fields);
+        System.out.println(insert);
+        String s = &quot;INSERT INTO employee (name, position, salary) VALUES (?, ?, ?)&quot;;
+        System.out.println(s.equals(insert) ? &quot;测试成功&quot; : &quot;测试失败&quot;);
+
+    &#125;
+    static String buildInsertSql(String table,String[]fields)&#123;
+        StringBuilder sb=new StringBuilder(table);
+        //把字符串变为动态字符串，便于修改
+        sb.insert(0,&quot;INSERT INTO &quot;);
+        //还有sb.delete()方法，说明确实可以理解为动态字符串替代char[]使用!
+        sb.append(&quot; (%s, %s, %s) VALUES (?, ?, ?)&quot;.formatted(fields[0],fields[1],fields[2]));
+        return new String(sb); //再把动态数组转化回来,也可以用.toString()方法
+    &#125;
+    */
+
+    /*
+    public static void main(String[] args)&#123;
+        //研究for each循环
+        String[] names = &#123;&quot;Bob&quot;, &quot;Alice&quot;, &quot;Grace&quot;&#125;;
+        var sb = new StringBuilder();
+        sb.append(&quot;Hello &quot;);
+        for (String name : names) &#123;  //for each循环,可以用于实现了iterable接口的类（数组、String等）
+            sb.append(name).append(&quot;, &quot;);
+        &#125;
+        // 注意去掉最后的&quot;, &quot;:
+        sb.delete(sb.length() - 2, sb.length());
+        sb.append(&quot;!&quot;);
+        System.out.println(sb.toString());
+    &#125;
+
+     */
+
+
+    /*
+    在 Java 中，增强型的 for 循环（也称为 for-each 循环）可以用于遍历以下类型：
+    1数组：可以遍历任何类型的数组，包括基本数据类型和引用数据类型。例如：
+    java
+    int[] numbers = &#123;1, 2, 3, 4, 5&#125;;
+    for (int num : numbers) &#123;
+        System.out.println(num);
+    &#125;
+    2实现了 Iterable 接口的集合类：可以遍历实现了 Iterable 接口的集合类，如 List、Set、Queue 等。例如：
+
+    List&lt;String&gt; names = Arrays.asList(&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;);
+    for (String name : names) &#123;
+        System.out.println(name);
+    &#125;
+    3实现了 Iterable 接口的自定义类：如果你的自定义类实现了 Iterable 接口，就可以使用增强型 for 循环进行遍历。需要实现 Iterator 方法。例如：
+
+    public class MyIterableClass implements Iterable&lt;String&gt; &#123;
+        private String[] data = &#123;&quot;A&quot;, &quot;B&quot;, &quot;C&quot;&#125;;
+
+        @Override
+        public Iterator&lt;String&gt; iterator() &#123;
+            return Arrays.asList(data).iterator();
+        &#125;
+    &#125;
+
+    MyIterableClass iterableObj = new MyIterableClass();
+    for (String item : iterableObj) &#123;
+        System.out.println(item);
+    &#125;
+    需要注意的是，for each循环只能进行正向遍历，并且无法改变遍历的集合或数组中的元素。如果需要在遍历过程中进行删除、修改等操作，可以考虑使用普通的for循环或迭代器。
+    java中的迭代器: Iterator&lt;String&gt; iterator
+     */
+
+
+    //包装类型，是！“包含基本类型”的引用类型，并不是基本类型的父类或是子类，基本类型不能称为&quot;类class&quot;
+    public static void main(String[] args)&#123;
+        //引用类型可以为null空，但基本类型不能为空null
+        String s=null;
+        //int n=null; //compile error!
+        Integer n=new Integer(80); //会有红色编译警告，但仍然可以运行
+        Integer n2=Integer.valueOf(80);
+        Integer n3=Integer.valueOf(&quot;80&quot;);
+        System.out.println(n2+n3);
+        System.out.println(n2.intValue()+n3.intValue());
+
+        //.valueOf()和intValue()方法可以实现互相转化，为了方便，java编译器可以帮我们自动在int和Integer之间转型
+        Integer auto1=10; // 编译器自动使用Integer.valueOf(int)
+        int auto2=auto1; // 编译器自动使用Integer.intValue()
+
+        //这种直接把int变为Integer的赋值写法，称为自动装箱（Auto Boxing），
+        //反过来，把Integer变为int的赋值写法，称为自动拆箱（Auto Unboxing）。
+        //注意：自动装箱和自动拆箱只发生在编译阶段，目的是为了少写代码。
+
+        final int a=10;  //final可以视作c/cpp的const，表明变量不可变/方法不可重写/类不可继承
+        //Integer应当用.equals()方法去比较，而不是==!
+        //仔细观察结果的童鞋可以发现，==比较，较小的两个相同的Integer返回true，较大的两个相同的Integer返回false，这是因为Integer是不变类，编译器把Integer x = 127;自动变为Integer x = Integer.valueOf(127);，为了节省内存，Integer.valueOf()对于较小的数，始终返回相同的实例，因此，==比较“恰好”为true，但我们绝不能因为Java标准库的Integer内部有缓存优化就用==比较，必须用equals()方法比较两个Integer。
+
+        //因为Integer.valueOf()可能始终返回同一个Integer实例，因此，在我们自己创建Integer的时候，以下两种方法：
+        //方法1：Integer n = new Integer(100);
+        //方法2：Integer n = Integer.valueOf(100);
+        //方法2更好，因为方法1总是创建新的Integer实例，方法2把内部优化留给Integer的实现者去做，即使在当前版本没有优化，也有可能在下一个版本进行优化。
+        //我们把能创建“新”对象的静态方法称为静态工厂方法。Integer.valueOf()就是静态工厂方法，它尽可能地返回缓存的实例以节省内存。
+
+        Boolean b1=Boolean.TRUE;
+        boolean b2=b1;
+        Integer i1=Integer.MAX_VALUE;
+        int i2=i1;
+        //返回某类型占用的bit/byte数量
+        int sizeofLong=Long.SIZE;
+        int bytesofLong=Long.BYTES;
+
+        // 向上转型为Number:
+        Number num = Integer.valueOf(999);
+        // 获取byte, int, long, float, double:
+        byte b4 = num.byteValue();
+        int n4 = num.intValue();
+        long ln4 = num.longValue();
+        float f4 = num.floatValue();
+        double d4 = num.doubleValue();
+        //在Java中，并没有无符号整型（Unsigned）的基本数据类型。byte、short、int和long都是带符号整型，
+        //最高位是符号位。而C语言则提供了CPU支持的全部数据类型，包括无符号整型。
+        //无符号整型和有符号整型的转换在Java中就需要借助包装类型的静态方法完成。
+        //Byte.toUnsignedInt(x)
+
+    &#125;
+    //让一个类只包含一个int成员，就可以视其为int的包装类，包含互相转化的方法
+    public class _Integer &#123;
+        private int value;
+
+        public _Integer(int value) &#123;
+            this.value = value;
+        &#125;
+
+        public int intValue() &#123;
+            return this.value;
+        &#125;
+    &#125;
+
+    //javaBean(一种格式化的类)，具有私有属性，公有的设置与获得方法
+    //在IDEA中，右击属性选择generator可以快速生成javaBean规范方法
+    //还可以快速生成构造器、重载Object关键方法.....，十分便捷
+    public class Person&#123;
+        public String getName() &#123;
+            return name;
+        &#125;
+
+        public void setName(String name) &#123;
+            this.name = name;
+        &#125;
+
+        public int getAge() &#123;
+            return age;
+        &#125;
+
+        public void setAge(int age) &#123;
+            this.age = age;
+        &#125;
+
+        private String name;
+        private int age;
+    &#125;
+
+&#125;
+
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 天机工程
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;bigbigbigwaterbucket
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+<script
+    src="https://giscus.app/client.js"
+    data-repo="bigbigbigwaterbucket/bigbigbigwaterbucket.github.io"
+    data-repo-id="R_kgDOKFcnSw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKFcnS84CaIBo"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="https://static-argvchs.netlify.app/css/giscus.css"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
+
+
+
+
+
+    
+</body>
+</html>
