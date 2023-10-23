@@ -1,0 +1,437 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title> | 天机工程</title>
+    <meta name="author" content="bigbigbigwaterbucket" />
+    <meta name="description" content="科技不是一题一解的死板学识，而是令我们超凡脱俗的产物。" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>天机工程</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;天机工程</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1></h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/23
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="每日一题-快乐数-cpp实现求解真值表"><a href="#每日一题-快乐数-cpp实现求解真值表" class="headerlink" title="每日一题(快乐数)+cpp实现求解真值表"></a>每日一题(快乐数)+cpp实现求解真值表</h1><h1 id="第202题-快乐数"><a href="#第202题-快乐数" class="headerlink" title="第202题. 快乐数"></a>第202题. 快乐数</h1><p>哈希表更像是一个备用方案？貌似都不太需要强制使用</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/happy-number/">力扣题目链接(opens new window)</a></p>
+<p>编写一个算法来判断一个数 n 是不是快乐数。</p>
+<p>「快乐数」定义为：对于一个正整数，每一次将该数替换为它每个位置上的数字的平方和，然后重复这个过程直到这个数变为 1，也可能是 无限循环 但始终变不到 1。如果 可以变为  1，那么这个数就是快乐数。</p>
+<p>如果 n 是快乐数就返回 True ；不是，则返回 False 。</p>
+<p><strong>示例：</strong></p>
+<p>输入：19<br>输出：true<br>解释：<br>1^2 + 9^2 &#x3D; 82<br>8^2 + 2^2 &#x3D; 68<br>6^2 + 8^2 &#x3D; 100<br>1^2 + 0^2 + 0^2 &#x3D; 1</p>
+<pre><code>class Solution &#123;
+public:
+    bool isHappy(int n) &#123;
+        unordered_set&lt;int&gt; uset=&#123;n&#125;;
+        while (n!=1)&#123;
+            int num=0;
+            while (n)&#123;
+                num+= pow(n%10,2);
+                n=n/10;
+            &#125;
+            if(uset.find(num)!=uset.end()) return false;
+            uset.emplace(num);
+            n=num;
+        &#125;
+        return true;
+    &#125;
+&#125;;
+</code></pre>
+<h1 id="鸽了几周的离散数学实验终于写完了，转为后缀表达式真不想写，copy了下，其他自己琢磨的"><a href="#鸽了几周的离散数学实验终于写完了，转为后缀表达式真不想写，copy了下，其他自己琢磨的" class="headerlink" title="鸽了几周的离散数学实验终于写完了，转为后缀表达式真不想写，copy了下，其他自己琢磨的"></a>鸽了几周的离散数学实验终于写完了，转为后缀表达式真不想写，copy了下，其他自己琢磨的</h1><p>还有主析&#x2F;合取范式，存个二维数组遍历下应该就完成了</p>
+<pre><code>//
+// Created by 徐昊岩 on 2023/10/8.
+//
+//否定¬替换为!,析取替换为|，合取替换为&amp;，条件替换为-，双条件替换为=
+#include &quot;windows.h&quot;
+#include &quot;iostream&quot;
+#include &quot;vector&quot;
+#include &quot;cmath&quot;
+#include &quot;stack&quot;
+using namespace std;
+
+bool judge(char p, char q)&#123;        //判断运算符优先级
+
+    int x = 0;
+    int y = 0;
+    if(p == &#39;!&#39;)
+        x = 5;
+    else if(p == &#39;&amp;&#39;)
+        x = 4;
+    else if(p == &#39;|&#39;)
+        x = 3;
+    else if(p == &#39;-&#39;)
+        x = 2;
+    else if(p == &#39;=&#39;)
+        x = 1;
+    if(q == &#39;!&#39;)
+        y = 5;
+    else if(q == &#39;&amp;&#39;)
+        y = 4;
+    else if(q == &#39;|&#39;)
+        y = 3;
+    else if(q == &#39;-&#39;)
+        y = 2;
+    else if(q == &#39;=&#39;)
+        y = 1;
+
+    return x &gt; y;
+&#125;
+
+void change(string s,string &amp;output,int &amp;pos,stack&lt;char&gt;&amp; Stack)&#123;                          //中缀表达式转后缀表达式
+    char c;
+    for(int i = 0; i &lt; s.length(); i++)
+    &#123;
+        if(s[i] &gt;= &#39;a&#39; &amp;&amp; s[i] &lt;= &#39;z&#39;)
+            output[++pos] = s[i];
+        else
+        &#123;
+            if(s[i] == &#39;(&#39;)            //如果是左括号直接压进去
+                Stack.push(s[i]);
+            else if(s[i] == &#39;)&#39;)       //如果是有括号弹掉左括号之前的所以的运算符
+            &#123;
+                while(!(Stack.top() == &#39;(&#39;))
+                &#123;
+                    output[++pos] = Stack.top();
+                    Stack.pop();
+                &#125;
+                Stack.pop();          //弹左括号
+            &#125;
+            else
+            &#123;
+                if(Stack.empty())     //栈空直接进栈
+                    Stack.push(s[i]);
+                else                  //非空就比较优先级
+                &#123;
+                    while(!judge(s[i],Stack.top())) //如果当前复合优先级小于等于栈顶符号的就弹栈
+                    &#123;
+                        output[++pos] = Stack.top();
+                        Stack.pop();
+                        if(Stack.empty()) //防止弹空栈
+                            break;
+                    &#125;
+                    Stack.push(s[i]);     //压入当前运算符
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+    while(!Stack.empty())  //全部处理完之后将栈内剩余的运算符放到表达式里
+    &#123;
+        if(Stack.top() != &#39;(&#39; &amp;&amp; Stack.top() != &#39;)&#39;)
+        &#123;
+            output[++pos] = Stack.top();
+        &#125;
+        Stack.pop();
+    &#125;
+&#125;
+
+int caculator(const int num,vector&lt;int&gt; vec_list,string&amp; output,int pos)&#123;
+    stack&lt;int&gt; stack_cal;
+    int tp1,tp2;
+    for(int i=0;i&lt;=pos;i++)&#123;
+        if(output[i] &gt;= &#39;a&#39; &amp;&amp; output[i] &lt;= &#39;z&#39;)
+            stack_cal.push(vec_list[output[i]-&#39;a&#39;]);  //后缀表达式,只把变量压入堆栈内
+        else&#123;
+            tp1=stack_cal.top();
+            stack_cal.pop();
+            tp2=stack_cal.top();
+            stack_cal.pop();
+            switch (output[i]) &#123;
+                case &#39;&amp;&#39;:
+                    stack_cal.push(tp1 &amp;&amp; tp2);
+                    break;
+                case &#39;|&#39;:
+                    stack_cal.push(tp1 || tp2);
+                    break;
+                case &#39;-&#39;:
+                    stack_cal.push((!tp1) || tp2);
+                    break;
+                case &#39;=&#39;:
+                    stack_cal.push(tp1 == tp2);
+                    break;
+                case &#39;!&#39;:
+                    stack_cal.push(tp2);
+                    stack_cal.push(!tp1);
+                    break;
+            &#125;
+        &#125;
+    &#125;
+    return stack_cal.top();
+&#125;
+
+void vec_list_pr(int num,string&amp; output,int pos)&#123;
+    vector&lt;int&gt; vec_list(num,1);
+    for(int i=0;i&lt; pow(2,num);i++)&#123;
+        for(int o=0;o&lt;num;o++)&#123;
+            if(i%(int)pow(2,num-1-o)==0)&#123;
+                vec_list[o]=!vec_list[o];
+            &#125;
+        &#125;
+        for(int i=0;i&lt;num;i++) cout&lt;&lt;vec_list[i]&lt;&lt;&quot;    &quot;;
+        cout&lt;&lt;caculator(num,vec_list,output,pos)&lt;&lt;endl;
+    &#125;
+&#125;
+
+string IO(int&amp; count,string&amp; input)&#123;
+    int a[26]=&#123;0&#125;;
+    for(int i=0;i&lt;input.size();i++)&#123;
+        if(input[i]&gt;=&#39;A&#39; &amp;&amp; input[i]&lt;=&#39;Z&#39;)&#123;
+            int flag=0;
+            for(int o=0;o&lt;count;o++) &#123;
+                if(input[i]==a[o])&#123;
+                    flag=1;
+                    break;
+                &#125;
+            &#125;
+            if(!flag)&#123;
+                a[count]=input[i];
+                count++;
+            &#125;
+        &#125;
+    &#125;
+    // 把PQ等字母转换为ab的目的是方便后续映射为一个vector容器的某个下标对应数
+    for(int i=0;i&lt;input.size();i++)&#123;
+        if(input[i]&gt;=65 &amp;&amp; input[i]&lt;=90)&#123;
+            for(int o=0;o&lt;count;o++)&#123;
+                if (input[i]==a[o]) input[i]=char(97+o);
+            &#125;
+        &#125;
+    &#125;
+    return input;
+&#125;
+
+int main()&#123;
+    system(&quot;chcp 65001 &gt; nul&quot;);
+    int num=0;
+    int pos = -1;
+    stack&lt;char&gt; Stack;
+    string input;
+    string output;
+    cout&lt;&lt;&quot;运算符替换规则:否定¬替换为!,析取替换为|，合取替换为&amp;，条件替换为-，双条件替换为=&quot;&lt;&lt;endl&lt;&lt;&quot;(请使用大写字母表示变量!)&quot;&lt;&lt;endl;
+    cin&gt;&gt;input;
+    IO(num,input);
+    change(input,output,pos,Stack);
+    cout&lt;&lt;num&lt;&lt;endl&lt;&lt;input&lt;&lt;endl;
+    vec_list_pr(num,output,pos);
+&#125;
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 天机工程
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;bigbigbigwaterbucket
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+<script
+    src="https://giscus.app/client.js"
+    data-repo="bigbigbigwaterbucket/bigbigbigwaterbucket.github.io"
+    data-repo-id="R_kgDOKFcnSw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKFcnS84CaIBo"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="https://static-argvchs.netlify.app/css/giscus.css"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
+
+
+
+
+
+    
+</body>
+</html>
