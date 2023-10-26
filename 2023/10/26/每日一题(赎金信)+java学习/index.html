@@ -1,0 +1,391 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title> | 天机工程</title>
+    <meta name="author" content="bigbigbigwaterbucket" />
+    <meta name="description" content="科技不是一题一解的死板学识，而是令我们超凡脱俗的产物。" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>天机工程</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;天机工程</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1></h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/26
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="每日1-1题-赎金信、三数之和-java学习"><a href="#每日1-1题-赎金信、三数之和-java学习" class="headerlink" title="每日1+1题(赎金信、三数之和)+java学习"></a>每日1+1题(赎金信、三数之和)+java学习</h1><h1 id="383-赎金信"><a href="#383-赎金信" class="headerlink" title="383. 赎金信"></a>383. 赎金信</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/ransom-note/">力扣题目链接(opens new window)</a></p>
+<span id="more"></span>
+
+<p>给定一个赎金信 (ransom) 字符串和一个杂志(magazine)字符串，判断第一个字符串 ransom 能不能由第二个字符串 magazines 里面的字符构成。如果可以构成，返回 true ；否则返回 false。</p>
+<p>(题目说明：为了不暴露赎金信字迹，要从杂志上搜索各个需要的字母，组成单词来表达意思。杂志字符串中的每个字符只能在赎金信字符串中使用一次。)</p>
+<p><strong>注意：</strong></p>
+<p>你可以假设两个字符串均只含有小写字母。</p>
+<p>canConstruct(“a”, “b”) -&gt; false<br>canConstruct(“aa”, “ab”) -&gt; false<br>canConstruct(“aa”, “aab”) -&gt; true</p>
+<h1 id="第15题-三数之和"><a href="#第15题-三数之和" class="headerlink" title="第15题. 三数之和"></a>第15题. 三数之和</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/3sum/">力扣题目链接(opens new window)</a></p>
+<p>给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c &#x3D; 0 ？请你找出所有满足条件且不重复的三元组。</p>
+<p><strong>注意：</strong> 答案中不可以包含重复的三元组。</p>
+<p>示例：</p>
+<p>给定数组 nums &#x3D; [-1, 0, 1, 2, -1, -4]，</p>
+<p>满足要求的三元组集合为： [ [-1, 0, 1], [-1, -1, 2] ]</p>
+<pre><code>//赎金信/三数之和
+// Created by 徐昊岩 on 2023/10/26.
+//似乎和滑动窗口有些不同?
+/*其实在本题的情况下，使用map的空间消耗要比数组大一些的，因为map要维护红黑树或者哈希表，而且还要做哈希函数，是费时的！
+ * 数据量大的话就能体现出来差别了。 所以数组更加简单直接有效！
+ * */
+#include &quot;string&quot;
+#include &quot;unordered_map&quot;
+#include &quot;vector&quot;
+#include &quot;algorithm&quot;
+#include &quot;unordered_set&quot;
+#include &quot;set&quot;
+using namespace std;
+class Solution &#123;
+public:
+    bool canConstruct(string ransomNote, string magazine) &#123;
+        unordered_map&lt;char,int&gt; umap;
+        for(char i:magazine) umap[i]+=1;
+        for(char i:ransomNote)&#123;
+            if(umap.find(i)==umap.end() || umap.at(i)&lt;=0) return false;
+            else umap[i]-=1;
+        &#125;
+        return true;
+    &#125;
+&#125;;
+
+class Solution2 &#123;
+public:
+    bool canConstruct(string ransomNote, string magazine) &#123;
+        int a[26]=&#123;0&#125;;
+        for(char i:magazine) a[i-&#39;a&#39;]+=1;
+        for(char i:ransomNote)&#123;
+            a[i-&#39;a&#39;]-=1;
+            if(a[i-&#39;a&#39;]&lt;0) return false;
+        &#125;
+        return true;
+    &#125;
+&#125;;
+//class Solution3 &#123;  //使用set去重失败，注意无序和不重复是不一样的！！！不重复更严格，但无序不是！
+//public:
+//    vector&lt;vector&lt;int&gt;&gt; threeSum(vector&lt;int&gt;&amp; nums) &#123;
+//        unordered_map&lt;int,int&gt; umap;
+//        set&lt;set&lt;int&gt;&gt; set;
+//        for(int i:nums) umap[i]+=1;
+//        for(int i=0;i&lt;nums.size();i++)&#123;
+//            for(int o=i+1;o&lt;nums.size();o++)&#123;
+//                umap[nums[i]]--;
+//                umap[nums[o]]--;
+//                if(umap.find(0-nums[o]-nums[i])!=umap.end()&amp;&amp;umap.at(0-nums[o]-nums[i])&gt;0) set.emplace(std::set&lt;int&gt;&#123;nums[i],nums[o],0-nums[o]-nums[i]&#125;);
+//                umap[nums[i]]++;
+//                umap[nums[o]]++;
+//            &#125;
+//        &#125;
+//        vector&lt;vector&lt;int&gt;&gt; num2;
+//        for(std::set&lt;int&gt; a:set)&#123;
+//            vector&lt;int&gt; num1(a.begin(),a.end());
+//            num2.push_back(num1);
+//        &#125;
+//        return num2;
+//    &#125;
+//&#125;;
+class Solution4 &#123;  //太菜了，抄个去重解法
+public:
+    vector&lt;vector&lt;int&gt;&gt; threeSum(vector&lt;int&gt;&amp; nums) &#123;
+        vector&lt;vector&lt;int&gt;&gt; result;
+        sort(nums.begin(), nums.end());
+        // 找出a + b + c = 0
+        // a = nums[i], b = nums[j], c = -(a + b)
+        for (int i = 0; i &lt; nums.size(); i++) &#123;
+            // 排序之后如果第一个元素已经大于零，那么不可能凑成三元组
+            if (nums[i] &gt; 0) &#123;
+                break;
+            &#125;
+            if (i &gt; 0 &amp;&amp; nums[i] == nums[i - 1]) &#123; //三元组元素a去重
+                continue;
+            &#125;
+            unordered_set&lt;int&gt; set;
+            for (int j = i + 1; j &lt; nums.size(); j++) &#123;
+                if (j &gt; i + 2
+                    &amp;&amp; nums[j] == nums[j-1]
+                    &amp;&amp; nums[j-1] == nums[j-2]) &#123; // 三元组元素b去重,最多需要往后看2个元素，然后才去重
+                    continue;
+                &#125;
+                int c = 0 - (nums[i] + nums[j]);
+                if (set.find(c) != set.end()) &#123;
+                    result.push_back(&#123;nums[i], nums[j], c&#125;);
+                    set.erase(c);// 三元组元素c去重
+                &#125; else &#123;
+                    set.insert(nums[j]);
+                &#125;
+            &#125;
+        &#125;
+        return result;
+    &#125;
+&#125;;
+</code></pre>
+<h2 id="java学习，学到异常处理，java的异常处理机制确实值得一学，-必须捕获非RuntimeException的exception异常的机制能让编程者更好的避免在不知情的情况下出错"><a href="#java学习，学到异常处理，java的异常处理机制确实值得一学，-必须捕获非RuntimeException的exception异常的机制能让编程者更好的避免在不知情的情况下出错" class="headerlink" title="java学习，学到异常处理，java的异常处理机制确实值得一学，*必须捕获非RuntimeException的exception异常的机制能让编程者更好的避免在不知情的情况下出错"></a>java学习，学到异常处理，java的异常处理机制确实值得一学，*必须捕获非RuntimeException的exception异常的机制能让编程者更好的避免在不知情的情况下出错</h2><pre><code>package java_learning;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class java_abnormal &#123;
+    public static void main(String args[]) throws Exception&#123; //若main函数也使用throws，由于main没有上层调用层，异常将不被处理！！！
+        Scanner scanner=new Scanner(System.in);
+        String f1=scanner.nextLine();
+        /*Error表示严重的错误，程序对此一般无能为力，例如:
+        OutOfMemoryError：内存耗尽
+        NoClassDefFoundError：无法加载某个Class
+        StackOverflowError：栈溢出
+        而Exception则是运行时的错误，它可以被捕获并处理。*/
+
+        /*Exception又分为两大类：
+        RuntimeException以及它的子类；
+        非RuntimeException（包括IOException、ReflectiveOperationException等等）
+        Java规定：
+        必须捕获的异常，包括Exception及其子类，但不包括RuntimeException及其子类，这种类型的异常称为Checked Exception。
+        不需要捕获的异常，包括Error及其子类，RuntimeException及其子类。*/
+        byte[] bs=toGBK2(&quot;中文&quot;);
+
+        System.out.println(bs.toString());
+
+        //catch (IOException e)&#123;&#125;你不能强制捕获某个不会被throw的exception
+        //存在多个catch的时候，catch的顺序非常重要,因为子类异常会被父类异常捕获
+        //例如IOException是UnsupportedEncodingException的父类，IO在前就不会捕获到encoding，错误信息也不具体
+        //finally关键字：用于异常捕获的最终执行
+    &#125;
+    static byte[] toGBK(String s)&#123;
+        try &#123;
+            return s.getBytes(&quot;GBK&quot;);
+        &#125;catch (UnsupportedEncodingException e)&#123; //错误信息一个类，这里会自动对e实例化?
+            System.out.println(e);
+            return s.getBytes();
+        &#125;
+    &#125;
+
+    static byte[] toGBK2(String s) throws UnsupportedEncodingException&#123; //使用throws将异常交给上层调用层处理
+        return s.getBytes(&quot;GBK&quot;);
+        &#125;
+    &#125;
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 天机工程
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;bigbigbigwaterbucket
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+<script
+    src="https://giscus.app/client.js"
+    data-repo="bigbigbigwaterbucket/bigbigbigwaterbucket.github.io"
+    data-repo-id="R_kgDOKFcnSw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKFcnS84CaIBo"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="https://static-argvchs.netlify.app/css/giscus.css"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
+
+
+
+
+
+    
+</body>
+</html>
