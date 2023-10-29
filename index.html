@@ -167,6 +167,146 @@
         
 
 <div class="post">
+    <a href="/2023/10/29/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB%E7%9A%84%E7%90%90%E4%BA%8B/Pycharm%E8%A3%85%E5%BA%93%E6%8C%87%E5%8C%97/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/29
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="Pycharm装库指北-compass"><a href="#Pycharm装库指北-compass" class="headerlink" title="Pycharm装库指北:compass:"></a>Pycharm装库指北:compass:</h1><h2 id="知识扩展-不想看可以跳过直接实操-："><a href="#知识扩展-不想看可以跳过直接实操-：" class="headerlink" title="知识扩展(不想看可以跳过直接实操)："></a>知识扩展(不想看可以跳过直接实操)：</h2><h3 id="1、什么是库-包-依赖？"><a href="#1、什么是库-包-依赖？" class="headerlink" title="1、什么是库&#x2F;包&#x2F;依赖？"></a>1、什么是库&#x2F;包&#x2F;依赖？</h3><p>为了编写可维护的代码，我们把很多函数分组，分别放到不同的文件里，这样，每个文件包含的代码就相对较少，很多编程语言都采用这种组织代码的方式。在Python中，一个.py文件就称之为一个模块（Module）。</p>
+<p>使用模块有什么好处？</p>
+<p>最大的好处是大大提高了代码的可维护性。其次，编写代码不必从零开始。当一个模块编写完毕，就可以被其他地方引用。我们在编写程序的时候，也经常引用其他模块，包括Python内置的模块和来自第三方的模块。</p>
+<p>使用模块还可以避免函数名和变量名冲突。相同名字的函数和变量完全可以分别存在不同的模块中，因此，我们自己在编写模块时，不必考虑名字会与其他模块冲突。但是也要注意，尽量不要与内置函数名字冲突。点<a target="_blank" rel="noopener" href="http://docs.python.org/3/library/functions.html">这里</a>查看Python的所有内置函数。</p>
+<p>你也许还想到，如果不同的人编写的模块名相同怎么办？为了避免模块名冲突，Python又引入了按目录来组织模块的方法，称为包（Package）。</p>
+<p>举个例子，一个<code>abc.py</code>的文件就是一个名字叫<code>abc</code>的模块，一个<code>xyz.py</code>的文件就是一个名字叫<code>xyz</code>的模块。</p>
+<p>现在，假设我们的<code>abc</code>和<code>xyz</code>这两个模块名字与其他模块冲突了，于是我们可以通过包来组织模块，避免冲突。方法是选择一个顶层包名，比如<code>mycompany</code>，按照如下目录存放：</p>
+<pre><code class="ascii">mycompany
+├─ __init__.py
+├─ abc.py
+└─ xyz.py
+</code></pre>
+<p>引入了包以后，只要顶层的包名不与别人冲突，那所有模块都不会与别人冲突。现在，<code>abc.py</code>模块的名字就变成了<code>mycompany.abc</code>，类似的，<code>xyz.py</code>的模块名变成了<code>mycompany.xyz</code>。</p>
+<p>请注意，每一个包目录下面都会有一个<code>__init__.py</code>的文件，这个文件是必须存在的，否则，Python就把这个目录当成普通目录，而不是一个包。<code>__init__.py</code>可以是空文件，也可以有Python代码，因为<code>__init__.py</code>本身就是一个模块，而它的模块名就是<code>mycompany</code>。</p>
+<h3 id="2、内置库与第三方库的区别？"><a href="#2、内置库与第三方库的区别？" class="headerlink" title="2、内置库与第三方库的区别？"></a>2、内置库与第三方库的区别？</h3><p>不需要另外安装的库称为内置库，例如math,你可以直接import math来调用，内置库通常在安装python解释器的时候附带了，因此可以直接使用。</p>
+<p>本文的标题所指的装库就是装第三方库，后续进行爬虫、深度学习任务都需要用到第三方库，可谓是做各种项目必备。</p>
+<h3 id="3、装库原理与pip"><a href="#3、装库原理与pip" class="headerlink" title="3、装库原理与pip"></a>3、装库原理与pip</h3><p>如同java等其他许多语言一样，python也有属于自己的存储第三方库的全球仓库:PyPi，地址:</p>
+<p><a target="_blank" rel="noopener" href="https://pypi.org/">https://pypi.org/</a></p>
+<p>(可能需要科学上网)</p>
+<p>pip是Python中的包管理器，它使得在Python中安装、升级和卸载第三方库变得非常容易。用户可以通过pip从Python Package Index (上文提到的PyPI)中安装各种Python库，也可以通过pip更新其安装的库版本或卸载已安装的库。</p>
+<p>pip也支持从本地存储库或其他来源（如git、Mercurial等）安装Python包。pip还允许用户轻松地创建自己的Python库，并将其发布到PyPI以供其他用户使用。</p>
+<p><strong>pip是Python标准库的一部分，因此在安装Python时通常就已经安装了pip</strong>。如果未安装pip，则可以通过安装setuptools或者直接下载pip安装包进行安装。如果你想在终端中使用pip装库，只需要简单的一句（以requests为例）：</p>
+<pre><code>pip install requests
+</code></pre>
+<p><strong>:warning:但是，我们并不推荐你直接使用该语句装库，直接在终端装看不到他的安装路径(需要额外命令查看默认安装路径并修改)，可能你在终端装完，返回pycharm后还是无法导入，建议往下看实操</strong></p>
+<h2 id="实操，所用环境：Pycharm-2023-2版本-推荐升级到2023-2及以上版本"><a href="#实操，所用环境：Pycharm-2023-2版本-推荐升级到2023-2及以上版本" class="headerlink" title="实操，所用环境：Pycharm 2023.2版本(推荐升级到2023.2及以上版本)"></a>实操，所用环境：Pycharm 2023.2版本(推荐升级到2023.2及以上版本)</h2><p>Pycharm库的搜索与安装路径是<strong>与解释器绑定的</strong>，大家可以点开设置找到python解释器，选择“全部显示”查看具体路径</p>
+<img title="" src="file:///C:/Users/徐昊岩/Desktop/markdown/2023-10-29-23-45-59-image.png" alt="" width="1052">
+
+<img title="" src="file:///C:/Users/徐昊岩/Desktop/markdown/2023-10-29-23-46-38-image.png" alt="" width="1054">
+
+<img src="file:///C:/Users/徐昊岩/Desktop/markdown/2023-10-29-23-47-31-image.png" title="" alt="" width="1062">
+
+<h4 id="warning-注意到我这里解释器的路径是xxx-xxx-site-packages-Scripts-python-exe，那么"><a href="#warning-注意到我这里解释器的路径是xxx-xxx-site-packages-Scripts-python-exe，那么" class="headerlink" title=":warning:注意到我这里解释器的路径是xxx\xxx..\site-packages\Scripts\python.exe，那么"></a>:warning:注意到我这里解释器的路径是xxx\xxx..\site-packages\Scripts\python.exe，那么</h4>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2023/10/29/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB%E7%9A%84%E7%90%90%E4%BA%8B/Pycharm%E8%A3%85%E5%BA%93%E6%8C%87%E5%8C%97/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/10/29/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB%E7%9A%84%E7%90%90%E4%BA%8B/java%E5%AD%A6%E4%B9%A0/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/29
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="java学习"><a href="#java学习" class="headerlink" title="java学习"></a>java学习</h1><p>import和package都是以包(package)为组织的，包实际上就是个文件夹，但可能因为IDEA为了检查语法是否错误，会定义一个文件夹是否是java包，被IDEA识别为java包的文件夹才能被导入</p>
+<p>不在同一个package下的包才需要被引入</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2023/10/29/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB%E7%9A%84%E7%90%90%E4%BA%8B/java%E5%AD%A6%E4%B9%A0/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/10/29/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB%E7%9A%84%E7%90%90%E4%BA%8B/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8Enodejs/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/29
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>浏览器打开 HTML 文件时，默认情况下是将其作为静态文件进行展示，而不会执行其中的 JavaScript 代码。这是出于安全考虑的一种设计。</p>
+<p>浏览器在加载 HTML 文件时，会按照文件中的结构和标签来解析和渲染页面内容，包括文本、图像、链接等。但是，对于 JavaScript 代码，浏览器默认是不会自动执行的，因为恶意的 JavaScript 代码可能会对用户的计算机造成安全威胁。</p>
+<p>如果你希望在浏览器中执行 JavaScript 代码，有几种方法可以实现：</p>
+<ol>
+<li><p>在 HTML 文件中使用 <code>&lt;script&gt;</code> 标签：你可以在 HTML 文件中使用 <code>&lt;script&gt;</code> 标签来嵌入 JavaScript 代码。例如：</p>
+<p>htmlCopy Code</p>
+<p><code>&lt;script&gt;   // 这里是你的 JavaScript 代码 &lt;/script&gt;</code></p>
+<p>当浏览器解析到 <code>&lt;script&gt;</code> 标签时，会立即执行其中的 JavaScript 代码。</p>
+</li>
+<li><p>将 JavaScript 代码保存为外部文件并在 HTML 文件中引用：你可以将 JavaScript 代码保存为单独的 <code>.js</code> 文件，并在 HTML 文件中使用 <code>&lt;script&gt;</code> 标签来引用该文件。例如：</p>
+<p>htmlCopy Code</p>
+<p><code>&lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;</code></p>
+<p>浏览器在加载 HTML 文件时，会自动下载并执行引用的 JavaScript 文件。</p>
+</li>
+</ol>
+<p>无论采用哪种方法，确保 JavaScript 代码的执行是你期望的，并且来自可信任的来源，以确保安全性。</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2023/10/29/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB%E7%9A%84%E7%90%90%E4%BA%8B/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8Enodejs/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/10/29/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98(%E4%B8%89%E3%80%81%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C)+java%E5%AD%A6%E4%B9%A0/">
         <h2 class="post-title"></h2>
     </a>
@@ -375,101 +515,6 @@
         
     </div>
     <a href="/2023/10/22/%E9%A1%B9%E7%9B%AE%E6%97%A5_bit%E6%9D%AF-%E7%88%AC%E5%8F%96%E6%8A%96%E9%9F%B3%E7%83%AD%E5%BA%A6%E6%A6%9C/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/10/21/%E6%AF%8F%E6%97%A51+1%E9%A2%98(%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D+%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86)+java%E5%AD%A6%E4%B9%A0%E5%8F%8D%E6%80%9D/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/10/21
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="每日1-1题-有效的字母异位词-两个数组的交集-java学习反思"><a href="#每日1-1题-有效的字母异位词-两个数组的交集-java学习反思" class="headerlink" title="每日1+1题(有效的字母异位词+两个数组的交集)+java学习反思"></a>每日1+1题(有效的字母异位词+两个数组的交集)+java学习反思</h1><p>进入哈希表的学习章节，做了两题还没有发现哈希表的特殊之处，或许时间稍微快了点?</p>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/valid-anagram/">力扣题目链接(opens new window)</a></p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2023/10/21/%E6%AF%8F%E6%97%A51+1%E9%A2%98(%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D+%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86)+java%E5%AD%A6%E4%B9%A0%E5%8F%8D%E6%80%9D/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/10/20/%E6%AF%8F%E6%97%A51+1%E9%A2%98(%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4%E3%80%81%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8)+java%E5%AD%A6%E4%B9%A0/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/10/20
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="每日1-1题-链表相交、环形链表-java学习"><a href="#每日1-1题-链表相交、环形链表-java学习" class="headerlink" title="每日1+1题(链表相交、环形链表)+java学习"></a>每日1+1题(链表相交、环形链表)+java学习</h1><h1 id="面试题-02-07-链表相交"><a href="#面试题-02-07-链表相交" class="headerlink" title="面试题 02.07. 链表相交"></a>面试题 02.07. 链表相交</h1><p>同：160.链表相交</p>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/intersection-of-two-linked-lists-lcci/">力扣题目链接(opens new window)</a></p>
-<p>给你两个单链表的头节点 headA 和 headB ，请你找出并返回两个单链表相交的起始节点。如果两个链表没有交点，返回 null 。</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2023/10/20/%E6%AF%8F%E6%97%A51+1%E9%A2%98(%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4%E3%80%81%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8)+java%E5%AD%A6%E4%B9%A0/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/10/19/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98(%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9)+java%E5%AD%A6%E4%B9%A0/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/10/19
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="每日一题-删除链表的倒数第N个节点-java学习"><a href="#每日一题-删除链表的倒数第N个节点-java学习" class="headerlink" title="每日一题(删除链表的倒数第N个节点)+java学习"></a>每日一题(删除链表的倒数第N个节点)+java学习</h1><p>前言:看了下日期，上次写算法是2023.9.18，今天是2023.10.19，隔了差不多一个月(摆烂了一个月了)。笔者痛心疾首，打算开个每日总结栏目，记录并监督自己的算法与cs常规学习。</p>
-<p>不知道能坚持多久，如果以后有哪一天没写，希望原因是我似了(</p>
-<p>算法顺序来源于代码随想录<a target="_blank" rel="noopener" href="https://www.programmercarl.com/0019.%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE">代码随想录 (programmercarl.com)</a></p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2023/10/19/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98(%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9)+java%E5%AD%A6%E4%B9%A0/" class="go-post">阅读全文</a>
 </div>
 
 

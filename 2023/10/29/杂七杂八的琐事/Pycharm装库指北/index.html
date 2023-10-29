@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title> | 天机工程</title>
+    <meta name="author" content="bigbigbigwaterbucket" />
+    <meta name="description" content="科技不是一题一解的死板学识，而是令我们超凡脱俗的产物。" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>天机工程</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;天机工程</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1></h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/29
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="Pycharm装库指北-compass"><a href="#Pycharm装库指北-compass" class="headerlink" title="Pycharm装库指北:compass:"></a>Pycharm装库指北:compass:</h1><h2 id="知识扩展-不想看可以跳过直接实操-："><a href="#知识扩展-不想看可以跳过直接实操-：" class="headerlink" title="知识扩展(不想看可以跳过直接实操)："></a>知识扩展(不想看可以跳过直接实操)：</h2><h3 id="1、什么是库-包-依赖？"><a href="#1、什么是库-包-依赖？" class="headerlink" title="1、什么是库&#x2F;包&#x2F;依赖？"></a>1、什么是库&#x2F;包&#x2F;依赖？</h3><p>为了编写可维护的代码，我们把很多函数分组，分别放到不同的文件里，这样，每个文件包含的代码就相对较少，很多编程语言都采用这种组织代码的方式。在Python中，一个.py文件就称之为一个模块（Module）。</p>
+<p>使用模块有什么好处？</p>
+<p>最大的好处是大大提高了代码的可维护性。其次，编写代码不必从零开始。当一个模块编写完毕，就可以被其他地方引用。我们在编写程序的时候，也经常引用其他模块，包括Python内置的模块和来自第三方的模块。</p>
+<p>使用模块还可以避免函数名和变量名冲突。相同名字的函数和变量完全可以分别存在不同的模块中，因此，我们自己在编写模块时，不必考虑名字会与其他模块冲突。但是也要注意，尽量不要与内置函数名字冲突。点<a target="_blank" rel="noopener" href="http://docs.python.org/3/library/functions.html">这里</a>查看Python的所有内置函数。</p>
+<p>你也许还想到，如果不同的人编写的模块名相同怎么办？为了避免模块名冲突，Python又引入了按目录来组织模块的方法，称为包（Package）。</p>
+<p>举个例子，一个<code>abc.py</code>的文件就是一个名字叫<code>abc</code>的模块，一个<code>xyz.py</code>的文件就是一个名字叫<code>xyz</code>的模块。</p>
+<p>现在，假设我们的<code>abc</code>和<code>xyz</code>这两个模块名字与其他模块冲突了，于是我们可以通过包来组织模块，避免冲突。方法是选择一个顶层包名，比如<code>mycompany</code>，按照如下目录存放：</p>
+<pre><code class="ascii">mycompany
+├─ __init__.py
+├─ abc.py
+└─ xyz.py
+</code></pre>
+<p>引入了包以后，只要顶层的包名不与别人冲突，那所有模块都不会与别人冲突。现在，<code>abc.py</code>模块的名字就变成了<code>mycompany.abc</code>，类似的，<code>xyz.py</code>的模块名变成了<code>mycompany.xyz</code>。</p>
+<p>请注意，每一个包目录下面都会有一个<code>__init__.py</code>的文件，这个文件是必须存在的，否则，Python就把这个目录当成普通目录，而不是一个包。<code>__init__.py</code>可以是空文件，也可以有Python代码，因为<code>__init__.py</code>本身就是一个模块，而它的模块名就是<code>mycompany</code>。</p>
+<h3 id="2、内置库与第三方库的区别？"><a href="#2、内置库与第三方库的区别？" class="headerlink" title="2、内置库与第三方库的区别？"></a>2、内置库与第三方库的区别？</h3><p>不需要另外安装的库称为内置库，例如math,你可以直接import math来调用，内置库通常在安装python解释器的时候附带了，因此可以直接使用。</p>
+<p>本文的标题所指的装库就是装第三方库，后续进行爬虫、深度学习任务都需要用到第三方库，可谓是做各种项目必备。</p>
+<h3 id="3、装库原理与pip"><a href="#3、装库原理与pip" class="headerlink" title="3、装库原理与pip"></a>3、装库原理与pip</h3><p>如同java等其他许多语言一样，python也有属于自己的存储第三方库的全球仓库:PyPi，地址:</p>
+<p><a target="_blank" rel="noopener" href="https://pypi.org/">https://pypi.org/</a></p>
+<p>(可能需要科学上网)</p>
+<p>pip是Python中的包管理器，它使得在Python中安装、升级和卸载第三方库变得非常容易。用户可以通过pip从Python Package Index (上文提到的PyPI)中安装各种Python库，也可以通过pip更新其安装的库版本或卸载已安装的库。</p>
+<p>pip也支持从本地存储库或其他来源（如git、Mercurial等）安装Python包。pip还允许用户轻松地创建自己的Python库，并将其发布到PyPI以供其他用户使用。</p>
+<p><strong>pip是Python标准库的一部分，因此在安装Python时通常就已经安装了pip</strong>。如果未安装pip，则可以通过安装setuptools或者直接下载pip安装包进行安装。如果你想在终端中使用pip装库，只需要简单的一句（以requests为例）：</p>
+<pre><code>pip install requests
+</code></pre>
+<p><strong>:warning:但是，我们并不推荐你直接使用该语句装库，直接在终端装看不到他的安装路径(需要额外命令查看默认安装路径并修改)，可能你在终端装完，返回pycharm后还是无法导入，建议往下看实操</strong></p>
+<h2 id="实操，所用环境：Pycharm-2023-2版本-推荐升级到2023-2及以上版本"><a href="#实操，所用环境：Pycharm-2023-2版本-推荐升级到2023-2及以上版本" class="headerlink" title="实操，所用环境：Pycharm 2023.2版本(推荐升级到2023.2及以上版本)"></a>实操，所用环境：Pycharm 2023.2版本(推荐升级到2023.2及以上版本)</h2><p>Pycharm库的搜索与安装路径是<strong>与解释器绑定的</strong>，大家可以点开设置找到python解释器，选择“全部显示”查看具体路径</p>
+<img title="" src="file:///C:/Users/徐昊岩/Desktop/markdown/2023-10-29-23-45-59-image.png" alt="" width="1052">
+
+<img title="" src="file:///C:/Users/徐昊岩/Desktop/markdown/2023-10-29-23-46-38-image.png" alt="" width="1054">
+
+<img src="file:///C:/Users/徐昊岩/Desktop/markdown/2023-10-29-23-47-31-image.png" title="" alt="" width="1062">
+
+<h4 id="warning-注意到我这里解释器的路径是xxx-xxx-site-packages-Scripts-python-exe，那么"><a href="#warning-注意到我这里解释器的路径是xxx-xxx-site-packages-Scripts-python-exe，那么" class="headerlink" title=":warning:注意到我这里解释器的路径是xxx\xxx..\site-packages\Scripts\python.exe，那么"></a>:warning:注意到我这里解释器的路径是xxx\xxx..\site-packages\Scripts\python.exe，那么</h4>
+    </div>
+    
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 天机工程
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;bigbigbigwaterbucket
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+<script
+    src="https://giscus.app/client.js"
+    data-repo="bigbigbigwaterbucket/bigbigbigwaterbucket.github.io"
+    data-repo-id="R_kgDOKFcnSw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKFcnS84CaIBo"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="https://static-argvchs.netlify.app/css/giscus.css"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
+
+
+
+
+
+    
+</body>
+</html>
