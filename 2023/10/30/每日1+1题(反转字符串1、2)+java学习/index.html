@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title> | 天机工程</title>
+    <meta name="author" content="bigbigbigwaterbucket" />
+    <meta name="description" content="科技不是一题一解的死板学识，而是令我们超凡脱俗的产物。" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>天机工程</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;天机工程</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1></h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/30
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="每日1-1题-反转字符串1、2"><a href="#每日1-1题-反转字符串1、2" class="headerlink" title="每日1+1题(反转字符串1、2)"></a>每日1+1题(反转字符串1、2)</h1><h1 id="344-反转字符串"><a href="#344-反转字符串" class="headerlink" title="344.反转字符串"></a>344.反转字符串</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/reverse-string/">力扣题目链接(opens new window)</a></p>
+<span id="more"></span>
+
+<p>编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。</p>
+<p>不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。</p>
+<p>你可以假设数组中的所有字符都是 ASCII 码表中的可打印字符。</p>
+<p>示例 1：<br>输入：[“h”,”e”,”l”,”l”,”o”]<br>输出：[“o”,”l”,”l”,”e”,”h”]</p>
+<p>示例 2：<br>输入：[“H”,”a”,”n”,”n”,”a”,”h”]<br>输出：[“h”,”a”,”n”,”n”,”a”,”H”]</p>
+<h1 id="541-反转字符串II"><a href="#541-反转字符串II" class="headerlink" title="541. 反转字符串II"></a>541. 反转字符串II</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/reverse-string-ii/">力扣题目链接(opens new window)</a></p>
+<p>给定一个字符串 s 和一个整数 k，从字符串开头算起, 每计数至 2k 个字符，就反转这 2k 个字符中的前 k 个字符。</p>
+<p>如果剩余字符少于 k 个，则将剩余字符全部反转。</p>
+<p>如果剩余字符小于 2k 但大于或等于 k 个，则反转前 k 个字符，其余字符保持原样。</p>
+<p>示例:</p>
+<p>输入: s &#x3D; “abcdefg”, k &#x3D; 2<br>输出: “bacdfeg”</p>
+<pre><code>//手写反转字符
+// Created by 徐昊岩 on 2023/10/30.
+//
+#include &lt;algorithm&gt;
+#include &quot;vector&quot;
+#include &quot;string&quot;
+#include &quot;iostream&quot;
+using namespace std;
+class Solution &#123;
+public:
+    void reverseString(vector&lt;char&gt;&amp; s) &#123;
+        auto a=s.begin();
+        auto b=s.end()-1; //end不指向任何元素，记得-1!!!
+        char t;
+        while(a&lt;b)&#123;
+            t=*a;
+            *a=*b;
+            *b=t;
+            a++;
+            b--;
+        &#125;
+    &#125;
+&#125;;
+class Solution2 &#123;
+public:
+    string reverseStr(string s, int k) &#123;
+        auto p=s.begin();
+        auto begin=s.begin();
+        int count=1;
+        while (p!=s.end())&#123;
+            if(count%(2*k)==0)&#123;
+                reverse(begin,begin+k);  //algorithm库的reverse实际反转的是[first,end)!!!!!
+                begin=p+1;
+            &#125;
+            if(s.end()-begin&lt;k)&#123;
+                reverse(begin,s.end());
+                break;
+            &#125; else if(s.end()-begin&lt;2*k &amp;&amp; s.end()-begin&gt;=k)&#123;
+                reverse(begin,begin+k);
+                break;
+            &#125;
+            p++;
+            count++;
+        &#125;
+        return s;
+    &#125;
+&#125;;
+class Solution3 &#123;
+public:
+    string reverseStr(string s, int k) &#123;
+        for (int i = 0; i &lt; s.size(); i += (2 * k)) &#123; //此题其实每次前进2*k个元素即可
+            // 1. 每隔 2k 个字符的前 k 个字符进行反转
+            // 2. 剩余字符小于 2k 但大于或等于 k 个，则反转前 k 个字符
+            if (i + k &lt;= s.size()) &#123;
+                reverse(s.begin() + i, s.begin() + i + k );
+            &#125; else &#123;
+                // 3. 剩余字符少于 k 个，则将剩余字符全部反转。
+                reverse(s.begin() + i, s.end());
+            &#125;
+        &#125;
+        return s;
+    &#125;
+&#125;;
+int main()&#123;
+    string a=&quot;nihao&quot;;
+    std::reverse(a.begin(), a.end()-1);
+    cout&lt;&lt;a;
+&#125;
+</code></pre>
+<h1 id="java学习"><a href="#java学习" class="headerlink" title="java学习"></a>java学习</h1><p>学到反射了，java的对象体系确实复杂，还是要多用才能体会到</p>
+<pre><code>package java_learning;
+import java_basic.Boy;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
+public class reflection &#123;
+    //反射是为了解决在运行期，对某个实例一无所知但需要调用其方法的情况
+    //通过Class实例(JVM为每一个加载到内存中的class创建的Class实例)获取class信息的方法称为反射（Reflection）。
+    public static void main(String args[]) throws Exception &#123;
+        Class cls = Boy.class;
+        printClassInfo(&quot;&quot;.getClass());
+        //printClassInfo(Runnable.class);
+        //printClassInfo(java.time.Month.class);
+        //printClassInfo(String[].class);
+        //printClassInfo(int.class);
+        System.out.println(cls.getDeclaredField(&quot;age&quot;)); //这里有个未处理报错
+        //unhandledException编译错误是提醒你需要处理可能的异常的
+        //getField只能获取public字段，要想获取私有字段需要getDeclaredField
+        Boy b1=new Boy();
+        Class cls_b1=Boy.class; //Class是用来展示底层信息的，方法字段的类型、修饰符等
+        Field f_b1=Boy.class.getDeclaredField(&quot;name&quot;);
+        f_b1.setAccessible(true); //访问私有字段是会出现Exception的，但可以设置为可以获取，这样就能访问无论什么限制符的字段了
+        System.out.println(f_b1.get(b1));
+        f_b1.set(b1,&quot;水桶&quot;); //通过反射机制改变私有字段，属实越界了
+        //但有时候setAccessible可能会失败，如果JVM运行期存在SecurityManager，那么它会根据规则进行检查，有可能阻止setAccessible(true)
+        System.out.println(b1.getName());
+        System.out.println(Boy.class.getMethod(&quot;shout&quot;)); //getMethod第一个参数要写函数名，后边要写函数参数的Class，这样才可以识别重载的函数
+        //似乎无法获得构造方法?
+        //System.out.println(cls_b1.getMethod(&quot;Boy&quot;));
+        //System.out.println(cls_b1.getMethod(&quot;Boy&quot;,String.class,int.class));
+        Method m_b1=Boy.class.getMethod(&quot;shout&quot;);
+        m_b1.invoke(b1); //字段是Field对象get获取，方法是Method对象invoke调用
+    &#125;
+    static void printClassInfo(Class cls) &#123;
+        System.out.println(&quot;Class name: &quot; + cls.getName());
+        System.out.println(&quot;Simple name: &quot; + cls.getSimpleName());
+        if (cls.getPackage() != null) &#123;
+            System.out.println(&quot;Package name: &quot; + cls.getPackage().getName());
+        &#125;
+        System.out.println(&quot;is interface: &quot; + cls.isInterface());
+        System.out.println(&quot;is enum: &quot; + cls.isEnum());
+        System.out.println(&quot;is array: &quot; + cls.isArray());
+        System.out.println(&quot;is primitive: &quot; + cls.isPrimitive());
+    &#125;
+&#125;
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 天机工程
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;bigbigbigwaterbucket
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+<script
+    src="https://giscus.app/client.js"
+    data-repo="bigbigbigwaterbucket/bigbigbigwaterbucket.github.io"
+    data-repo-id="R_kgDOKFcnSw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKFcnS84CaIBo"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="https://static-argvchs.netlify.app/css/giscus.css"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
+
+
+
+
+
+    
+</body>
+</html>
