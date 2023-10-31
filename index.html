@@ -167,6 +167,162 @@
         
 
 <div class="post">
+    <a href="/2023/10/31/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98(%E4%B8%8D%E7%AD%89%E9%95%BF%E6%9B%BF%E6%8D%A2)+java%E5%AD%A6%E4%B9%A0/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/31
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="每日一题-不等长替换-java学习"><a href="#每日一题-不等长替换-java学习" class="headerlink" title="每日一题(不等长替换)+java学习"></a>每日一题(不等长替换)+java学习</h1><h1 id="题目：剑指Offer-05-替换空格"><a href="#题目：剑指Offer-05-替换空格" class="headerlink" title="题目：剑指Offer 05.替换空格"></a>题目：剑指Offer 05.替换空格</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/ti-huan-kong-ge-lcof/">力扣题目链接(opens new window)</a></p>
+<p>请实现一个函数，把字符串 s 中的每个空格替换成”%20”。</p>
+<p>示例 1： 输入：s &#x3D; “We are happy.”<br>输出：”We%20are%20happy.”</p>
+<pre><code>//不等长替换问题
+// Created by 徐昊岩 on 2023/10/31.
+//有个通解：先统计需要替换的字符个数，然后再从后往前用双指针法依次替换
+#include &quot;string&quot;
+#include &quot;algorithm&quot;
+using namespace std;
+class Solution &#123;
+public:
+    string pathEncryption(string path) &#123;
+        int count=0;
+        int size=path.size();
+        for(int i=0;i&lt; size;i++)&#123;
+            if(path[i]==&#39; &#39;) count++;
+        &#125;
+        size=size-1;
+        path.resize(size+count*2);
+        int o=path.size()-1;  //由于CPP中string可以直接使用索引，因此用int类型作为“指针”即可
+        //另外,在C++中，string类会提供 size接口，用size来判断string类字符串是否结束，而不是用&#39;\0&#39;来判断是否结束。
+        for(size;size&gt;0;size--)&#123;
+            if(path[size]==&#39; &#39;)&#123;
+                path[o]=&#39;0&#39;;
+                o--;
+                path[o]=&#39;2&#39;;
+                o--;
+                path[o]=&#39;%&#39;;
+            &#125; else&#123;
+                path[o]=path[size];
+            &#125;
+            o--;
+        &#125;
+    &#125;
+&#125;;
+</code></pre>
+<h1 id="java学习-反射学完了"><a href="#java学习-反射学完了" class="headerlink" title="java学习,反射学完了"></a>java学习,反射学完了</h1><pre><code>package java_learning;
+import java_basic.Boy;
+
+import java.lang.reflect.*;
+
+public class reflection &#123;
+    //反射是为了解决在运行期，对某个实例一无所知但需要调用其方法的情况
+    //通过Class实例(JVM为每一个加载到内存中的class创建的Class实例)获取class信息的方法称为反射（Reflection）。
+    public static void main(String args[]) throws Exception &#123;
+        Class cls = Boy.class;
+        printClassInfo(&quot;&quot;.getClass());
+        //printClassInfo(Runnable.class);
+        //printClassInfo(java.time.Month.class);
+        //printClassInfo(String[].class);
+        //printClassInfo(int.class);
+        System.out.println(cls.getDeclaredField(&quot;age&quot;)); //这里有个未处理报错
+        //unhandledException编译错误是提醒你需要处理可能的异常的
+        //getField只能获取public字段，要想获取私有字段需要getDeclaredField
+        Boy b1=new Boy();
+        Class cls_b1=Boy.class; //Class是用来展示底层信息的，方法字段的类型、修饰符等
+        Field f_b1=Boy.class.getDeclaredField(&quot;name&quot;);
+        f_b1.setAccessible(true); //访问私有字段是会出现Exception的，但可以设置为可以获取，这样就能访问无论什么限制符的字段了
+        System.out.println(f_b1.get(b1));
+        f_b1.set(b1,&quot;水桶&quot;); //通过反射机制改变私有字段，属实越界了
+        //但有时候setAccessible可能会失败，如果JVM运行期存在SecurityManager，那么它会根据规则进行检查，有可能阻止setAccessible(true)
+        System.out.println(b1.getName());
+        System.out.println(Boy.class.getMethod(&quot;shout&quot;)); //getMethod第一个参数要写函数名，后边要写函数参数的Class，这样才可以识别重载的函数
+        //似乎无法获得构造方法?
+        //System.out.println(cls_b1.getMethod(&quot;Boy&quot;));
+        //System.out.println(cls_b1.getMethod(&quot;Boy&quot;,String.class,int.class));
+        Method m_b1=Boy.class.getMethod(&quot;shout&quot;);
+        m_b1.invoke(b1); //字段是Field对象get获取，方法是Method对象invoke调用
+        m_b1=Boy.class.getDeclaredMethod(&quot;good&quot;);
+        m_b1.setAccessible(true); //setAccessible是非静态方法，要想调用必须实例化
+        m_b1.invoke(Boy.class);  //非public方法必须设置setAccessible(true)才能真正调用
+        Constructor c_b1=Boy.class.getConstructor(String.class,int.class);
+        Boy b2=(Boy) c_b1.newInstance(&quot;nihao&quot;,15);
+        Class b_father=cls_b1.getSuperclass();
+        System.out.println(b_father); //自己定义的类都是继承于java.lang.Object，但java的一些内置类不是
+        //接口属于抽象类，不能被实例化，但仍然可以通过向上转型获得实例
+        //除了上述向上转型，还可以通过动态代理机制获得其实例
+        InvocationHandler handler=new InvocationHandler() &#123;
+            @Override
+            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable &#123;
+                System.out.println(method);
+                if(method.getName().equals(&quot;morning&quot;))&#123;
+                    System.out.println(&quot;Good morning, &quot; + args[0]);
+                &#125;
+                return null;
+            &#125;
+        &#125;;
+        //看到@Override就知道，其实只是JVM自动帮我们编写了个继承于接口的类
+        /* 类长这样:只是通过Class调用invoke来执行接口的方法罢了
+        public class HelloDynamicProxy implements Hello &#123;
+        InvocationHandler handler;
+        public HelloDynamicProxy(InvocationHandler handler) &#123;
+            this.handler = handler;
+            &#125;
+        public void morning(String name) &#123;
+            handler.invoke(
+            this,
+            Hello.class.getMethod(&quot;morning&quot;, String.class),
+            new Object[] &#123; name &#125;);
+            &#125;
+        &#125;
+         */
+        Hello hello=(Hello) Proxy.newProxyInstance(
+                Hello.class.getClassLoader(),
+                new Class[]&#123;Hello.class&#125;,
+                handler);
+        hello.morning(&quot;Bob&quot;);
+
+    &#125;
+    static void printClassInfo(Class cls) &#123;
+        System.out.println(&quot;Class name: &quot; + cls.getName());
+        System.out.println(&quot;Simple name: &quot; + cls.getSimpleName());
+        if (cls.getPackage() != null) &#123;
+            System.out.println(&quot;Package name: &quot; + cls.getPackage().getName());
+        &#125;
+        System.out.println(&quot;is interface: &quot; + cls.isInterface());
+        System.out.println(&quot;is enum: &quot; + cls.isEnum());
+        System.out.println(&quot;is array: &quot; + cls.isArray());
+        System.out.println(&quot;is primitive: &quot; + cls.isPrimitive());
+    &#125;
+    interface Hello&#123;
+        void morning(String name);
+    &#125;
+
+&#125;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2023/10/31/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98(%E4%B8%8D%E7%AD%89%E9%95%BF%E6%9B%BF%E6%8D%A2)+java%E5%AD%A6%E4%B9%A0/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/10/30/%E6%AF%8F%E6%97%A51+1%E9%A2%98(%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B21%E3%80%812)+java%E5%AD%A6%E4%B9%A0/">
         <h2 class="post-title"></h2>
     </a>
@@ -484,36 +640,6 @@
         
     </div>
     <a href="/2023/10/24/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98(%E5%86%8D%E7%9C%8B%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C)+%E5%90%90%E6%A7%BD/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/10/23/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98(%E5%BF%AB%E4%B9%90%E6%95%B0)+cpp%E5%AE%9E%E7%8E%B0%E6%B1%82%E8%A7%A3%E7%9C%9F%E5%80%BC%E8%A1%A8/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/10/23
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="每日一题-快乐数-cpp实现求解真值表"><a href="#每日一题-快乐数-cpp实现求解真值表" class="headerlink" title="每日一题(快乐数)+cpp实现求解真值表"></a>每日一题(快乐数)+cpp实现求解真值表</h1><h1 id="第202题-快乐数"><a href="#第202题-快乐数" class="headerlink" title="第202题. 快乐数"></a>第202题. 快乐数</h1><p>哈希表更像是一个备用方案？貌似都不太需要强制使用</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2023/10/23/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98(%E5%BF%AB%E4%B9%90%E6%95%B0)+cpp%E5%AE%9E%E7%8E%B0%E6%B1%82%E8%A7%A3%E7%9C%9F%E5%80%BC%E8%A1%A8/" class="go-post">阅读全文</a>
 </div>
 
 

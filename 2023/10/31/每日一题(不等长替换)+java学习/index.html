@@ -1,0 +1,361 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title> | 天机工程</title>
+    <meta name="author" content="bigbigbigwaterbucket" />
+    <meta name="description" content="科技不是一题一解的死板学识，而是令我们超凡脱俗的产物。" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>天机工程</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;天机工程</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1></h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/31
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="每日一题-不等长替换-java学习"><a href="#每日一题-不等长替换-java学习" class="headerlink" title="每日一题(不等长替换)+java学习"></a>每日一题(不等长替换)+java学习</h1><h1 id="题目：剑指Offer-05-替换空格"><a href="#题目：剑指Offer-05-替换空格" class="headerlink" title="题目：剑指Offer 05.替换空格"></a>题目：剑指Offer 05.替换空格</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/ti-huan-kong-ge-lcof/">力扣题目链接(opens new window)</a></p>
+<p>请实现一个函数，把字符串 s 中的每个空格替换成”%20”。</p>
+<p>示例 1： 输入：s &#x3D; “We are happy.”<br>输出：”We%20are%20happy.”</p>
+<pre><code>//不等长替换问题
+// Created by 徐昊岩 on 2023/10/31.
+//有个通解：先统计需要替换的字符个数，然后再从后往前用双指针法依次替换
+#include &quot;string&quot;
+#include &quot;algorithm&quot;
+using namespace std;
+class Solution &#123;
+public:
+    string pathEncryption(string path) &#123;
+        int count=0;
+        int size=path.size();
+        for(int i=0;i&lt; size;i++)&#123;
+            if(path[i]==&#39; &#39;) count++;
+        &#125;
+        size=size-1;
+        path.resize(size+count*2);
+        int o=path.size()-1;  //由于CPP中string可以直接使用索引，因此用int类型作为“指针”即可
+        //另外,在C++中，string类会提供 size接口，用size来判断string类字符串是否结束，而不是用&#39;\0&#39;来判断是否结束。
+        for(size;size&gt;0;size--)&#123;
+            if(path[size]==&#39; &#39;)&#123;
+                path[o]=&#39;0&#39;;
+                o--;
+                path[o]=&#39;2&#39;;
+                o--;
+                path[o]=&#39;%&#39;;
+            &#125; else&#123;
+                path[o]=path[size];
+            &#125;
+            o--;
+        &#125;
+    &#125;
+&#125;;
+</code></pre>
+<h1 id="java学习-反射学完了"><a href="#java学习-反射学完了" class="headerlink" title="java学习,反射学完了"></a>java学习,反射学完了</h1><pre><code>package java_learning;
+import java_basic.Boy;
+
+import java.lang.reflect.*;
+
+public class reflection &#123;
+    //反射是为了解决在运行期，对某个实例一无所知但需要调用其方法的情况
+    //通过Class实例(JVM为每一个加载到内存中的class创建的Class实例)获取class信息的方法称为反射（Reflection）。
+    public static void main(String args[]) throws Exception &#123;
+        Class cls = Boy.class;
+        printClassInfo(&quot;&quot;.getClass());
+        //printClassInfo(Runnable.class);
+        //printClassInfo(java.time.Month.class);
+        //printClassInfo(String[].class);
+        //printClassInfo(int.class);
+        System.out.println(cls.getDeclaredField(&quot;age&quot;)); //这里有个未处理报错
+        //unhandledException编译错误是提醒你需要处理可能的异常的
+        //getField只能获取public字段，要想获取私有字段需要getDeclaredField
+        Boy b1=new Boy();
+        Class cls_b1=Boy.class; //Class是用来展示底层信息的，方法字段的类型、修饰符等
+        Field f_b1=Boy.class.getDeclaredField(&quot;name&quot;);
+        f_b1.setAccessible(true); //访问私有字段是会出现Exception的，但可以设置为可以获取，这样就能访问无论什么限制符的字段了
+        System.out.println(f_b1.get(b1));
+        f_b1.set(b1,&quot;水桶&quot;); //通过反射机制改变私有字段，属实越界了
+        //但有时候setAccessible可能会失败，如果JVM运行期存在SecurityManager，那么它会根据规则进行检查，有可能阻止setAccessible(true)
+        System.out.println(b1.getName());
+        System.out.println(Boy.class.getMethod(&quot;shout&quot;)); //getMethod第一个参数要写函数名，后边要写函数参数的Class，这样才可以识别重载的函数
+        //似乎无法获得构造方法?
+        //System.out.println(cls_b1.getMethod(&quot;Boy&quot;));
+        //System.out.println(cls_b1.getMethod(&quot;Boy&quot;,String.class,int.class));
+        Method m_b1=Boy.class.getMethod(&quot;shout&quot;);
+        m_b1.invoke(b1); //字段是Field对象get获取，方法是Method对象invoke调用
+        m_b1=Boy.class.getDeclaredMethod(&quot;good&quot;);
+        m_b1.setAccessible(true); //setAccessible是非静态方法，要想调用必须实例化
+        m_b1.invoke(Boy.class);  //非public方法必须设置setAccessible(true)才能真正调用
+        Constructor c_b1=Boy.class.getConstructor(String.class,int.class);
+        Boy b2=(Boy) c_b1.newInstance(&quot;nihao&quot;,15);
+        Class b_father=cls_b1.getSuperclass();
+        System.out.println(b_father); //自己定义的类都是继承于java.lang.Object，但java的一些内置类不是
+        //接口属于抽象类，不能被实例化，但仍然可以通过向上转型获得实例
+        //除了上述向上转型，还可以通过动态代理机制获得其实例
+        InvocationHandler handler=new InvocationHandler() &#123;
+            @Override
+            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable &#123;
+                System.out.println(method);
+                if(method.getName().equals(&quot;morning&quot;))&#123;
+                    System.out.println(&quot;Good morning, &quot; + args[0]);
+                &#125;
+                return null;
+            &#125;
+        &#125;;
+        //看到@Override就知道，其实只是JVM自动帮我们编写了个继承于接口的类
+        /* 类长这样:只是通过Class调用invoke来执行接口的方法罢了
+        public class HelloDynamicProxy implements Hello &#123;
+        InvocationHandler handler;
+        public HelloDynamicProxy(InvocationHandler handler) &#123;
+            this.handler = handler;
+            &#125;
+        public void morning(String name) &#123;
+            handler.invoke(
+            this,
+            Hello.class.getMethod(&quot;morning&quot;, String.class),
+            new Object[] &#123; name &#125;);
+            &#125;
+        &#125;
+         */
+        Hello hello=(Hello) Proxy.newProxyInstance(
+                Hello.class.getClassLoader(),
+                new Class[]&#123;Hello.class&#125;,
+                handler);
+        hello.morning(&quot;Bob&quot;);
+
+    &#125;
+    static void printClassInfo(Class cls) &#123;
+        System.out.println(&quot;Class name: &quot; + cls.getName());
+        System.out.println(&quot;Simple name: &quot; + cls.getSimpleName());
+        if (cls.getPackage() != null) &#123;
+            System.out.println(&quot;Package name: &quot; + cls.getPackage().getName());
+        &#125;
+        System.out.println(&quot;is interface: &quot; + cls.isInterface());
+        System.out.println(&quot;is enum: &quot; + cls.isEnum());
+        System.out.println(&quot;is array: &quot; + cls.isArray());
+        System.out.println(&quot;is primitive: &quot; + cls.isPrimitive());
+    &#125;
+    interface Hello&#123;
+        void morning(String name);
+    &#125;
+
+&#125;
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 天机工程
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;bigbigbigwaterbucket
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+<script
+    src="https://giscus.app/client.js"
+    data-repo="bigbigbigwaterbucket/bigbigbigwaterbucket.github.io"
+    data-repo-id="R_kgDOKFcnSw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKFcnS84CaIBo"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="https://static-argvchs.netlify.app/css/giscus.css"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
+
+
+
+
+
+    
+</body>
+</html>
