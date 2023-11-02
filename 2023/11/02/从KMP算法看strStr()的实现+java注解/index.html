@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title> | 天机工程</title>
+    <meta name="author" content="bigbigbigwaterbucket" />
+    <meta name="description" content="科技不是一题一解的死板学识，而是令我们超凡脱俗的产物。" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>天机工程</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;天机工程</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1></h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/2
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="从KMP算法看strStr-的实现-java注解"><a href="#从KMP算法看strStr-的实现-java注解" class="headerlink" title="从KMP算法看strStr()的实现+java注解"></a>从KMP算法看strStr()的实现+java注解</h1><p>首先要明确KMP算法的目的：匹配失败后，<strong>不需要</strong>再次<strong>从模式串的首字符开始匹配</strong>，即跳过一定数量的前缀字符</p>
+<span id="more"></span>
+
+<p>这时就需要从模式串下手，模式串是在匹配过程中始终不变的，当匹配失败发生时，模式串指针前的模式字符一定与原字符一致，因此需要看前一个字符(当前字符是失败字符)的前缀表值，而前缀表值是最大前后缀相等长度，为什么？<strong>想想目的：匹配失败后，不需要再次从模式串的首字符开始</strong>，那么我们需要跳过一定数量的前缀字符，那为什么要看<strong>后缀</strong>字符与前缀的相等数量？</p>
+<p>因为后缀字符是离原字符串失败字符最近的，<strong>后缀与前缀有多少个字符相等，我就能<em>跳过</em>多少个前缀字符</strong></p>
+<p><strong>前缀表记录的，就是当前字符“匹配后”与前缀相等的字符数，即能跳过的前缀字符数量(也就是 应当跳到的 索引)</strong></p>
+<p><img src="https://code-thinking.cdn.bcebos.com/pics/KMP%E7%B2%BE%E8%AE%B28.png" alt="KMP精讲8"></p>
+<p>上图实际为PM表，真正的next表:PM表右移一位，第一位补-1，就是next表</p>
+<h2 id="next的实现实际上有套娃"><a href="#next的实现实际上有套娃" class="headerlink" title="next的实现实际上有套娃"></a>next的实现实际上有套娃</h2><p>搞两个指针(整数)，第一个快指针先走，每次与慢指针+1比较，如果一致，则慢整数+1，若匹配失败，则执行回滚：慢指针j指向next的j（因为前缀字符记录的也是相对后缀重复的个数，也能跳过部分字符）</p>
+<pre><code class="cpp">#include &quot;string&quot;
+
+using namespace std;
+
+class Solution &#123;
+public:
+    void getNext(int *next, string &amp;s) &#123;
+        int j = -1; //j永远小一点
+        next[0] = -1;
+        for (int i = 1; i &lt; s.size(); i++) &#123;
+            while (j &gt;= 0 &amp;&amp; s[i] != s[j + 1]) &#123; //回滚,由于i会先加1，所以这里要判断i是否等于j+1
+                j = next[j];
+            &#125;
+            if (s[j + 1] == s[i]) &#123;
+                j++;
+            &#125;
+            next[i] = j;
+        &#125;
+    &#125;
+
+    int strStr(string haystack, string needle) &#123;
+        if (needle.size() == 0) &#123;
+            return 0;
+        &#125;
+        int next[needle.size()];
+        getNext(next, needle);
+
+        //匹配的过程其实就是创建next的过程
+        int j = -1; // // 因为next数组里记录的起始位置为-1
+        for (int i = 0; i &lt; haystack.size(); i++) &#123; // 注意i就从0开始
+            while(j &gt;= 0 &amp;&amp; haystack[i] != needle[j + 1]) &#123; // 回滚，同上
+                j = next[j]; // j 寻找之前匹配的位置
+            &#125;
+            if (haystack[i] == needle[j + 1]) &#123; // 匹配，j和i同时向后移动
+                j++; // i的增加在for循环里
+            &#125;
+            if (j == (needle.size() - 1) ) &#123; // 文本串s里出现了模式串t
+                return (i - needle.size() + 1);
+            &#125;
+        &#125;
+        return -1;
+    &#125;
+&#125;;
+</code></pre>
+<h1 id="java学习"><a href="#java学习" class="headerlink" title="java学习"></a>java学习</h1><pre><code>
+</code></pre>
+<h1 id="每日杂谈2023-11-2"><a href="#每日杂谈2023-11-2" class="headerlink" title="每日杂谈2023.11.2"></a>每日杂谈2023.11.2</h1><p>新开栏目，用来记录自己的生活点滴，美好的回忆与哲理的思考一样都应当被记录</p>
+<p>顺便记录最近对自己的情绪影响最大的一些事件</p>
+<p>1、这下成超人了，2公里9min10s，现在速度竟然能和中考时期比肩了，主要还是提高步频的训练法比较有效</p>
+<img src="file:///C:/Users/徐昊岩/Desktop/markdown/a0a3be1dfd597fe924f4158648114c3a82c59508.jpg" title="" alt="Screenshot_2023-11-02-21-36-55-36_721f7cb5d53e9f3.jpg" width="203">
+
+<p>2、追番：葬送的芙莉莲</p>
+<img title="" src="./assets/f73f4815439499013d0e8386f6b67cd39bce8bf7.png" alt="Y{3B6K4RH2MZ6UR3}3VI8EL.png" width="251">
+
+<img src="./assets/ca00690487e0ca126f23a4d518889d0dae5a2cd8.png" title="" alt="@_AXUI[$INY@R8TXBYKP$]H.png" width="244">
+
+<p>很好的作品，堪比魔法少女小圆、mygo、死亡笔记、寄生兽，t0级别，寿命论只是这层作品的最浅层，</p>
+<p>t0是啥？大概就是 拥有完整的世界观、人物刻画细致、矛盾冲突引人深思吧，关键她还作画精致、op是yasobi、ed是milet唱的，我简直嗨到不行</p>
+<p>t1级的大概就是进击的巨人、咒术回战这样的吧，无法引导人进行深度哲理思考，对了，夏日重现估计也算(其作画和bgm也很精美，可惜引人思考的地方并不多)</p>
+<h4 id="3、大物期中考试"><a href="#3、大物期中考试" class="headerlink" title="3、大物期中考试"></a>3、大物期中考试</h4><p>哎哎，大物；服了，最后一题2分钟写完考完过了一会才反应过来写错了，C!</p>
+<p>还有就是，自己其实努力了还挺久，但结果配不上努力啊！！课外做了一堆，结果就考课内的习题，还考得很综合…</p>
+<p><strong>尽管罗老师的混合式命定论在尝试阻止我emo，但结果配不上努力，这种落差，果然对现在的我来说，还是难以接受啊…..（可能我还年轻</strong></p>
+<h4 id="4、既搞深度学习又要学算法还要学java果然对我这种效率低下的人还是太极限了，哎哎，关键我转专业还一堆课，还顺便打了个bit杯"><a href="#4、既搞深度学习又要学算法还要学java果然对我这种效率低下的人还是太极限了，哎哎，关键我转专业还一堆课，还顺便打了个bit杯" class="headerlink" title="4、既搞深度学习又要学算法还要学java果然对我这种效率低下的人还是太极限了，哎哎，关键我转专业还一堆课，还顺便打了个bit杯"></a>4、既搞深度学习又要学算法还要学java果然对我这种效率低下的人还是太极限了，哎哎，关键我转专业还一堆课，还顺便打了个bit杯</h4><p>但其实时间充分利用的话也不是不可能（</p>
+<p>一心多用，是否能成功呢？</p>
+<h4 id="5、最近没咋打游戏了，塞尔达上次玩也是半个月前了吧…"><a href="#5、最近没咋打游戏了，塞尔达上次玩也是半个月前了吧…" class="headerlink" title="5、最近没咋打游戏了，塞尔达上次玩也是半个月前了吧…."></a>5、最近没咋打游戏了，塞尔达上次玩也是半个月前了吧….</h4><p>游戏瘾就这样戒掉了？</p>
+<h4 id="6、双11想买小米5pro刷个win-还想买台式机-ㄒoㄒ"><a href="#6、双11想买小米5pro刷个win-还想买台式机-ㄒoㄒ" class="headerlink" title="6、双11想买小米5pro刷个win,还想买台式机&#x2F;(ㄒoㄒ)&#x2F;~~"></a>6、双11想买小米5pro刷个win,还想买台式机&#x2F;(ㄒoㄒ)&#x2F;~~</h4><h2 id="想谈的有点多，虽然注销了QQ空间，但我果然还是需要把一些事倾诉出来，遂决定单独分一个出来作为每周杂谈"><a href="#想谈的有点多，虽然注销了QQ空间，但我果然还是需要把一些事倾诉出来，遂决定单独分一个出来作为每周杂谈" class="headerlink" title="想谈的有点多，虽然注销了QQ空间，但我果然还是需要把一些事倾诉出来，遂决定单独分一个出来作为每周杂谈"></a>想谈的有点多，虽然注销了QQ空间，但我果然还是需要把一些事倾诉出来，遂决定单独分一个出来作为每周杂谈</h2>
+    </div>
+    
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 天机工程
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;bigbigbigwaterbucket
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+<script
+    src="https://giscus.app/client.js"
+    data-repo="bigbigbigwaterbucket/bigbigbigwaterbucket.github.io"
+    data-repo-id="R_kgDOKFcnSw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKFcnS84CaIBo"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="https://static-argvchs.netlify.app/css/giscus.css"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
+
+
+
+
+
+    
+</body>
+</html>
