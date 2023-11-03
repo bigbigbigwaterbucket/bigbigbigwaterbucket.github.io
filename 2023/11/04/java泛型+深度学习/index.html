@@ -1,0 +1,298 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title> | 天机工程</title>
+    <meta name="author" content="bigbigbigwaterbucket" />
+    <meta name="description" content="科技不是一题一解的死板学识，而是令我们超凡脱俗的产物。" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>天机工程</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;天机工程</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1></h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/4
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="java泛型-深度学习"><a href="#java泛型-深度学习" class="headerlink" title="java泛型+深度学习"></a>java泛型+深度学习</h1><h2 id="jvav泛型"><a href="#jvav泛型" class="headerlink" title="jvav泛型"></a>jvav泛型</h2><span id="more"></span>
+
+<pre><code class="java">package java_learning;
+
+import java_basic.Boy;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class generics &#123;
+    public static void main(String[] args) &#123;
+        ArrayList&lt;Integer&gt; arr1 =new ArrayList&lt;Integer&gt;(); //ArrayList是泛型的一种，什么是泛型？可以理解成cpp的“模板”，就是在&lt;&gt;中传入一种类型得到一种适配定义
+        //注意ArrayList使用Object数组实现存储的，因此必须是！！类！！而不能是基本数据类型(整数得用Integer而不是int)
+        arr1.add(2); //自动包装类转化
+        arr1.add(Integer.valueOf(2));
+        arr1.add(5);
+        for (int i:arr1)&#123;
+            System.out.println(i);
+        &#125;
+        String[] s1=new String[]&#123;&quot;z&quot;,&quot;hel,&quot;,&quot;world!&quot;&#125;;
+        Arrays.sort(s1); //Arrays工具类中有sort方法，对实现了 comparable&lt;T&gt;接口泛型的类可以自动排序
+        System.out.println(Arrays.toString(s1));  //Arrays的toString方法可以 ！对每个元素！自动！调用toString()方法
+        Boy[] b1=new Boy[]&#123;new Boy(&quot;大水桶&quot;,21),new Boy(&quot;小水桶&quot;,12),new Boy(&quot;老水桶&quot;,30)&#125;;
+        Arrays.sort(b1);
+        System.out.println(Arrays.toString(b1));  //我将Boy类实现了Comparable&lt;Boy&gt;接口，即在内部定义compareTo方法，并把年龄作为比较的关键，成功得到排序后结
+        generics g1=new generics();
+        //！！！类必须依附于实例，而类中类则必须依附于实例的实例,否则会报错xxx变量是非静态的！不能用于静态上下文
+        generics.pair&lt;String,Integer&gt; boy_pair=g1.new pair&lt;String, Integer&gt;(&quot;水桶王&quot;,21);
+        boy_pair.shout();
+        //pair&lt;String,Integer&gt; boy_pair=new pair&lt;String, Integer&gt;(&quot;水桶王&quot;,21);
+    &#125;
+    public class pair&lt;T,K&gt;&#123;
+        public T p_t;
+        public K p_k;
+
+
+        public pair(T p_t, K p_k) &#123;
+            this.p_t = p_t;
+            this.p_k = p_k;
+        &#125;
+
+        public T getP_t() &#123;
+            System.out.println(p_t);
+            return p_t;
+        &#125;
+
+        public K getP_k() &#123;
+            System.out.println(p_k);
+            return p_k;
+        &#125;
+
+        //public static&lt;T,K&gt; pair&lt;T,K&gt; shout()&#123;&#125;  默认是不能将模板类型用于static变量的(因为一般需要在外部实例化模板)，但是你可以在static后面加一个&lt;T,K&gt;来强制使用
+        public void shout()&#123;
+            System.out.println(&quot;%s,%d&quot;.formatted(this.p_t,this.p_k)); //格式化字符串必须用规定的 %s 占位符，不能用自定义的！泛型编程虽然编译器暂时无法识别泛型类型，但可以只用能够被格式化输出的类型
+        &#125;
+
+    &#125;
+&#125;
+</code></pre>
+<h1 id="深度学习好久没看了，今天重新回顾了下ResNet"><a href="#深度学习好久没看了，今天重新回顾了下ResNet" class="headerlink" title="深度学习好久没看了，今天重新回顾了下ResNet"></a>深度学习好久没看了，今天重新回顾了下ResNet</h1><p>这回终于是看懂了，主要就是两点：1、通过1*1的卷积核来进行降维、升维操作，主要用在通道数很大的图像中，可以有效降低参数量 2、通过前向传递并与之前的矩阵进行相加，来有效避免梯度爆炸和消失的问题，极大的提高模型的深度</p>
+<p>还学到了Batch Normalization批量正则化，通过对一批数据的同一通道进行标准化，使得每一层的数据都被标准化，有效降低数据大小、减少训练时间…</p>
+<p>但是要注意3个问题</p>
+<p>还有迁移学习：即预训练模型，预训练模型要注意数据的预处理方式应与预训练模型相一致</p>
+
+    </div>
+    
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 天机工程
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;bigbigbigwaterbucket
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+<script
+    src="https://giscus.app/client.js"
+    data-repo="bigbigbigwaterbucket/bigbigbigwaterbucket.github.io"
+    data-repo-id="R_kgDOKFcnSw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKFcnS84CaIBo"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="https://static-argvchs.netlify.app/css/giscus.css"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
+
+
+
+
+
+    
+</body>
+</html>
