@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title> | 天机工程</title>
+    <meta name="author" content="bigbigbigwaterbucket" />
+    <meta name="description" content="科技不是一题一解的死板学识，而是令我们超凡脱俗的产物。" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>天机工程</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;天机工程</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1></h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/4
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="每周杂谈2023-11-2"><a href="#每周杂谈2023-11-2" class="headerlink" title="每周杂谈2023.11.2"></a>每周杂谈2023.11.2</h1><h1 id="2023-11-2"><a href="#2023-11-2" class="headerlink" title="2023.11.2"></a>2023.11.2</h1><p>新开栏目，用来记录自己的生活点滴，美好的回忆与哲理的思考一样都应当被记录</p>
+<p>顺便记录最近对自己的情绪影响最大的一些事件</p>
+<span id="more"></span>
+
+<h4 id="1、这下成超人了，2公里9min10s，现在速度竟然能和中考时期比肩了，主要还是提高步频的训练法比较有效"><a href="#1、这下成超人了，2公里9min10s，现在速度竟然能和中考时期比肩了，主要还是提高步频的训练法比较有效" class="headerlink" title="1、这下成超人了，2公里9min10s，现在速度竟然能和中考时期比肩了，主要还是提高步频的训练法比较有效"></a>1、这下成超人了，2公里9min10s，现在速度竟然能和中考时期比肩了，主要还是提高步频的训练法比较有效</h4><img src="file:///C:/Users/徐昊岩/Desktop/markdown/a0a3be1dfd597fe924f4158648114c3a82c59508.jpg" title="" alt="Screenshot_2023-11-02-21-36-55-36_721f7cb5d53e9f3.jpg" width="199">
+
+<h4 id="2、追番：葬送的芙莉莲"><a href="#2、追番：葬送的芙莉莲" class="headerlink" title="2、追番：葬送的芙莉莲"></a>2、追番：葬送的芙莉莲</h4><img src="file:///C:/Users/徐昊岩/Desktop/markdown/ca00690487e0ca126f23a4d518889d0dae5a2cd8.png" title="" alt="@_AXUI[$INY@R8TXBYKP$]H.png" width="272">
+
+<img src="file:///C:/Users/徐昊岩/Desktop/markdown/f73f4815439499013d0e8386f6b67cd39bce8bf7.png" title="" alt="Y{3B6K4RH2MZ6UR3}3VI8EL.png" width="280">
+
+<p>很好的作品，堪比魔法少女小圆、mygo、死亡笔记、寄生兽，t0级别，寿命论只是这层作品的最浅层，</p>
+<p>t0是啥？大概就是 拥有完整的世界观、人物刻画细致、矛盾冲突引人深思吧，关键她还作画精致、op是yasobi、ed是milet唱的，我简直嗨到不行</p>
+<p>t1级的大概就是进击的巨人、咒术回战这样的吧，无法引导人进行深度哲理思考，对了，夏日重现估计也算(其作画和bgm也很精美，可惜引人思考的地方并不多)</p>
+<h4 id="3、大物期中考试"><a href="#3、大物期中考试" class="headerlink" title="3、大物期中考试"></a>3、大物期中考试</h4><p>哎哎，大物；服了，最后一题2分钟写完考完过了一会才反应过来写错了，C!</p>
+<p>还有就是，自己其实努力了还挺久，但结果配不上努力啊！！课外做了一堆，结果就考课内的习题，还考得很综合…</p>
+<p><strong>尽管罗老师的混合式命定论在尝试阻止我emo，但结果配不上努力，这种落差，果然对现在的我来说，还是难以接受啊…..（可能我还年轻</strong></p>
+<h4 id="4、既搞深度学习又要学算法还要学java果然对我这种效率低下的人还是太极限了，哎哎，关键我转专业还一堆课，还顺便打了个bit杯"><a href="#4、既搞深度学习又要学算法还要学java果然对我这种效率低下的人还是太极限了，哎哎，关键我转专业还一堆课，还顺便打了个bit杯" class="headerlink" title="4、既搞深度学习又要学算法还要学java果然对我这种效率低下的人还是太极限了，哎哎，关键我转专业还一堆课，还顺便打了个bit杯"></a>4、既搞深度学习又要学算法还要学java果然对我这种效率低下的人还是太极限了，哎哎，关键我转专业还一堆课，还顺便打了个bit杯</h4><p>但其实时间充分利用的话也不是不可能（</p>
+<p>一心多用，是否能成功呢？</p>
+<h4 id="5、最近没咋打游戏了，塞尔达上次玩也是半个月前了吧…"><a href="#5、最近没咋打游戏了，塞尔达上次玩也是半个月前了吧…" class="headerlink" title="5、最近没咋打游戏了，塞尔达上次玩也是半个月前了吧…."></a>5、最近没咋打游戏了，塞尔达上次玩也是半个月前了吧….</h4><p>游戏瘾就这样戒掉了？忙碌果然也是戒瘾的一种方法</p>
+<h4 id="6、双11想买小米5pro刷个win-还想买台式机-ㄒoㄒ"><a href="#6、双11想买小米5pro刷个win-还想买台式机-ㄒoㄒ" class="headerlink" title="6、双11想买小米5pro刷个win,还想买台式机&#x2F;(ㄒoㄒ)&#x2F;~~"></a>6、双11想买小米5pro刷个win,还想买台式机&#x2F;(ㄒoㄒ)&#x2F;~~</h4><h4 id="7、github上的项目-眼睛护士-真好用，要爱护自己的眼睛啊，希望度数别再涨了ㄒoㄒ"><a href="#7、github上的项目-眼睛护士-真好用，要爱护自己的眼睛啊，希望度数别再涨了ㄒoㄒ" class="headerlink" title="7、github上的项目 眼睛护士 真好用，要爱护自己的眼睛啊，希望度数别再涨了ㄒoㄒ"></a>7、github上的项目 眼睛护士 真好用，要爱护自己的眼睛啊，希望度数别再涨了ㄒoㄒ</h4><h4 id="8、亲和力下降：像-“辛美尔”-一样，待人更温柔、更耐心些吧"><a href="#8、亲和力下降：像-“辛美尔”-一样，待人更温柔、更耐心些吧" class="headerlink" title="8、亲和力下降：像 “辛美尔” 一样，待人更温柔、更耐心些吧"></a>8、亲和力下降：像 “辛美尔” 一样，待人更温柔、更耐心些吧</h4><p>换位思考下，自己也不希望被不耐烦的对待呢，虽然确实有很烦躁、忙碌的时刻，但……保持亲和力！</p>
+<p>如果你有爱意，那么你应该表露出来.</p>
+<h1 id="2023-11-4"><a href="#2023-11-4" class="headerlink" title="2023.11.4"></a>2023.11.4</h1><h4 id="1、重新燃起对深度学习的兴趣"><a href="#1、重新燃起对深度学习的兴趣" class="headerlink" title="1、重新燃起对深度学习的兴趣"></a>1、重新燃起对深度学习的兴趣</h4><p>仔细思考下，我虽然口头上说着不想搞深度学习，但根本原因在于其不适合赚米，然而深度学习并不会占用你多少时间，也就明年3、4月份之前多占用点，没必要因为赶java进度而疏忽对深度学习的学习，而且，深度学习<strong>绝不仅仅只有数学</strong>，还有更多哲学、生物学方面的思考，数学用到的并不多，关键在于你对人类的<strong>理解</strong>，有个人工智能副手，其实我早就想实现了…</p>
+<h2 id="想谈的有点多，虽然注销了QQ空间，但我果然还是需要把一些事倾诉出来，遂决定单独分一个出来作为每周杂谈"><a href="#想谈的有点多，虽然注销了QQ空间，但我果然还是需要把一些事倾诉出来，遂决定单独分一个出来作为每周杂谈" class="headerlink" title="想谈的有点多，虽然注销了QQ空间，但我果然还是需要把一些事倾诉出来，遂决定单独分一个出来作为每周杂谈"></a>想谈的有点多，虽然注销了QQ空间，但我果然还是需要把一些事倾诉出来，遂决定单独分一个出来作为每周杂谈</h2>
+    </div>
+    
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 天机工程
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;bigbigbigwaterbucket
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+<script
+    src="https://giscus.app/client.js"
+    data-repo="bigbigbigwaterbucket/bigbigbigwaterbucket.github.io"
+    data-repo-id="R_kgDOKFcnSw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKFcnS84CaIBo"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="https://static-argvchs.netlify.app/css/giscus.css"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
+
+
+
+
+
+    
+</body>
+</html>
