@@ -167,6 +167,166 @@
         
 
 <div class="post">
+    <a href="/2023/11/06/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98(%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2)+java%E5%AD%A6%E4%B9%A0/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/6
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="每日一题-重复的字符串-java学习"><a href="#每日一题-重复的字符串-java学习" class="headerlink" title="每日一题(重复的字符串)+java学习"></a>每日一题(重复的字符串)+java学习</h1><h1 id="459-重复的子字符串"><a href="#459-重复的子字符串" class="headerlink" title="459.重复的子字符串"></a>459.重复的子字符串</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/repeated-substring-pattern/">力扣题目链接(opens new window)</a></p>
+<p>给定一个非空的字符串，判断它是否可以由它的一个子串重复多次构成。给定的字符串只含有小写英文字母，并且长度不超过10000。</p>
+<p>示例 1:</p>
+<ul>
+<li>输入: “abab”</li>
+<li>输出: True</li>
+<li>解释: 可由子字符串 “ab” 重复两次构成。</li>
+</ul>
+<p>示例 2:</p>
+<ul>
+<li>输入: “aba”</li>
+<li>输出: False</li>
+</ul>
+<p>示例 3:</p>
+<ul>
+<li>输入: “abcabcabcabc”</li>
+<li>输出: True)</li>
+<li>解释: 可由子字符串 “abc” 重复四次构成。 (或者子字符串 “abcabc” 重复两次构成。)</li>
+</ul>
+<pre><code class="cpp">//重复的子字符串
+// Created by 徐昊岩 on 2023/11/6.
+//想到关键的一点:只会由子字符串构成2、3...有限次,因此一定是长度的1/2或1/3...，其实很简单
+/*  判断质数、公约数.....都可以用到
+ * 首先，约数是成对出现的。比如24,你找到个约数3,那么一定有个约数8,因为24/3=8
+ * 然后，这对约数必须一个在根号n之前，一个在根号n之后。因为都在根号n之前的话，乘积一定小于n（根号nX根号n=n），
+ * 同样，都在根号n之后的话，乘积一定大于n。所以，如果你在根号n之前都找不到约数的话，那么根号n之后就不会有了。
+ */
+
+#include &quot;string&quot;
+#include &quot;cmath&quot;
+#include &quot;iostream&quot;
+using namespace std;
+
+class Solution &#123;
+public:
+    bool repeatedSubstringPattern(string s) &#123;
+        int size = s.size();
+        if(size==1) return false;  //长度1没有子串，算错...
+        string son1(size,s[0]);
+        if(s==son1) return true;
+        for (int i = 2; i &lt; size/2+1; i++) &#123;
+            if(size%i==0)&#123;
+                string son;
+                for(int o=0;o&lt;size/i;o++) son+=s.substr(0,i);  //substr截取子串：参数一是起始索引，参数二是长度
+                if(son==s) return true;
+            &#125;
+        &#125;
+        return false;
+    &#125;
+&#125;;
+
+class Solution2 &#123;
+public:
+    bool repeatedSubstringPattern(string s) &#123;
+        string t = s + s;
+        t.erase(t.begin()); t.erase(t.end() - 1); // 掐头去尾
+        if (t.find(s) != std::string::npos) return true; // r
+        return false;
+    &#125;
+&#125;;
+
+class Solution3 &#123;
+public:
+    void getNext (int* next, const string&amp; s)&#123;
+        next[0] = -1;
+        int j = -1;
+        for(int i = 1;i &lt; s.size(); i++)&#123;
+            while(j &gt;= 0 &amp;&amp; s[i] != s[j + 1]) &#123;
+                j = next[j];
+            &#125;
+            if(s[i] == s[j + 1]) &#123;
+                j++;
+            &#125;
+            next[i] = j;
+        &#125;
+    &#125;
+    bool repeatedSubstringPattern (string s) &#123;
+        if (s.size() == 0) &#123;
+            return false;
+        &#125;
+        int next[s.size()];
+        getNext(next, s);
+        int len = s.size();
+        if (next[len - 1] != -1 &amp;&amp; len % (len - (next[len - 1] + 1)) == 0) &#123;
+            return true;
+        &#125;
+        return false;
+    &#125;
+&#125;;
+int main()&#123;
+    Solution3 s3;
+    string s=&quot;asdfasdfasdf&quot;;
+    int next[s.size()];
+    s3.getNext(next,s);
+    for(int i=0;i&lt;s.size();i++)&#123;
+        cout&lt;&lt;next[i];
+    &#125;
+&#125;
+</code></pre>
+<h1 id="java学习-UDP编程"><a href="#java学习-UDP编程" class="headerlink" title="java学习 UDP编程"></a>java学习 UDP编程</h1><pre><code class="java">package web_programing;
+
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+
+public class UDP_client &#123;
+    public static void main(String[] args) throws IOException &#123;
+        /*
+        客户端创建DatagramSocket实例时并不需要指定端口，而是由操作系统自动指定一个当前未使用的端口。
+        紧接着，调用setSoTimeout(1000)设定超时1秒，意思是后续接收UDP包时，等待时间最多不会超过1秒，否则在没有收到UDP包时，客户端会无限等待下去。
+        这一点和服务器端不一样，服务器端可以无限等待，因为它本来就被设计成长时间运行。
+         */
+        DatagramSocket ds=new DatagramSocket();
+        ds.setSoTimeout(1000);
+        ds.connect(InetAddress.getByName(&quot;localhost&quot;),8081);  //还不能直接指定代理字符串,这里的连接不是长时间挂起的连接状态，而只是指定一个目标Socket
+        byte[] data = &quot;WATER&quot;.getBytes();
+        DatagramPacket packet = new DatagramPacket(data, data.length);
+        ds.send(packet);
+        byte[] buffer = new byte[1024];
+        packet = new DatagramPacket(buffer, buffer.length);
+        ds.receive(packet);
+        String resp = new String(packet.getData(), packet.getOffset(), packet.getLength());
+        System.out.println(resp);
+        ds.disconnect();
+// 关闭:
+        ds.close();
+    &#125;
+&#125;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2023/11/06/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98(%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2)+java%E5%AD%A6%E4%B9%A0/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/11/04/%E6%AF%8F%E5%91%A8%E6%9D%82%E8%B0%882023.11.2/">
         <h2 class="post-title"></h2>
     </a>
@@ -470,52 +630,6 @@
         
     </div>
     <a href="/2023/10/29/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB%E7%9A%84%E7%90%90%E4%BA%8B/java%E5%AD%A6%E4%B9%A0/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/10/29/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB%E7%9A%84%E7%90%90%E4%BA%8B/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8Enodejs/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/10/29
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>浏览器打开 HTML 文件时，默认情况下是将其作为静态文件进行展示，而不会执行其中的 JavaScript 代码。这是出于安全考虑的一种设计。</p>
-<p>浏览器在加载 HTML 文件时，会按照文件中的结构和标签来解析和渲染页面内容，包括文本、图像、链接等。但是，对于 JavaScript 代码，浏览器默认是不会自动执行的，因为恶意的 JavaScript 代码可能会对用户的计算机造成安全威胁。</p>
-<p>如果你希望在浏览器中执行 JavaScript 代码，有几种方法可以实现：</p>
-<ol>
-<li><p>在 HTML 文件中使用 <code>&lt;script&gt;</code> 标签：你可以在 HTML 文件中使用 <code>&lt;script&gt;</code> 标签来嵌入 JavaScript 代码。例如：</p>
-<p>htmlCopy Code</p>
-<p><code>&lt;script&gt;   // 这里是你的 JavaScript 代码 &lt;/script&gt;</code></p>
-<p>当浏览器解析到 <code>&lt;script&gt;</code> 标签时，会立即执行其中的 JavaScript 代码。</p>
-</li>
-<li><p>将 JavaScript 代码保存为外部文件并在 HTML 文件中引用：你可以将 JavaScript 代码保存为单独的 <code>.js</code> 文件，并在 HTML 文件中使用 <code>&lt;script&gt;</code> 标签来引用该文件。例如：</p>
-<p>htmlCopy Code</p>
-<p><code>&lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;</code></p>
-<p>浏览器在加载 HTML 文件时，会自动下载并执行引用的 JavaScript 文件。</p>
-</li>
-</ol>
-<p>无论采用哪种方法，确保 JavaScript 代码的执行是你期望的，并且来自可信任的来源，以确保安全性。</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2023/10/29/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB%E7%9A%84%E7%90%90%E4%BA%8B/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8Enodejs/" class="go-post">阅读全文</a>
 </div>
 
 
