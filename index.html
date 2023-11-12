@@ -186,66 +186,6 @@
             
             <h1 id="每日0题-java学习"><a href="#每日0题-java学习" class="headerlink" title="每日0题+java学习"></a>每日0题+java学习</h1><p>鸽了几天blog，重振旗鼓</p>
 <p>速通了下java集合，现在学到javaIO了，这周打算把IO和多线程学完，之后开始学后端相关了</p>
-<pre><code class="java">package java_io;
-
-import javax.imageio.IIOException;
-import java.io.*;
-
-public class io_learning &#123;
-    public static void main(String[] args) throws IOException &#123;
-        //Reader和Writer本质上是一个能自动编解码的InputStream和OutputStream。
-        //同步IO是指，读写IO时代码必须等待数据返回后才继续执行后续代码，它的优点是代码编写简单，缺点是CPU执行效率低。
-        //而异步IO是指，读写IO时仅发出请求，然后立刻执行后续代码，它的优点是CPU执行效率高，缺点是代码编写复杂。
-
-        File f=new File(&quot;./src/java_stl/use_property.java&quot;);   //注意这里.返回的是项目文件夹，就很奇怪,以后使用./相对路径要先看看他代表的到底是哪个文件夹nnd
-        System.out.println(f.getAbsolutePath()+&quot;\n&quot;+f.getPath()+&quot;\n&quot;+f.getCanonicalPath()); //分别返回绝对路径、填写路径和规范路径(去掉..和.
-        System.out.println(f.isFile());  //判断该文件是否是一个已经存在的文件
-        //System.out.println(f.createNewFile()); 当前文件存在则创建失败，返回false
-        File f_l=new File(&quot;./src/java_learning/&quot;);
-        File[] f2=f_l.listFiles(new FilenameFilter() &#123;
-            @Override
-            public boolean accept(File dir, String name) &#123;
-                return name.endsWith(&quot;.java&quot;);
-            &#125;
-        &#125;);
-        for(var i:f2)&#123;
-            System.out.println(i.getPath());
-        &#125;
-        try (InputStream input=new FileInputStream(f.getPath()))&#123;  //try语句后面跟着resource参数，如果有实现close方法，就会在最后加上finally&#123;input.close&#125;
-            byte[] buffer=new byte[1024];
-            int n;
-            while ((n=input.read(buffer))!=-1)&#123;  //input.read()方法自动读取文件中的字节数据且以 整数编码形式 返回，每读入一字节文件指针就会往后移动一个，直到遇到-1结束
-                //这里已经改成了read(buffer)方法，使用buffer数组作为缓存区，read(buffer)会一次性读取数组大小的数据字节，有数据则会返回读取到的字节数，没数据则会返回-1
-                System.out.println(n);
-            &#125;
-
-        &#125;
-        try (InputStream input=new FileInputStream(f.getPath()))&#123;
-            StringBuilder sb=new StringBuilder();
-            int n;
-            while ((n=input.read())!=-1)&#123;
-                sb.append((char)n);  //将整型编码强制转为字符
-            &#125;
-            String sb_string=sb.toString();
-            System.out.println(sb_string);
-        &#125;
-        /*
-        output.write(72); // H
-        output.write(101); // e
-        output.write(108); // l
-        output.write(108); // l
-        output.write(111); // o
-        output.close();
-        */
-         try(OutputStream output=new FileOutputStream(&quot;Readme.md&quot;))&#123;  //调用try自动关闭
-             output.write(&quot;Hello java!&quot;.getBytes());
-             output.flush(); //OutputStream也有缓存区，并且是默认实现的，类似一个byte[]数组，存满了才发出去，但是flsuh可以提前发出(close结束前也会发出)
-         &#125;
-    &#125;
-
-&#125;
-</code></pre>
-
             
         </div>
     </div>
