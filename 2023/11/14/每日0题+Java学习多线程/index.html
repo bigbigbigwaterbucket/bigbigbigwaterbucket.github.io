@@ -1,0 +1,411 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title> | 天机工程</title>
+    <meta name="author" content="bigbigbigwaterbucket" />
+    <meta name="description" content="科技不是一题一解的死板学识，而是令我们超凡脱俗的产物。" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>天机工程</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;天机工程</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1></h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/14
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="每日0题-Java学习-多线程"><a href="#每日0题-Java学习-多线程" class="headerlink" title="每日0题+Java学习:多线程"></a>每日0题+Java学习:多线程</h1><p>多线程的锁机制讲的很清楚很好。</p>
+<span id="more"></span>
+
+<p>例如，对于语句：</p>
+<pre><code>n = n + 1;
+</code></pre>
+<p>看上去是一行语句，实际上对应了3条指令：</p>
+<pre><code>ILOAD
+IADD
+ISTORE
+</code></pre>
+<p>我们假设<code>n</code>的值是<code>100</code>，如果两个线程同时执行<code>n = n + 1</code>，得到的结果很可能不是<code>102</code>，而是<code>101</code>，原因在于：</p>
+<pre><code class="ascii">┌───────┐    ┌───────┐
+│Thread1│    │Thread2│
+└───┬───┘    └───┬───┘
+    │            │
+    │ILOAD (100) │
+    │            │ILOAD (100)
+    │            │IADD
+    │            │ISTORE (101)
+    │IADD        │
+    │ISTORE (101)│
+    ▼            ▼
+</code></pre>
+<p>如果线程1在执行<code>ILOAD</code>后被操作系统中断，此刻如果线程2被调度执行，它执行<code>ILOAD</code>后获取的值仍然是<code>100</code>，最终结果被两个线程的<code>ISTORE</code>写入后变成了<code>101</code>，而不是期待的<code>102</code>。</p>
+<p>这说明多线程模型下，要保证逻辑正确，对共享变量进行读写时，必须保证一组指令以原子方式执行：即某一个线程执行时，其他线程必须等待：</p>
+<pre><code class="ascii">┌───────┐     ┌───────┐
+│Thread1│     │Thread2│
+└───┬───┘     └───┬───┘
+    │             │
+    │-- lock --   │
+    │ILOAD (100)  │
+    │IADD         │
+    │ISTORE (101) │
+    │-- unlock -- │
+    │             │-- lock --
+    │             │ILOAD (101)
+    │             │IADD
+    │             │ISTORE (102)
+    │             │-- unlock --
+    ▼             ▼
+</code></pre>
+<p>通过加锁和解锁的操作，就能保证3条指令总是在一个线程执行期间，不会有其他线程会进入此指令区间。即使在执行期线程被操作系统中断执行，其他线程也会因为无法获得锁导致无法进入此指令区间。只有执行线程将锁释放后，其他线程才有机会获得锁并执行。这种加锁和解锁之间的代码块我们称之为临界区（Critical Section），任何时候临界区最多只有一个线程能执行。</p>
+<p>可见，保证一段代码的原子性就是通过加锁和解锁实现的。Java程序使用<code>synchronized</code>关键字对一个对象进行加锁：</p>
+<pre><code>synchronized(lock) &#123;
+    n = n + 1;
+&#125;
+</code></pre>
+<pre><code class="java">package java_thread;
+
+
+//框选模型：解释java类间继承以及相互调用
+public class _create &#123;
+    public static void main(String[] args) throws InterruptedException&#123;
+        System.out.println(&quot;JVM 主线程main启动&quot;);
+        infinite_thread inf=new infinite_thread();
+        inf.setDaemon(true);  //设置成守护线程，守护线程是默认无限执行的，main线程默认会等待所有线程执行结束自己才会结束，除了守护线程(相当于允许守护线程在main线程之后结束
+        //在守护线程中，编写代码要注意：守护线程不能持有任何!!需要关闭的资源!!，例如打开文件等，因为虚拟机退出时，守护线程没有任何机会来关闭文件，这会导致数据丢失。
+        inf.start();
+        Thread.sleep(100);  //main方法就相当于一个线程
+        /*
+        main线程肯定是先打印main start，再打印main end；
+        t线程肯定是先打印thread run，再打印thread end。
+        但是，除了可以肯定，main start会先打印外，main end打印在thread run之前、thread end之后或者之间，都无法确定。
+        !!!因为从t线程开始运行以后，两个线程就开始同时运行了，并且由!!操作系统!!调度，程序本身无法确定线程的调度顺序。!!!
+         */
+        Mythread t1=new Mythread();  //实现自己的线程：自己写个类继承一个Thread并覆写run方法,线程启动时会自动执行run方法，run方法执行结束线程也就结束了
+        t1.start();
+        t1.running=false; //通过将t1.running共享变量设为false可以将该线程停止
+        //t1.run(); //直接调用run方法相当于把run方法写到_create类里然后直接调用,暂停的也是main! 这行代码没有任何线程创建
+        Thread t2=new Thread(()-&gt;&#123;
+           System.out.println(&quot;started a new thread2&quot;);  //使用lambda语法来快速覆写run方法
+        &#125;);
+        //设置线程优先级，优先级越高操作系统对该线程的调度就越频繁(因为任务数&gt;&gt;cpu核心数，执行任何线程任务都是轮流执行一定时间)，执行速度“可能”就越快，但是不一定保准
+        t2.setPriority(10);
+        t1.join(); //当前线程(main)等待t1线程执行结束
+        System.out.println(&quot;t1线程执行结束&quot;);
+        t2.start();
+        t2.interrupt(); //中断进程，如果该进程在等待，会抛出异常，其他状态似乎会退出
+
+
+    &#125;
+    /*
+New：新创建的线程，尚未执行；
+Runnable：运行中的线程，正在执行run()方法的Java代码；
+Blocked：运行中的线程，因为某些操作被阻塞而挂起；
+Waiting：运行中的线程，因为某些操作在等待中；
+Timed Waiting：运行中的线程，因为执行sleep()方法正在计时等待；
+Terminated：线程已终止，因为run()方法执行完毕。
+     */
+&#125;
+
+class Mythread extends Thread&#123;
+    //线程间共享变量需要使用volatile关键字标记，确保每个线程都能读取到更新后的变量值。
+
+    //volatile关键字的目的是告诉虚拟机：
+    //每次访问变量时，总是获取主内存的最新值；
+    //每次修改变量后，立刻回写到主内存。
+    public volatile boolean running=true;
+    @Override
+    public void run()&#123;
+        System.out.println(&quot;mythread begin&quot;);
+        try &#123;
+            Thread.sleep(1000);
+            if(this.running==false) System.out.println(&quot;接收到running变量改变，但这里就不停止了&quot;);
+        &#125;catch (InterruptedException e)&#123;&#125;;
+        System.out.println(&quot;mythread end&quot;);
+    &#125;
+&#125;
+
+class infinite_thread extends Thread&#123;
+    @Override
+    public void run()&#123;
+        int n=0;
+        while (true)&#123; //无尽循环的守护线程，允许在main线程之后结束
+            n++;
+            try &#123;
+                Thread.sleep(1000);
+            &#125;catch (InterruptedException e)&#123;  //如果在等待过程中被中断
+
+            &#125;
+            System.out.println(&quot;%d秒经过&quot;.formatted(n));
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">package java_thread;
+
+public class synchronization &#123;
+    public static void main(String[] args) throws Exception &#123;
+        var add = new AddThread();
+        var dec = new DecThread();
+        add.start();
+        dec.start();
+        add.join();
+        dec.join();
+        System.out.println(Counter.count);
+    &#125;
+&#125;
+
+class Counter &#123;
+    public static final Object lock=new Object();
+    public static int count = 0;
+&#125;
+
+class slock&#123;
+    public static final Object lock=new Object();
+&#125;
+class AddThread extends Thread &#123;
+    public void run() &#123;
+        for (int i=0; i&lt;10000; i++) &#123;
+            synchronized (slock.lock) &#123;   //获得锁后，才能执行后续的操作
+                //锁只是相当于一块控制内存(只不过必须是Object类型实例)，如果该内存被其他线程占用，就无法获得这块控制内存，同步体的代码块也就无法执行，
+                // 只不过一般会在操作变量所在的类内设置一个锁内存
+
+                //JVM规范定义了几种默认原子操作：(即这些代码操作一次只能被一个类执行)
+                //基本类型（long和double除外）赋值，例如：int n = m；
+                //引用类型赋值，例如：List&lt;String&gt; list = anotherList。
+                //！注:这并不表明这些赋值操作就不用再被放进同步框内，因为可能有单线程连续操作变量的情况，虽然对x赋值操作是原子操作，但是其他线程可以同时操作y赋值！
+
+                Counter.count += 1;&#125;
+        &#125;
+    &#125;
+    public synchronized static void test(int n) &#123;&#125;  //synchronized关键字相当于该方法！ 默认以当前类的实例为锁内存，静态方法则默认以当前静态类的.class（也就是静态内存)为锁内存
+&#125;
+
+class DecThread extends Thread &#123;
+    public void run() &#123;
+        for (int i=0; i&lt;10000; i++) &#123;
+            synchronized (slock.lock) &#123;
+                Counter.count -= 1;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 天机工程
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;bigbigbigwaterbucket
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+<script
+    src="https://giscus.app/client.js"
+    data-repo="bigbigbigwaterbucket/bigbigbigwaterbucket.github.io"
+    data-repo-id="R_kgDOKFcnSw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKFcnS84CaIBo"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="https://static-argvchs.netlify.app/css/giscus.css"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
+
+
+
+
+
+    
+</body>
+</html>
