@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title> | 天机工程</title>
+    <meta name="author" content="bigbigbigwaterbucket" />
+    <meta name="description" content="科技不是一题一解的死板学识，而是令我们超凡脱俗的产物。" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>天机工程</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;天机工程</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1></h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/17
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="离散数学实验：集合关系的二元性质判定"><a href="#离散数学实验：集合关系的二元性质判定" class="headerlink" title="离散数学实验：集合关系的二元性质判定"></a>离散数学实验：集合关系的二元性质判定</h1><p>使用c++语言实现，用multimap来表示随机生成的集合关系(如&lt;a,a&gt;)</p>
+<span id="more"></span>
+
+<pre><code class="c++">//
+// Created by 徐昊岩 on 2023/11/17.
+//
+#include &quot;iostream&quot;
+#include &quot;ctime&quot;
+#include &quot;cstdlib&quot;
+#include &quot;set&quot;
+#include &quot;vector&quot;
+#include &quot;map&quot;
+#include &quot;cmath&quot;
+#include &quot;algorithm&quot;
+
+using namespace std;
+
+//判断目标键值对keyToFind:valueToFind是否位于multimap中
+bool is_in_map(multimap&lt;char, char&gt; myMultiMap, char keyToFind, char valueToFind) &#123;
+    auto range = myMultiMap.equal_range(keyToFind);  //equal_range返回一个键均为key的范围，且以pair类型组织首个迭代器和末尾迭代器
+    for (auto it = range.first; it != range.second; ++it) &#123;
+        if (it-&gt;second == valueToFind) &#123;
+            return true;
+        &#125;
+    &#125;
+    return false;
+&#125;
+
+int main() &#123;
+    set&lt;char&gt; set1;  //创建集合，用来存储输入的集合元素
+    char a;
+    cout &lt;&lt; &quot;please input elements of the set(end with @):&quot; &lt;&lt; endl;
+    while (true) &#123;
+        cin &gt;&gt; a;
+        if (a == &#39;@&#39;) break;
+        set1.emplace(a);  //将读入元素存到集合中
+    &#125;
+    srand(time(0));   //设定随机数种子
+    int num = rand() % (int) (pow(2, set1.size())) + 1;  //随机生成某个关系的总数(大小为1到2的n次方)
+    multimap&lt;char, char&gt; map1;       //建立散列表存储生成的关系
+    vector&lt;char&gt; vector_all(set1.begin(), set1.end());  //将集合转为动态数组，方便取索引
+    vector&lt;int&gt; value_count(set1.size(), 0);   //由于一个键只有n种关系，创建数组用以存储某个键已经产生的关系总数，避免关系重复生成
+    //生成一种随机关系
+    for (int i = 0; i &lt; num; i++) &#123;
+        int t_rand1 = rand() % vector_all.size();
+        int t_rand2 = value_count[t_rand1]++;
+        if (t_rand2 &gt;= set1.size()) &#123; continue; &#125;
+        map1.emplace(vector_all[t_rand1], vector_all[t_rand2]);
+    &#125;
+    //显示出生成的随机关系
+    cout &lt;&lt; &quot;Generate Relationship Set:&quot; &lt;&lt; endl &lt;&lt; &quot;&#123;&quot;;
+    for (pair&lt;char, char&gt; pair: map1) &#123;
+        cout &lt;&lt; &quot;&lt;&quot; &lt;&lt; pair.first &lt;&lt; &quot;,&quot; &lt;&lt; pair.second &lt;&lt; &quot;&gt;&quot; &lt;&lt; &quot; &quot;;
+    &#125;
+    cout &lt;&lt; &quot;&#125;\n&quot;;
+
+    //判断自反性/反自反性
+    int reflex_count = 0;
+    for (pair&lt;char, char&gt; pair: map1) &#123;
+        if (pair.first == pair.second) reflex_count += 1;
+    &#125;
+    if (reflex_count == 0) cout &lt;&lt; &quot;satisfy anti-reflexive relation&quot; &lt;&lt; endl;
+    else if (reflex_count == set1.size()) cout &lt;&lt; &quot;satisfy reflexive relation&quot; &lt;&lt; endl;
+    else cout &lt;&lt; &quot;doesn&#39;t satisfy reflexive/anti-reflexive relation&quot; &lt;&lt; endl;
+
+    //判断对称性/反对称性
+    multimap&lt;char, char&gt; map1_swap; //multimap是有序的,创建另一个multimap用来存储交换后的键值对
+    for (pair&lt;char, char&gt; pair: map1) &#123;
+        map1_swap.emplace(pair.second, pair.first);  //交换每个pair的键值对
+    &#125;
+
+    if (includes(map1.begin(), map1.end(), map1_swap.begin(),
+                 map1_swap.end())) &#123; //algorithm中的includes方法可以判断有序数据结构1是否包含同类型有序数据结构2，返回1或0,还可以用来判断两个有序数据结构是否相等
+        cout &lt;&lt; &quot;satisfy symmetry relation&quot; &lt;&lt; endl;
+    &#125; else cout &lt;&lt; &quot;doesn&#39;t satisfy symmetry relation&quot; &lt;&lt; endl;
+
+    multimap&lt;char, char&gt; map2_delete_same;  //创建一个multimap删去键值对相等的关系,例如&lt;a,a&gt;
+    multimap&lt;char, char&gt; map2_delete_same_swap;
+    for (pair&lt;char, char&gt; pair: map1) &#123;
+        if (pair.first == pair.second) continue;    //键值对相等的去掉，方便比较反对称性
+        map2_delete_same.emplace(pair.first, pair.second);
+        map2_delete_same_swap.emplace(pair.second, pair.first);
+    &#125;
+
+    if (includes(map2_delete_same.begin(), map2_delete_same.end(), map2_delete_same_swap.begin(),
+                 map2_delete_same_swap.end()) == 0) &#123;
+        cout &lt;&lt; &quot;satisfy anti-symmetry relation&quot; &lt;&lt; endl;
+    &#125; else cout &lt;&lt; &quot;doesn&#39;t satisfy anti-symmetry relation&quot; &lt;&lt; endl;
+
+
+    //判断传递性
+    bool istransitivity = true;  //默认传递性为真
+    for (pair&lt;char, char&gt; pair: map1) &#123;
+        auto ranges = map1.equal_range(pair.second);  //获得某个键(例如a)开头关系对应的所有后域(&lt;a,a&gt;就是a;&lt;a,b&gt;就是b....)
+        for (auto it = ranges.first; it != ranges.second; it++) &#123;    //遍历所有b开头的关系
+            if (!is_in_map(map1, pair.first, it-&gt;second)) &#123;   //找前域为b关系的每个后域c，再看&lt;a,c&gt;是否在map中，以此判断传递性
+                istransitivity = false;
+                break;
+            &#125;
+        &#125;
+    &#125;
+    if (istransitivity) cout &lt;&lt; &quot;satisfy transitive relation&quot; &lt;&lt; endl;
+    else cout &lt;&lt; &quot;doesn&#39;t satisfy transitive relation&quot; &lt;&lt; endl;
+&#125;
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 天机工程
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;bigbigbigwaterbucket
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+<script
+    src="https://giscus.app/client.js"
+    data-repo="bigbigbigwaterbucket/bigbigbigwaterbucket.github.io"
+    data-repo-id="R_kgDOKFcnSw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKFcnS84CaIBo"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="https://static-argvchs.netlify.app/css/giscus.css"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
+
+
+
+
+
+    
+</body>
+</html>
