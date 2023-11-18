@@ -1,0 +1,404 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title> | 天机工程</title>
+    <meta name="author" content="bigbigbigwaterbucket" />
+    <meta name="description" content="科技不是一题一解的死板学识，而是令我们超凡脱俗的产物。" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>天机工程</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;天机工程</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1></h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/18
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="java-web编程、servlet与tomcat"><a href="#java-web编程、servlet与tomcat" class="headerlink" title="java(web编程、servlet与tomcat)"></a>java(web编程、servlet与tomcat)</h1><p>学完TCP编程后，web编程只是对其的一个扩展，servlet封装了一些web编程接口，使得处理web编程更简单</p>
+<p>inputstream&#x2F;outputstream本质是创建一个输入&#x2F;输出流连接，连接是持续的，每次输入都会进入输入流中，不断read即可</p>
+<p>inputstream每次读入8位的2进制数，也就是一个字节的数据，并将8位二进制数转为整数(0-255)，inputstreamreader只不过多了一个编码方式，会把读入的二进制整数以固定编码方式解码</p>
+<span id="more"></span>
+
+
+
+<p>maven结构是固定的，maven项目构建(打包)过程会对src&#x2F;main&#x2F;java文件下的源代码进行打包</p>
+<pre><code class="ascii">a-maven-project
+├── pom.xml
+├── src
+│   ├── main
+│   │   ├── java
+│   │   └── resources
+│   └── test
+│       ├── java
+│       └── resources
+└── target
+</code></pre>
+<pre><code>唯一确定一个maven项目的3要素：
+组织名称、项目名、版本
+&lt;groupId&gt;org.example&lt;/groupId&gt;
+&lt;artifactId&gt;demo_web&lt;/artifactId&gt;
+&lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+
+&lt;packaging&gt;war&lt;/packaging&gt;  &lt;!--以war形式打包而不是jar，表示这是一个Java Web Application Archive--&gt;
+</code></pre>
+<pre><code class="java">import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+
+public class HTTPserver &#123;
+    public static void main(String[] args) throws IOException &#123;
+        ServerSocket ss=new ServerSocket(5050);
+        System.out.println(&quot;Server is running...&quot;);
+        for(;;)&#123;
+            Socket socket=ss.accept(); //接收一个远程socket端口,建立TCP连接   这一步如果没接收到socket会一直等待下去
+            System.out.println(&quot;connected from &quot;+socket.getRemoteSocketAddress());
+            Thread handle_thread=new Handler(socket);
+            handle_thread.start();
+        &#125;
+    &#125;
+&#125;
+class Handler extends Thread&#123;
+    Socket socket;
+    public Handler(Socket socket)&#123;
+        this.socket=socket;
+    &#125;
+
+    @Override
+    public void run()&#123;
+        //当 try 后面使用括号时，括号内声明的资源（例如文件、网络连接等）会在代码块执行完毕后自动关闭，
+        // 无需手动调用资源的关闭方法（比如 close()）。
+        // 这种形式被称为 &quot;try-with-resources&quot;，它可以确保在代码执行结束后资源被正确释放，从而避免资源泄露。
+        try (InputStream input=socket.getInputStream())&#123;  //InputStream创建的实际上是一个输入流连接！连接的内容会随着后续输入自动传递到input中，随着你下一次read读取而得到
+            try (OutputStream output=socket.getOutputStream())&#123;
+                handle(input,output);
+            &#125;
+        &#125;catch (Exception e)&#123;
+        &#125;finally &#123;
+            try&#123;
+                socket.close();
+            &#125;catch (Exception e)&#123;&#125;
+        System.out.println(&quot;client disconnected&quot;);
+        &#125;
+    &#125;
+
+    public void handle(InputStream input,OutputStream output) throws IOException&#123;   //InputStream每次读取8位二进制数据(也就是一个字节的数据)，并把8位二进制数据表示成整数0-255范围
+        var reader =new BufferedReader(new InputStreamReader(input, StandardCharsets.UTF_8));  //InputStreamReader自动把读入的字节数据转为UTF8编码后结果
+        var writer =new BufferedWriter(new OutputStreamWriter(output,StandardCharsets.UTF_8));  //Buffered自动创建缓冲区(一个字节数组)
+        String header_first=reader.readLine();
+        System.out.println(header_first);
+        boolean requestok=false;
+        if(header_first.startsWith(&quot;GET / HTTP/1.&quot;))&#123;
+            requestok=true;
+        &#125;
+        for(;;)&#123;
+            String header=reader.readLine();
+            if (header.isEmpty()) &#123; // 读取到空行时, HTTP Header读取完毕
+                break;
+            &#125;
+            System.out.println(header);
+        &#125;
+        if(!requestok)&#123;
+            writer.write(&quot;HTTP/1.0 404 Not Found&quot;);
+            writer.write(&quot;Content-Length: 0\r\n&quot;);
+            writer.write(&quot;\r\n&quot;);
+            writer.flush();
+        &#125;else &#123;
+            String index_html=&quot;&lt;html&gt;&lt;body&gt;&lt;h1&gt;Hello, world!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&quot;;
+            int length=index_html.getBytes(StandardCharsets.UTF_8).length;
+            writer.write(&quot;HTTP/1.0 200 \r\n&quot;);  //必须按照形式打印出HTTP/1.0 200 才能让浏览器正确响应(404也可以输出内容，但浏览器网络IO会爆红)
+            writer.write(&quot;Connection: close\r\n&quot;); ////往输出缓存区里写东西
+            writer.write(&quot;Content-Type: text/html\r\n&quot;);
+            writer.write(&quot;Content-Length: &quot; + length + &quot;\r\n&quot;);
+            writer.write(&quot;\r\n&quot;); // 空行标识Header和Body的分隔
+            writer.write(index_html);
+            writer.flush();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
+/*  maven打包与IDEA使用坑
+
+！！IDEA新建的index.jsp实际上是个html文件，其固定返回hello,world!页面，他是个索引页面，访问任何servlet都会先只返回index.html
+
+通常情况下，Servlet 的源代码应该放在 Maven Web 项目的 &quot;src/main/java&quot; 目录下的相应包结构中。
+当你将 Servlet 源代码放置在正确的位置后，Maven 会在构建过程中自动将这些 Java 源文件编译为字节码，
+并将编译后的类文件打包到最终的 WAR 文件中。
+然而，Servlet 类本身并不直接存在于 Web 应用程序的目录结构中。Servlet 类是一个 Java 类，
+它在被部署到 Servlet 容器时会由容器进行管理和执行。因此，你不需要将 Servlet 源代码放在 &quot;src/main/webapp&quot; 目录中才能使其被打包。
+总结来说，将 Servlet 的源代码放置在 &quot;src/main/java&quot; 目录下的正确包结构中，
+并确保 Maven 正确地编译和打包你的项目，Servlet 类就能被正确地部署到 Servlet 容器中。
+*/
+
+
+@WebServlet(urlPatterns = &quot;/&quot;)  //映射到/的IndexServlet比较特殊，它实际上会接收所有未匹配的路径，相当于/*
+public class HTTPserver_servlet extends HttpServlet &#123;
+    /*
+    一个Servlet总是继承自HttpServlet，然后覆写doGet()或doPost()方法。
+    注意到doGet()方法传入了HttpServletRequest和HttpServletResponse两个对象，分别代表HTTP请求和响应。
+    我们使用Servlet API时，并不直接与底层TCP交互，也不需要解析HTTP协议，
+    因为HttpServletRequest和HttpServletResponse就已经封装好了请求和响应。
+    以发送响应为例，我们只需要设置正确的响应类型，然后获取PrintWriter，写入响应即可。
+    * */
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException &#123;
+        //一个Servlet类在服务器中只有一个实例，但对于每个HTTP请求，Web服务器会使用多线程执行请求。
+        // 因此，一个Servlet的doGet()、doPost()等处理请求的方法是多线程并发执行的。
+        // 如果Servlet中定义了字段，要注意多线程并发访问的问题(如果字段的更改有要求，要记得加锁！)
+        String name=request.getParameter(&quot;name&quot;);
+        String redirect_url=&quot;/&quot;+&quot;demo_web-1.0-SNAPSHOT/&quot;+(name==null?&quot;&quot;:name);
+        //response.sendRedirect(redirect_url);  将重定向请求导入到当前servlet后可能导致无限重定向循环！
+        // 接收到重定向请求后，浏览器并不会执行后续内容，而是重新根据返回的Location再发一个请求,一般用于web应用升级
+        response.setHeader(&quot;ContentType&quot;,&quot;text/html&quot;);
+        PrintWriter printWriter=response.getWriter();
+        if(name!=null)&#123;
+            printWriter.write(&quot;&lt;h1&gt;Hello, %s!&lt;/h1&gt;&quot;.formatted(name));
+            printWriter.flush();
+        &#125;
+        else &#123;
+            printWriter.write(&quot;&lt;h1&gt;Hello, 无名氏!&lt;/h1&gt;&quot;);
+            printWriter.flush(); //但是，写入完毕后调用flush()却是必须的，因为大部分Web服务器都基于HTTP/1.1协议，会复用TCP连接。
+            // 如果没有调用flush()，将导致缓冲区的内容无法及时发送到客户端。
+            // 此外，写入完毕后千万不要调用close()，原因同样是因为会复用TCP连接，
+            // 如果关闭写入流，将关闭TCP连接，使得Web服务器无法复用此TCP连接。
+        &#125;
+    &#125;
+
+    //想运行编写的servlet容器快速处理请求的时候，必须打包成war包并运行在tomcat服务器上
+
+    //实际上，类似Tomcat这样的服务器也是Java编写的，
+    // 启动Tomcat服务器实际上是启动Java虚拟机，执行Tomcat的main()方法，
+    // 然后由Tomcat负责加载我们的.war文件，并创建一个HelloServlet实例，最后以多线程的模式来处理HTTP请求。
+    // 如果Tomcat服务器收到的请求路径是/（假定部署文件为ROOT.war），
+    // 就转发到HelloServlet并传入HttpServletRequest和HttpServletResponse两个对象。
+&#125;
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 天机工程
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;bigbigbigwaterbucket
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+<script
+    src="https://giscus.app/client.js"
+    data-repo="bigbigbigwaterbucket/bigbigbigwaterbucket.github.io"
+    data-repo-id="R_kgDOKFcnSw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKFcnS84CaIBo"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="https://static-argvchs.netlify.app/css/giscus.css"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
+
+
+
+
+
+    
+</body>
+</html>
