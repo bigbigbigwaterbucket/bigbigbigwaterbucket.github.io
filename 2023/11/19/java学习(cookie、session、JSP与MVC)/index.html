@@ -165,6 +165,8 @@
     
     <div class="content" v-pre>
         <h1 id="java学习-cookie、session、JSP与MVC"><a href="#java学习-cookie、session、JSP与MVC" class="headerlink" title="java学习(cookie、session、JSP与MVC)"></a>java学习(cookie、session、JSP与MVC)</h1><p>总结下cookie和session，由于HTTP是非状态式的通信协议，为了保存一次连续通信的某些信息(例如登录信息)，java提供了HttpSession类，该类可以根据随机数+时间+jvmID来生成一串JsessionID，用以标识客户端发来的一次通信对应的会话，然后服务器生成这存储这一串ID以及对应的HttpSession的信息(来源于输入，例如用户名)，并自动通过响应头的set-cookie字段让浏览器通过请求头的cookie字段保存这串JsessionID，下次访问时会带着这串ID继续访问，服务器也可以根据cookie中(request.getSession()实际获得的就是cookie中的内容?)的这串ID获得其对应的信息。</p>
+<span id="more"></span>
+
 <pre><code class="java">import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
