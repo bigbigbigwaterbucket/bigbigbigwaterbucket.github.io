@@ -167,6 +167,187 @@
         
 
 <div class="post">
+    <a href="/2023/11/19/java%E5%AD%A6%E4%B9%A0(cookie%E3%80%81session%E3%80%81JSP%E4%B8%8EMVC)/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/19
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="java学习-cookie、session、JSP与MVC"><a href="#java学习-cookie、session、JSP与MVC" class="headerlink" title="java学习(cookie、session、JSP与MVC)"></a>java学习(cookie、session、JSP与MVC)</h1><p>总结下cookie和session，由于HTTP是非状态式的通信协议，为了保存一次连续通信的某些信息(例如登录信息)，java提供了HttpSession类，该类可以根据随机数+时间+jvmID来生成一串JsessionID，用以标识客户端发来的一次通信对应的会话，然后服务器生成这存储这一串ID以及对应的HttpSession的信息(来源于输入，例如用户名)，并自动通过响应头的set-cookie字段让浏览器通过请求头的cookie字段保存这串JsessionID，下次访问时会带着这串ID继续访问，服务器也可以根据cookie中(request.getSession()实际获得的就是cookie中的内容?)的这串ID获得其对应的信息。</p>
+<pre><code class="java">import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
+
+//!!!!由于tomcat服务器默认&quot;localhost:8080/&quot;目录运行的是ROOT.war文件，
+// 所以不是以ROOT命名的文件，除了urlPatterns会默认加上，其他url都要补上war的文件名，这样才能正确跳转！！！！
+@WebServlet(urlPatterns = &quot;/login&quot;)
+public class HTTPsession extends HttpServlet &#123;
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+        response.setContentType(&quot;text/html&quot;);
+        PrintWriter pw = response.getWriter();
+        pw.write(&quot;&lt;h1&gt;Sign In&lt;/h1&gt;&quot;);
+        pw.write(&quot;&lt;form action=\&quot;/demo_web-1.0-SNAPSHOT/login\&quot; method=\&quot;post\&quot;&gt;&quot;);
+        pw.write(&quot;&lt;p&gt;Username: &lt;input name=\&quot;username\&quot;&gt;&lt;/p&gt;&quot;);
+        pw.write(&quot;&lt;p&gt;Password: &lt;input name=\&quot;password\&quot; type=\&quot;password\&quot;&gt;&lt;/p&gt;&quot;);
+        pw.write(&quot;&lt;p&gt;&lt;button type=\&quot;submit\&quot;&gt;Sign In&lt;/button&gt; &lt;a href=\&quot;/demo_web-1.0-SNAPSHOT/\&quot;&gt;Cancel&lt;/a&gt;&lt;/p&gt;&quot;);
+        pw.write(&quot;&lt;/form&gt;&quot;);  //通过表单发送POST请求时，请求的路径是不变的，仍为当前路径
+        pw.flush();
+    &#125;
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException &#123;
+        String name = request.getParameter(&quot;username&quot;);
+        String password = request.getParameter(&quot;password&quot;);
+        String expectedPassword = name.toLowerCase();
+        HttpSession session = request.getSession();  //HttpSession注意同名类问题！
+        response.setContentType(&quot;text/html&quot;);
+        PrintWriter pw = response.getWriter();
+        if (name != null) &#123;
+            if (password.equals(expectedPassword)) &#123;  //字符串判断相等用.equals()!!
+                session.setAttribute(&quot;name&quot;, name);
+                response.sendRedirect(&quot;/demo_web-1.0-SNAPSHOT/&quot;);
+            &#125; else &#123;
+                //pw.flush()之后，html页面就不再接收后续发送的响应了!
+                //response页面一旦调用一个flush（）方法后，代表该response已经提交， 执行完毕，不能再使用
+                //response是服务端对客户端请求的一个响应，其中封装了响应头、状态码、内容等,
+                // 服务端在把response提交到客户端之前，会向缓冲区内写入响应头和状态码，然后将所有内容flush。
+                //这就标志着该次响应已committed(提交)。对于当前页面中已经committed(提交)的response，
+                // 就不能再使用这个response向缓冲区写任何东西
+
+               pw.write(&quot;&lt;html&gt;&lt;body&gt;&lt;h2&gt;密码不正确!&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;&quot;);
+               pw.write(&quot;&lt;script type=\&quot;text/javascript\&quot;&gt;location=\&quot;/demo_web-1.0-SNAPSHOT/login\&quot;;&lt;/script&gt;&quot;);
+               pw.flush();
+
+               //下：下面的代码不会再执行，因为一次flush之后就已经提交了response，不能再使用该response，想要实现页面显示信息再自动跳转
+                //参考上面的用javascript实现自动跳转，会先显示密码不正确再跳转
+               try &#123;
+                    Thread.sleep(1000);
+                &#125; catch (InterruptedException e) &#123;
+                   throw new RuntimeException(e);
+               &#125;
+
+                response.sendRedirect(&quot;/demo_web-1.0-SNAPSHOT/login&quot;);
+                //!!!Redirect都是get请求方式请求的
+                //上
+            &#125;
+        &#125; else &#123;
+            pw.write(&quot;&lt;html&gt;&lt;body&gt;&lt;h2&gt;请输入用户名!&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;&quot;);
+            pw.flush();
+            response.sendRedirect(&quot;/demo_web-1.0-SNAPSHOT/login&quot;);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@WebServlet(urlPatterns = &quot;/&quot;)
+public class mainsession extends HttpServlet &#123;  //Servlet类必须声明为public!!!这样才能被包外的tomcat JVM访问到！！！
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException &#123;
+        String name=(String) request.getSession().getAttribute(&quot;name&quot;);
+        response.setContentType(&quot;text/html&quot;);
+        response.setCharacterEncoding(&quot;UTF-8&quot;);
+        PrintWriter pw=response.getWriter();
+        pw.write(&quot;&lt;h1&gt;Welcome, &quot; + (name != null ? name : &quot;Guest&quot;) + &quot;&lt;/h1&gt;&quot;);
+        if (name == null) &#123;
+            // 未登录，显示登录链接:
+            pw.write(&quot;&lt;p&gt;&lt;a href=\&quot;/demo_web-1.0-SNAPSHOT/login\&quot;&gt;Sign In&lt;/a&gt;&lt;/p&gt;&quot;);
+        &#125; else &#123;
+            // 已登录，显示登出链接:
+            pw.write(&quot;&lt;p&gt;&lt;a href=\&quot;/demo_web-1.0-SNAPSHOT/signout\&quot;&gt;Sign Out&lt;/a&gt;&lt;/p&gt;&quot;);  //a标签默认是发送get请求
+        &#125;
+        pw.flush();
+    &#125;
+
+&#125;
+</code></pre>
+<pre><code class="java">import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+
+@WebServlet(urlPatterns = &quot;/signout&quot;)
+public class signoutServlet extends HttpServlet &#123;
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException &#123;
+        // 从HttpSession移除用户名:
+        request.getSession().removeAttribute(&quot;user&quot;);
+        response.sendRedirect(&quot;/demo_web-1.0-SNAPSHOT/login&quot;);
+    &#125;
+
+&#125;
+</code></pre>
+<pre><code class="jsp">&lt;%--
+  Created by IntelliJ IDEA.
+  User: 徐昊岩
+  Date: 2023/11/19
+  Time: 13:07
+  To change this template use File | Settings | File Templates.
+--%&gt;
+&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Hello-jsp!&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p&gt;
+    &lt;%@ page import=&quot;java.io.*&quot; %&gt;
+    &lt;%@ page import=&quot;java.time.LocalDateTime&quot; %&gt;
+    &lt;%= &quot;Time is&quot;     %&gt;
+    &lt;span style=&quot;color:red&quot;&gt;
+    &lt;% LocalDateTime s =LocalDateTime.now(); %&gt;
+    &lt;%= s %&gt;
+        &lt;%= s.toLocalDate() %&gt;
+        &lt;%= s.toLocalTime() %&gt;
+    &lt;/span&gt;
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2023/11/19/java%E5%AD%A6%E4%B9%A0(cookie%E3%80%81session%E3%80%81JSP%E4%B8%8EMVC)/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/11/18/java(web%E7%BC%96%E7%A8%8B%E3%80%81servlet%E4%B8%8Etomcat)/">
         <h2 class="post-title"></h2>
     </a>
@@ -569,36 +750,6 @@ public class UDP_client &#123;
         
     </div>
     <a href="/2023/11/04/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98(bit%E6%9D%AF%E9%A2%983)+java%E5%AD%A6%E4%B9%A0/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/11/04/java%E6%B3%9B%E5%9E%8B+%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/4
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="java泛型-深度学习"><a href="#java泛型-深度学习" class="headerlink" title="java泛型+深度学习"></a>java泛型+深度学习</h1><h2 id="jvav泛型"><a href="#jvav泛型" class="headerlink" title="jvav泛型"></a>jvav泛型</h2>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2023/11/04/java%E6%B3%9B%E5%9E%8B+%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="go-post">阅读全文</a>
 </div>
 
 
