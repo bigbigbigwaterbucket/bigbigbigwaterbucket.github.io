@@ -1,0 +1,374 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title> | 天机工程</title>
+    <meta name="author" content="bigbigbigwaterbucket" />
+    <meta name="description" content="科技不是一题一解的死板学识，而是令我们超凡脱俗的产物。" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>天机工程</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;天机工程</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1></h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/20
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="每日三题-用栈实现队列-用队列实现栈-有效的括号"><a href="#每日三题-用栈实现队列-用队列实现栈-有效的括号" class="headerlink" title="每日三题(用栈实现队列&#x2F;用队列实现栈+有效的括号)"></a>每日三题(用栈实现队列&#x2F;用队列实现栈+有效的括号)</h1><p>好久没写算法了，狠狠复健一下</p>
+<span id="more"></span>
+
+<pre><code class="c++">//用两个栈实现队列/用两个队列实现栈：我的解法异曲同工，都是把另一个容器当作临时存储空间来调整主容器的顺序
+// Created by 徐昊岩 on 2023/11/20.
+//有效的括号，一眼栈，秒了
+#include &quot;bits/stdc++.h&quot;
+using namespace std;
+class MyQueue &#123;
+public:
+    stack&lt;int&gt; stack_main;
+    stack&lt;int&gt; stack_temp;
+    MyQueue() &#123;
+
+    &#125;
+
+    void push(int x) &#123;
+        if(stack_main.empty())&#123;
+            stack_main.emplace(x);
+        &#125; else&#123;
+            while (!stack_main.empty()) &#123;
+                stack_temp.emplace(stack_main.top());
+                stack_main.pop();
+            &#125;
+            stack_main.emplace(x);
+            while (!stack_temp.empty())&#123;
+                stack_main.emplace(stack_temp.top());
+                stack_temp.pop();
+            &#125;
+        &#125;
+
+    &#125;
+
+    int pop() &#123;
+        int a =stack_main.top();
+        stack_main.pop();
+        return a;
+    &#125;
+
+    int peek() &#123;
+        return stack_main.top();
+    &#125;
+
+    bool empty() &#123;
+        return stack_main.empty();
+    &#125;
+&#125;;
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue* obj = new MyQueue();
+ * obj-&gt;push(x);
+ * int param_2 = obj-&gt;pop();
+ * int param_3 = obj-&gt;peek();
+ * bool param_4 = obj-&gt;empty();
+ */
+
+class MyStack &#123;
+public:
+    queue&lt;int&gt; queue_main;
+    queue&lt;int&gt; queue_temp;
+    MyStack() &#123;
+
+    &#125;
+
+    void push(int x) &#123;
+        if(queue_main.empty())&#123;
+            queue_main.emplace(x);
+        &#125;else &#123;
+            while (!queue_main.empty())&#123;
+                queue_temp.emplace(queue_main.front());
+                queue_main.pop();
+            &#125;
+            queue_main.emplace(x);
+            while (!queue_temp.empty())&#123;
+                queue_main.emplace(queue_temp.front());
+                queue_temp.pop();
+            &#125;
+        &#125;
+    &#125;
+
+    int pop() &#123;
+        int a=queue_main.front();
+        queue_main.pop();
+        return a;
+    &#125;
+
+    int top() &#123;
+        return queue_main.front();
+    &#125;
+
+    bool empty() &#123;
+        return queue_main.empty();
+    &#125;
+&#125;;
+
+class Solution &#123;
+public:
+    bool isValid(string s) &#123;
+        if(s.size()%2!=0) return false;
+        stack&lt;char&gt; stack;
+        for(char c:s)&#123;
+            if(c==&#39;(&#39;||c==&#39;[&#39;||c==&#39;&#123;&#39; ) stack.emplace(c);
+            else&#123;
+                if(stack.size()&lt;1) return false;
+                else&#123;
+                    char right=stack.top();
+                    switch (c) &#123;
+                        case &#39;)&#39;:
+                            if(right==&#39;(&#39;) stack.pop();
+                            else return false;
+                            break;
+                        case &#39;]&#39;:
+                            if(right==&#39;[&#39;) stack.pop();
+                            else return false;
+                            break;
+                        case &#39;&#125;&#39;:
+                            if(right==&#39;&#123;&#39;) stack.pop();
+                            else return false;
+                            break;
+
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
+
+        return stack.size() == 0;
+    &#125;
+&#125;;
+
+/**
+ * Your MyStack object will be instantiated and called as such:
+ * MyStack* obj = new MyStack();
+ * obj-&gt;push(x);
+ * int param_2 = obj-&gt;pop();
+ * int param_3 = obj-&gt;top();
+ * bool param_4 = obj-&gt;empty();
+ */
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 天机工程
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;bigbigbigwaterbucket
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+<script
+    src="https://giscus.app/client.js"
+    data-repo="bigbigbigwaterbucket/bigbigbigwaterbucket.github.io"
+    data-repo-id="R_kgDOKFcnSw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKFcnS84CaIBo"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="https://static-argvchs.netlify.app/css/giscus.css"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
+
+
+
+
+
+    
+</body>
+</html>
