@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title> | 天机工程</title>
+    <meta name="author" content="bigbigbigwaterbucket" />
+    <meta name="description" content="科技不是一题一解的死板学识，而是令我们超凡脱俗的产物。" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>天机工程</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;天机工程</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1></h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/21
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="每日二题-删除相邻重复项、逆波兰表达式"><a href="#每日二题-删除相邻重复项、逆波兰表达式" class="headerlink" title="每日二题(删除相邻重复项、逆波兰表达式)"></a>每日二题(删除相邻重复项、逆波兰表达式)</h1><h1 id="1047-删除字符串中的所有相邻重复项"><a href="#1047-删除字符串中的所有相邻重复项" class="headerlink" title="1047. 删除字符串中的所有相邻重复项"></a>1047. 删除字符串中的所有相邻重复项</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-all-adjacent-duplicates-in-string/">力扣题目链接(opens new window)</a></p>
+<p>给出由小写字母组成的字符串 S，重复项删除操作会选择两个相邻且相同的字母，并删除它们。</p>
+<span id="more"></span>
+
+<p>在 S 上反复执行重复项删除操作，直到无法继续删除。</p>
+<p>在完成所有重复项删除操作后返回最终的字符串。答案保证唯一。</p>
+<p>示例：</p>
+<ul>
+<li>输入：”abbaca”</li>
+<li>输出：”ca”</li>
+<li>解释：例如，在 “abbaca” 中，我们可以删除 “bb” 由于两字母相邻且相同，这是此时唯一可以执行删除操作的重复项。之后我们得到字符串 “aaca”，其中又只有 “aa” 可以执行重复项删除操作，所以最后的字符串为 “ca”。</li>
+</ul>
+<p>提示：</p>
+<ul>
+<li><p>1 &lt;&#x3D; S.length &lt;&#x3D; 20000</p>
+</li>
+<li><p>S 仅由小写英文字母组成。</p>
+<h1 id="150-逆波兰表达式求值"><a href="#150-逆波兰表达式求值" class="headerlink" title="150. 逆波兰表达式求值"></a>150. 逆波兰表达式求值</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/evaluate-reverse-polish-notation/">力扣题目链接(opens new window)</a></p>
+<p>根据 逆波兰表示法，求表达式的值。</p>
+<p>有效的运算符包括 + , - , * , &#x2F; 。每个运算对象可以是整数，也可以是另一个逆波兰表达式。</p>
+<p>说明：</p>
+<p>整数除法只保留整数部分。 给定逆波兰表达式总是有效的。换句话说，表达式总会得出有效数值且不存在除数为 0 的情况。</p>
+<p>示例 1：</p>
+<ul>
+<li>输入: [“2”, “1”, “+”, “3”, “ * “]</li>
+<li>输出: 9</li>
+<li>解释: 该算式转化为常见的中缀算术表达式为：((2 + 1) * 3) &#x3D; 9</li>
+</ul>
+<p>示例 2：</p>
+<ul>
+<li>输入: [“4”, “13”, “5”, “&#x2F;“, “+”]</li>
+<li>输出: 6</li>
+<li>解释: 该算式转化为常见的中缀算术表达式为：(4 + (13 &#x2F; 5)) &#x3D; 6</li>
+</ul>
+<p>示例 3：</p>
+<ul>
+<li><p>输入: [“10”, “6”, “9”, “3”, “+”, “-11”, “ * “, “&#x2F;“, “ * “, “17”, “+”, “5”, “+”]</p>
+</li>
+<li><p>输出: 22</p>
+</li>
+<li><p>解释:该算式转化为常见的中缀算术表达式为：</p>
+<pre><code class="text">((10 * (6 / ((9 + 3) * -11))) + 17) + 5       
+= ((10 * (6 / (12 * -11))) + 17) + 5       
+= ((10 * (6 / -132)) + 17) + 5     
+= ((10 * 0) + 17) + 5     
+= (0 + 17) + 5    
+= 17 + 5    
+= 22    
+</code></pre>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7</p>
+</li>
+</ul>
+<p>逆波兰表达式：是一种后缀表达式，所谓后缀就是指运算符写在后面。</p>
+<p>平常使用的算式则是一种中缀表达式，如 ( 1 + 2 ) * ( 3 + 4 ) 。</p>
+<p>该算式的逆波兰表达式写法为 ( ( 1 2 + ) ( 3 4 + ) * ) 。</p>
+<p>逆波兰表达式主要有以下两个优点：</p>
+<ul>
+<li>去掉括号后表达式无歧义，上式即便写成 1 2 + 3 4 + * 也可以依据次序计算出正确结果。</li>
+<li>适合用栈操作运算：遇到数字则入栈；遇到运算符则取出栈顶两个数字进行计算，并将结果压入栈中。</li>
+</ul>
+</li>
+</ul>
+<pre><code>//
+// Created by 徐昊岩 on 2023/11/21.
+//
+#include &quot;bits/stdc++.h&quot;
+using namespace std;
+class Solution &#123;
+public:
+    string removeDuplicates(string s) &#123;
+        stack&lt;char&gt; stack;
+        for(char ch:s)&#123;
+            if(stack.empty()) stack.emplace(ch);
+            else&#123;
+                char last=stack.top();
+                if(last==ch) stack.pop();
+                else stack.emplace(ch);
+            &#125;
+        &#125;
+        string s2;
+        while (!stack.empty())&#123;
+            s2+=stack.top();
+            stack.pop();
+        &#125;
+        std::reverse(s2.begin(), s2.end());
+        return s2;
+    &#125;
+&#125;;
+class Solution2 &#123;
+public:
+    string removeDuplicates(string s) &#123;
+        s.insert(0,&quot;A&quot;);
+        for(int i=1;i&lt;s.size();i++)&#123;
+            if(s[i]==s[i-1])&#123;
+                s.erase(i-1,2);  //调用函数时要考虑其内部实现！这一步很耗时！！！
+                i-=1;
+            &#125;
+        &#125;
+        return string (s.begin()+1,s.end());
+    &#125;
+&#125;;
+class Solution3 &#123;
+public:
+    int evalRPN(vector&lt;string&gt;&amp; tokens) &#123;
+        stack&lt;int&gt; stack;
+        int a,b;
+        for(string s:tokens)&#123;
+            if(&#39;0&#39;&lt;=s[0]&amp;&amp;s[0]&lt;=&#39;9&#39;)&#123;
+                int num=0,i=0;
+                for(char ch:s)&#123;
+                    num+=num* pow(10,i++)+ch-&#39;0&#39;;
+                &#125;
+                stack.emplace(num);
+            &#125;
+
+            switch (s[0]) &#123;
+                case &#39;+&#39;:
+                    a=stack.top();
+                    stack.pop();
+                    b=stack.top();
+                    stack.pop();
+                    stack.emplace(a+b);
+                    break;
+                case &#39;-&#39;:
+                    a=stack.top();
+                    stack.pop();
+                    b=stack.top();
+                    stack.pop();
+                    stack.emplace(b-a);
+                    break;
+                case &#39;*&#39;:
+                    a=stack.top();
+                    stack.pop();
+                    b=stack.top();
+                    stack.pop();
+                    stack.emplace(a*b);
+                    break;
+                case &#39;/&#39;:
+                    a=stack.top();
+                    stack.pop();
+                    b=stack.top();
+                    stack.pop();
+                    stack.emplace(b/a);
+                    break;
+                
+            &#125;
+        &#125;
+    &#125;
+&#125;;
+
+class Solution4 &#123;  //建议直接拼成一整个长字符串
+public:
+    int evalRPN(vector&lt;string&gt;&amp; tokens) &#123;
+        stack&lt;int&gt; stack;
+        string main;
+        int a,b;
+        for(string s:tokens)&#123;
+            main.append(s.begin(),s.end());
+        &#125;
+        for(int i=0;i&lt;main.size();i++)&#123;
+            if(&#39;0&#39;&lt;=main[i]&amp;&amp;main[i]&lt;=&#39;9&#39;)&#123;
+                int num=0,o=0;
+                while (&#39;0&#39;&lt;=main[i]&amp;&amp;main[i]&lt;=&#39;9&#39;)&#123;
+                    num+=num* pow(10,o++)+main[i]-&#39;0&#39;;
+                    i++;
+                &#125;
+                stack.emplace(num);
+                i--;
+            &#125;else &#123;
+                switch (main[i]) &#123;
+                    case &#39;+&#39;:
+                        a = stack.top();
+                        stack.pop();
+                        b = stack.top();
+                        stack.pop();
+                        stack.emplace(a + b);
+                        break;
+                    case &#39;-&#39;:
+                        a = stack.top();
+                        stack.pop();
+                        b = stack.top();
+                        stack.pop();
+                        stack.emplace(b - a);
+                        break;
+                    case &#39;*&#39;:
+                        a = stack.top();
+                        stack.pop();
+                        b = stack.top();
+                        stack.pop();
+                        stack.emplace(a * b);
+                        break;
+                    case &#39;/&#39;:
+                        a = stack.top();
+                        stack.pop();
+                        b = stack.top();
+                        stack.pop();
+                        stack.emplace(b / a);
+                        break;
+
+                &#125;
+            &#125;
+        &#125;
+        return stack.top();
+    &#125;
+&#125;;
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 天机工程
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;bigbigbigwaterbucket
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+<script
+    src="https://giscus.app/client.js"
+    data-repo="bigbigbigwaterbucket/bigbigbigwaterbucket.github.io"
+    data-repo-id="R_kgDOKFcnSw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKFcnS84CaIBo"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="https://static-argvchs.netlify.app/css/giscus.css"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
+
+
+
+
+
+    
+</body>
+</html>
