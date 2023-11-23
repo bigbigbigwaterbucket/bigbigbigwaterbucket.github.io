@@ -167,6 +167,52 @@
         
 
 <div class="post">
+    <a href="/2023/10/29/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB%E7%9A%84%E7%90%90%E4%BA%8B/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8Enodejs/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/29
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>浏览器打开 HTML 文件时，默认情况下是将其作为静态文件进行展示，而不会执行其中的 JavaScript 代码。这是出于安全考虑的一种设计。</p>
+<p>浏览器在加载 HTML 文件时，会按照文件中的结构和标签来解析和渲染页面内容，包括文本、图像、链接等。但是，对于 JavaScript 代码，浏览器默认是不会自动执行的，因为恶意的 JavaScript 代码可能会对用户的计算机造成安全威胁。</p>
+<p>如果你希望在浏览器中执行 JavaScript 代码，有几种方法可以实现：</p>
+<ol>
+<li><p>在 HTML 文件中使用 <code>&lt;script&gt;</code> 标签：你可以在 HTML 文件中使用 <code>&lt;script&gt;</code> 标签来嵌入 JavaScript 代码。例如：</p>
+<p>htmlCopy Code</p>
+<p><code>&lt;script&gt;   // 这里是你的 JavaScript 代码 &lt;/script&gt;</code></p>
+<p>当浏览器解析到 <code>&lt;script&gt;</code> 标签时，会立即执行其中的 JavaScript 代码。</p>
+</li>
+<li><p>将 JavaScript 代码保存为外部文件并在 HTML 文件中引用：你可以将 JavaScript 代码保存为单独的 <code>.js</code> 文件，并在 HTML 文件中使用 <code>&lt;script&gt;</code> 标签来引用该文件。例如：</p>
+<p>htmlCopy Code</p>
+<p><code>&lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;</code></p>
+<p>浏览器在加载 HTML 文件时，会自动下载并执行引用的 JavaScript 文件。</p>
+</li>
+</ol>
+<p>无论采用哪种方法，确保 JavaScript 代码的执行是你期望的，并且来自可信任的来源，以确保安全性。</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2023/10/29/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB%E7%9A%84%E7%90%90%E4%BA%8B/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8Enodejs/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/10/29/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98(%E4%B8%89%E3%80%81%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C)+java%E5%AD%A6%E4%B9%A0/">
         <h2 class="post-title"></h2>
     </a>
@@ -438,38 +484,6 @@
         
     </div>
     <a href="/2023/10/20/%E6%AF%8F%E6%97%A51+1%E9%A2%98(%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4%E3%80%81%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8)+java%E5%AD%A6%E4%B9%A0/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/10/19/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98(%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9)+java%E5%AD%A6%E4%B9%A0/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/10/19
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="每日一题-删除链表的倒数第N个节点-java学习"><a href="#每日一题-删除链表的倒数第N个节点-java学习" class="headerlink" title="每日一题(删除链表的倒数第N个节点)+java学习"></a>每日一题(删除链表的倒数第N个节点)+java学习</h1><p>前言:看了下日期，上次写算法是2023.9.18，今天是2023.10.19，隔了差不多一个月(摆烂了一个月了)。笔者痛心疾首，打算开个每日总结栏目，记录并监督自己的算法与cs常规学习。</p>
-<p>不知道能坚持多久，如果以后有哪一天没写，希望原因是我似了(</p>
-<p>算法顺序来源于代码随想录<a target="_blank" rel="noopener" href="https://www.programmercarl.com/0019.%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE">代码随想录 (programmercarl.com)</a></p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2023/10/19/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98(%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9)+java%E5%AD%A6%E4%B9%A0/" class="go-post">阅读全文</a>
 </div>
 
 
