@@ -1,0 +1,964 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title> | 天机工程</title>
+    <meta name="author" content="bigbigbigwaterbucket" />
+    <meta name="description" content="科技不是一题一解的死板学识，而是令我们超凡脱俗的产物。" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>天机工程</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;天机工程</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1></h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/12/9
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="本周小结-cry"><a href="#本周小结-cry" class="headerlink" title="本周小结:cry:"></a>本周小结:cry:</h1><p>支原体感染是真猛啊，这周被疾病狠狠地折磨了:weary:，也狠狠地摆了一周，没咋学习课外内容(快要鸽爆了)，唯一认真写的是数据结构的实验，足足写了上百行C语言代码，是真的折磨啊！不过好在实验内容实现的还不错，记录一下！</p>
+<span id="more"></span>
+
+<h3 id="实验一"><a href="#实验一" class="headerlink" title="实验一"></a>实验一</h3><p>1、参照课本程序2.1～2.7，编写程序，完成顺序表的初始化、查找、插入、删除、输出、撤销等操作。</p>
+<p>2、已知带表头结点单链表的类型定义如下：</p>
+<p>typedef struct node</p>
+<p>{</p>
+<p>ElemType  element;  &#x2F;&#x2F;结点的数据域</p>
+<p>struct node *link;   &#x2F;&#x2F;结点的指针域</p>
+<p>}node;</p>
+<p>typedef struct </p>
+<p>{</p>
+<p>struct node * head;</p>
+<p>int n;</p>
+<p>}headerList;</p>
+<p>参照课本程序2.8～2.14，编写程序，完成带表头结点单链表的初始化、查找、插入、删除、输出、撤销等操作。</p>
+<p>3、已知带表头结点一元多项式的类型定义如下：</p>
+<p>typedef struct pNode</p>
+<p>{</p>
+<p>int coef;</p>
+<p>int exp;</p>
+<p>struct pNode* link;</p>
+<p>} pNode;</p>
+<p>typedef struct </p>
+<p>{</p>
+<p>struct pNode *head;</p>
+<p>} polynominal;</p>
+<p>编写程序实现一元多项式的创建、输出、撤销以及两个一元多项式相加和相乘的操作。</p>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+//1、顺序表操作实现
+typedef struct seqList&#123;
+    int n;
+    int maxlen;
+    int *element;
+&#125;SeqList;
+//线性表初始化
+int Init(SeqList *L,int mSize)&#123;
+    L-&gt;maxlen=mSize;
+    L-&gt;n=0;
+    L-&gt;element=(int *)malloc(sizeof(int)*mSize);
+    if(!L-&gt;element)
+        return 0;
+    return 1;
+&#125;
+//查找:给出下标查找元素
+int Find(SeqList L,int xiabiao,int *x)&#123;
+    if(xiabiao&lt;0||xiabiao&gt;L.n-1) return 0;
+    *x=L.element[xiabiao];
+    return 1;
+&#125;
+//插入:插入元素到指定下标i处
+int Insert(SeqList* L,int i,int x)&#123;
+    if(i&lt;-1||i&gt;L-&gt;n-1) return 0;
+    if(L-&gt;n==L-&gt;maxlen) return 0;
+    int j;
+    for(j=L-&gt;n-1;j&gt;i;j--)&#123;
+        L-&gt;element[j+1]=L-&gt;element[j];
+    &#125;
+    L-&gt;element[i+1]=x;
+    L-&gt;n++;
+    return 1;
+&#125;
+//删除:删除指定下标处的元素
+int Delete(SeqList L,int i)&#123;
+    if(i&lt;0||i&gt;L.n-1) return 0;
+    if(!L.n) return 0;
+    int j;
+    for(j=i;j&lt;L.n-1;j++)&#123;
+        L.element[j]=L.element[j+1];
+    &#125;
+    L.n--;
+    return 1;
+&#125;
+//输出:遍历线性表并逐个输出元素
+int Output(SeqList* L)&#123;
+    int i;
+    if(L-&gt;n==0) return 0;
+    for(int i=0;i&lt;L-&gt;n;i++)&#123;
+        printf(&quot;%d &quot;,L-&gt;element[i]);
+    &#125;
+    printf(&quot;\n&quot;);
+    return 1;
+&#125;
+//撤销:释放线性表的空间
+void Destory(SeqList *L)&#123;
+    L-&gt;n=0;
+    L-&gt;maxlen=0;
+    free(L-&gt;element);
+&#125;
+
+//2、链表操作实现
+typedef struct node
+&#123;
+    int  element;  //结点的数据域
+    struct node *link;     //结点的指针域
+&#125;node;
+typedef struct 
+&#123;
+    struct node * head;  //链表头指针
+    int n;
+&#125;headerList;
+//链表初始化
+int Init2(headerList *H)&#123;
+    H-&gt;head=NULL;
+    H-&gt;n=0;
+    return 1;
+&#125;
+//查找:给定指定元素位置，返回该元素
+int Find2(headerList* H,int i,int *x)&#123;
+    if(i&lt;0||i&gt;H-&gt;n-1) return 0;
+    int j;
+    node *p=H-&gt;head;
+    for(j=0;j&lt;i;j++) p=p-&gt;link;
+    *x=p-&gt;element;
+    return 1;
+&#125;
+//插入:在指定位置i插入元素
+int Insert2(headerList* H,int i,int x)&#123;
+    if(i&lt;-1||i&gt;H-&gt;n-1) return 0;
+    int j;
+    node* p=H-&gt;head;
+    for(j=0;j&lt;i;j++) p=p-&gt;link;
+    node* q=(node*)malloc(sizeof(node));
+    q-&gt;element=x;
+    if(i&gt;-1)&#123;
+        q-&gt;link=p-&gt;link;
+        p-&gt;link=q;
+    &#125;else&#123;
+        q-&gt;link=H-&gt;head;
+        H-&gt;head=q;
+    &#125;
+    H-&gt;n++;
+    return 1;
+&#125;
+//删除:删除指定位置i处的元素
+int Delete2(headerList* H,int i)&#123;
+    if(i&lt;0||i&gt;H-&gt;n-1) return 0;
+    if(H-&gt;n==0) return 0;
+    int j;
+    node *p=H-&gt;head;
+    node *q=H-&gt;head; //也要指定初始指向，因为如果i==0，则要free(q)!
+    for(j=0;j&lt;i-1;j++) p=p-&gt;link;
+    if(i==0)&#123; //删除头节点的情况，也是列表里只有一个元素的情况(只有一个元素就是头结点，只能删头结点)
+        H-&gt;head=H-&gt;head-&gt;link;
+    &#125;else &#123;
+        q=p-&gt;link;
+        p-&gt;link=q-&gt;link;
+    &#125;
+    free(q);
+    H-&gt;n--;
+    return 1;
+&#125;
+//输出:遍历链表并逐个输出元素
+int Output2(headerList* H)&#123;
+    if(!H-&gt;n) return 0;
+    node *p=H-&gt;head;
+    int i=0;
+    while(i&lt;H-&gt;n)&#123;
+        printf(&quot;%d &quot;,p-&gt;element);
+        p=p-&gt;link;
+        i++;
+    &#125;
+    return 1;
+&#125;
+//删除:逐个释放链表结点空间
+void Destory2(headerList* H)&#123;
+    node *p=H-&gt;head;
+    node *q;
+    while(p)&#123;
+        q=p;
+        p=p-&gt;link;
+        free(q);
+    &#125;
+&#125;
+//3、多项式操作实现
+typedef struct pNode
+&#123;
+int coef;
+int exp;
+struct pNode* link;
+&#125; pNode;
+typedef struct 
+&#123;
+struct pNode *head;
+&#125; polynominal;
+//创建多项式：不断接收输入的系数和次幂
+void Create(polynominal *p)&#123;
+    pNode *pn,*pre,*q;
+    p-&gt;head=(pNode*)malloc(sizeof(pNode));
+    p-&gt;head-&gt;exp=-1;
+    p-&gt;head-&gt;link=p-&gt;head;
+    printf(&quot;\n Create a p:\n&quot;);
+    for(;;)&#123;
+        pn=(pNode*)malloc(sizeof(pNode));
+        printf(&quot;coef:\n&quot;);
+        scanf(&quot;%d&quot;,&amp;pn-&gt;coef);
+        printf(&quot;exp:ends with -1\n&quot;);
+        scanf(&quot;%d&quot;,&amp;pn-&gt;exp);
+        if(pn-&gt;exp&lt;0) break;
+        pre=p-&gt;head;
+        q=p-&gt;head-&gt;link;
+        while(q&amp;&amp;q-&gt;exp&gt;pn-&gt;exp)&#123; //遍历，直到当前pn的指数大于q指针结点的指数
+            pre=q;
+            q=q-&gt;link;
+        &#125;
+        pn-&gt;link=q;
+        pre-&gt;link=pn;
+    &#125;
+    
+&#125;
+//撤销:释放多项式的空间
+void Destory3(polynominal *p)&#123;
+    if(p-&gt;head-&gt;link-&gt;exp==-1) free(p-&gt;head);
+    else&#123;
+        pNode *pnow=p-&gt;head-&gt;link-&gt;link;
+        pNode *pre=p-&gt;head-&gt;link;
+        while(pnow-&gt;exp!=-1)&#123;
+            free(pre);
+            pre=p;
+            pnow=pnow-&gt;link;
+        &#125;
+        free(pre);
+        free(pnow);
+    &#125;
+&#125;
+//输出:输出多项式
+int Output3(polynominal *p)&#123;
+    pNode *q;
+    q=p-&gt;head;
+    q=q-&gt;link;
+    while(q-&gt;exp!=-1)&#123;
+        printf(&quot;(%dx^%d)&quot;,q-&gt;coef,q-&gt;exp);
+        q=q-&gt;link;
+        if(q-&gt;exp!=-1) printf(&quot; + &quot;);
+    &#125;
+    printf(&quot;\n&quot;);
+&#125;
+//多项式相加:次幂相同的系数相加，存储到q中
+void Add(polynominal *px,polynominal *qx)&#123;
+    pNode *q,*ql=qx-&gt;head,*p,*pl,*temp;
+    p=px-&gt;head-&gt;link;
+    q=ql-&gt;link;
+    while(p-&gt;exp&gt;=0)&#123;
+        while(p-&gt;exp&lt;q-&gt;exp)&#123;
+            ql=q;     //ql与q一同前进一格
+            q=q-&gt;link;
+        &#125;
+        if(p-&gt;exp==q-&gt;exp)&#123;
+            q-&gt;coef=q-&gt;coef+p-&gt;coef;
+            if(q-&gt;coef==0)&#123;
+                ql-&gt;link=q-&gt;link;  //删除q
+                free(q);        //释放q空间
+                q=ql-&gt;link;    //重置q,使其仍指向ql下一个
+                p=p-&gt;link;
+            &#125;
+            else&#123;
+                ql=q;
+                q=q-&gt;link;
+                p=p-&gt;link;
+            &#125;
+        
+        &#125;
+        else&#123;   //p-&gt;exp&gt;q-&gt;exp情况,这时要用p创建一个结点插到q表达式里，且插在q当前指向的上一个结点也就是ql后面
+            temp=(pNode*)malloc(sizeof(pNode));
+            temp-&gt;coef=p-&gt;coef;
+            temp-&gt;exp=p-&gt;exp;
+            temp-&gt;link=ql-&gt;link;
+            ql-&gt;link=temp;
+            //插完后前进
+            ql=ql-&gt;link;
+            p=p-&gt;link;
+
+        &#125;
+        
+    &#125;
+
+&#125;
+//加减运算都一样，每次都比较出较大次幂的(因为要降幂排列)，然后计算
+void subtract(polynominal *px,polynominal *qx)&#123;
+    pNode *q,*ql=qx-&gt;head,*p,*pl,*temp;
+    p=px-&gt;head-&gt;link;
+    q=ql-&gt;link;
+    while(p-&gt;exp&gt;=0)&#123;
+        while(p-&gt;exp&lt;q-&gt;exp)&#123;
+            q-&gt;coef=-q-&gt;coef;
+            ql=q;     //ql与q一同前进一格
+            q=q-&gt;link;
+        &#125;
+        if(p-&gt;exp==q-&gt;exp)&#123;
+            q-&gt;coef=p-&gt;coef-q-&gt;coef;
+            if(q-&gt;coef==0)&#123;
+                ql-&gt;link=q-&gt;link;  //删除q
+                free(q);        //释放q空间
+                q=ql-&gt;link;    //重置q,使其仍指向ql下一个
+                p=p-&gt;link;
+            &#125;
+            else&#123;
+                ql=q;
+                q=q-&gt;link;
+                p=p-&gt;link;
+            &#125;
+        
+        &#125;
+        else&#123;   //p-&gt;exp&gt;q-&gt;exp情况,这时要用p创建一个结点插到q表达式里，且插在q当前指向的上一个结点也就是ql后面
+            temp=(pNode*)malloc(sizeof(pNode));
+            temp-&gt;coef=p-&gt;coef;
+            temp-&gt;exp=p-&gt;exp;
+            temp-&gt;link=ql-&gt;link;
+            ql-&gt;link=temp;
+            //插完后前进
+            ql=ql-&gt;link;
+            p=p-&gt;link;
+
+        &#125;
+    &#125;
+    while(q-&gt;exp&gt;=0)&#123;
+        q-&gt;coef=-q-&gt;coef;
+        q=q-&gt;link;
+    &#125;
+&#125;
+//多项式相乘:主循环遍历p2多项式，分别于p1各项相乘，相乘完后再合并系数相同的次幂
+void multiply(polynominal *p1,polynominal *p2,polynominal *p3)&#123;
+    p3-&gt;head=(pNode*)malloc(sizeof(pNode));
+    p3-&gt;head-&gt;exp=-1;
+    pNode *pre3=p3-&gt;head;
+    pNode *pmain=p2-&gt;head-&gt;link;
+    while(pmain-&gt;exp&gt;=0)&#123;  //主循环遍历p2多项式
+        pNode *psec=p1-&gt;head-&gt;link;
+        while(psec-&gt;exp&gt;=0)&#123; //次循环遍历p1多项式，分别于pmain当前所指相乘
+            pNode *temp=(pNode*)malloc(sizeof(pNode));
+            temp-&gt;coef=pmain-&gt;coef*psec-&gt;coef;
+            temp-&gt;exp=pmain-&gt;exp+psec-&gt;exp;
+            pre3-&gt;link=temp;
+            pre3=pre3-&gt;link;
+            psec=psec-&gt;link;
+        &#125;
+        pmain=pmain-&gt;link;
+    &#125;
+    pre3-&gt;link=p3-&gt;head;
+    //接下来去掉乘完后重复的次幂
+    pre3=p3-&gt;head-&gt;link;
+    pNode *pp3=pre3-&gt;link;
+    while(pp3-&gt;exp&gt;=0)&#123;
+        if(pp3-&gt;exp==pre3-&gt;exp)&#123;
+            pre3-&gt;coef=pre3-&gt;coef+pp3-&gt;coef;
+            pre3-&gt;link=pp3-&gt;link;
+            //相等就只需要pp3前进
+            pp3=pp3-&gt;link;
+            continue;
+        &#125;
+        pre3=pre3-&gt;link;
+        pp3=pp3-&gt;link;
+    &#125;
+&#125;
+
+int main() &#123;
+    //线性表测试
+    int i;
+    SeqList list;
+    Init(&amp;list,10);
+    for(i=0;i&lt;list.maxlen;i++)&#123;
+        Insert(&amp;list,i-1,i);
+    &#125;
+    Output(&amp;list);
+    int x;
+    Find(list,2,&amp;x);
+    printf(&quot;Finding list[2]:%d&quot;,x);
+    Destory(&amp;list);
+    //链表测试
+    headerList H;
+    Init2(&amp;H);
+    for(i=0;i&lt;9;i++)&#123;
+        Insert2(&amp;H,i-1,i+2);
+    &#125;
+    printf(&quot;\n&quot;);
+    Output2(&amp;H);
+    Delete2(&amp;H,0);
+    printf(&quot;\nAfter deleting list[0]:\n&quot;);
+    Output2(&amp;H);
+    Insert2(&amp;H,2,99);
+    printf(&quot;\nAfter inserting 99 at list[3]:\n&quot;);
+    Output2(&amp;H);
+    Find2(&amp;H,1,&amp;x);
+    printf(&quot;\nFinding list[1]:%d&quot;,x);
+    Destory2(&amp;H);
+    //多项式测试
+    polynominal p1;
+    polynominal p2;
+    polynominal p3;
+    Create(&amp;p1);
+    Create(&amp;p2);
+    Output3(&amp;p1);
+    Output3(&amp;p2);
+    printf(&quot;p1*p2=\n&quot;);
+    multiply(&amp;p1,&amp;p2,&amp;p3);
+    Output3(&amp;p3);
+    printf(&quot;p1+p2=\n&quot;);
+    Add(&amp;p1,&amp;p2);
+    Output3(&amp;p2);
+    // Destory3(&amp;p1);
+    // Destory3(&amp;p2);
+    return 0;
+&#125;
+</code></pre>
+<h3 id="实验二"><a href="#实验二" class="headerlink" title="实验二"></a>实验二</h3><p>1、已知二叉树二叉链表结点结构定义如下：</p>
+<p>typedef struct btnode{ </p>
+<p> ElemType element；</p>
+<p> struct btnode *lChild；</p>
+<p>struct btnode *rChild；</p>
+<p>}BTNode；</p>
+<p>参照程序 5.1～5.4，编写程序，完成二叉树的先序创建、先序遍历、中序遍历、后序遍历等操作。</p>
+<p>2、以第１题所示二叉链表为存储结构，编写程序实现求二叉树结点个数、叶子结点个数、二叉树的高度以及交换二叉树所有左右子树的操作。</p>
+<p>3、已知哈夫曼树结点结构定义如下：</p>
+<p>typedef struct hfmTNode{ </p>
+<p>ElementType element; &#x2F;&#x2F;结点的数据域</p>
+<p>int w; &#x2F;&#x2F;结点的权值</p>
+<p>struct hfmTNode *lChild; &#x2F;&#x2F;结点的左孩子指针</p>
+<p>struct hfmTNode *rChild; &#x2F;&#x2F;结点的右孩子指针</p>
+<p>}HFMTNode; </p>
+<p>编写程序，实现哈夫曼树的创建、哈夫曼编码以及解码的实现。</p>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+//1、二叉树结点定义与基本操作
+typedef struct btnode&#123; 
+    int element;
+    struct btnode *lChild;
+    struct btnode *rChild;
+&#125;BTNode;
+//先序遍历
+void preorder_traversal(BTNode* node)&#123;
+    if(!node) return;
+    printf(&quot;%d&quot;,node-&gt;element);
+    preorder_traversal(node-&gt;lChild);
+    preorder_traversal(node-&gt;rChild);
+&#125;
+//中序遍历
+void inorder_traversal(BTNode* node)&#123;
+    if(!node) return;
+    inorder_traversal(node-&gt;lChild);
+    printf(&quot;%d&quot;,node-&gt;element);
+    inorder_traversal(node-&gt;rChild);
+&#125;
+//后序遍历
+void postorder_traversal(BTNode* node)&#123;
+    if(!node) return;
+    postorder_traversal(node-&gt;lChild);
+    postorder_traversal(node-&gt;rChild);
+    printf(&quot;%d&quot;,node-&gt;element);
+&#125;
+
+//先序创建：通过递归先序创建二叉树
+BTNode* PreCreateBT(BTNode *t)&#123;
+    char ch;
+    ch=getchar();
+    if(ch==&#39;#&#39;)&#123; //建立空树
+        t=NULL;
+    &#125;else&#123;
+        t=(BTNode*)malloc(sizeof(BTNode));
+        t-&gt;element=ch-&#39;0&#39;; //这里存储的是整数，因此用输入字符要减去&#39;0;
+        t-&gt;lChild=PreCreateBT(t-&gt;lChild);
+        t-&gt;rChild=PreCreateBT(t-&gt;rChild);
+
+    &#125;
+    return t;
+&#125;
+
+//2、二叉树关键特征结点数求解
+//求二叉树结点个数
+int TreeSize(BTNode* t)&#123;
+    if(!t) return 0;
+    else return TreeSize(t-&gt;lChild)+TreeSize(t-&gt;rChild)+1;
+&#125;
+//求二叉树叶子节点个数
+int LeafSize(BTNode* t)&#123;
+    int sum=0;
+    if(!t) return 0;
+    if(t-&gt;lChild==NULL&amp;&amp;t-&gt;rChild==NULL) &#123;
+        sum=1;
+        return sum;
+    &#125;
+    if(t-&gt;lChild&amp;&amp;!t-&gt;rChild)&#123;
+        return LeafSize(t-&gt;lChild);
+    &#125;
+    if(t-&gt;rChild&amp;&amp;!t-&gt;lChild)&#123;
+        return LeafSize(t-&gt;rChild);
+    &#125;
+    return LeafSize(t-&gt;lChild)+LeafSize(t-&gt;rChild)+sum;
+&#125;
+//求二叉树的高度
+//调用的时候复制sum和height为0,sum存储当前结点的高度，heigth为全局高度
+void TreeHeight(BTNode* t,int sum,int *height)&#123;
+    sum++;
+    if(sum&gt;*height) *height=sum;
+    if(t-&gt;rChild) TreeHeight(t-&gt;rChild,sum,height);
+    if(t-&gt;lChild) TreeHeight(t-&gt;lChild,sum,height);
+&#125;
+//交换二叉树所有左右子树
+void SwapTree(BTNode* t)&#123;
+    BTNode* temp;
+    if(t-&gt;lChild&amp;&amp;t-&gt;rChild)&#123;
+        temp=t-&gt;lChild;
+        t-&gt;lChild=t-&gt;rChild;
+        t-&gt;rChild=temp;
+        SwapTree(t-&gt;lChild);
+        SwapTree(t-&gt;rChild);
+    &#125;
+    if(!t-&gt;rChild&amp;&amp;t-&gt;lChild)&#123;
+        t-&gt;rChild=t-&gt;lChild;
+        t-&gt;lChild=NULL;
+        SwapTree(t-&gt;rChild);
+    &#125;
+    if(!t-&gt;lChild&amp;&amp;t-&gt;rChild)&#123;
+        t-&gt;lChild=t-&gt;rChild;
+        t-&gt;rChild=NULL;
+        SwapTree(t-&gt;lChild);
+    &#125;
+&#125;
+
+//3、哈夫曼树构建与哈夫曼编码
+typedef struct hfmTNode&#123;
+    int element;
+    int w;
+    struct hfmTNode *lChild;
+    struct hfmTNode *rChild;
+&#125;HFMTNode;
+//先序遍历哈夫曼树
+void preorder_traversal_hfm(HFMTNode* node)&#123;
+    if(!node) return;
+    printf(&quot;%d &quot;,node-&gt;w);
+    preorder_traversal_hfm(node-&gt;lChild);
+    preorder_traversal_hfm(node-&gt;rChild);
+&#125;
+//向上调整用于处理新加入的元素
+void Adjustup(HFMTNode** heap,int current)&#123;
+    int p=current;
+    HFMTNode* temp;
+    while (p&gt;0)
+    &#123;
+        if(heap[p]-&gt;w&lt;heap[(p-1)/2]-&gt;w)&#123;
+            temp=heap[p];
+            heap[p]=heap[(p-1)/2];
+            heap[(p-1)/2]=temp;
+            p=(p-1)/2;
+        &#125;
+        else
+            break;
+    &#125;
+&#125;
+
+//向下调整用于处理要移除的元素
+void AdjustDown(HFMTNode** heap,int current,int border)&#123;
+    int p=current;
+    HFMTNode* temp;
+    int minChild;
+    while (2*p+1&lt;=border)
+    &#123;
+        if((2*p+2)&amp;&amp;(heap[2*p+1]-&gt;w&gt;heap[2*p+2]-&gt;w))
+            minChild=2*p+2;
+        else
+            minChild=2*p+1;
+        if(heap[p]-&gt;w&lt;=heap[minChild]-&gt;w) break;
+        else&#123;
+            temp=heap[p];
+            heap[p]=heap[minChild];
+            heap[minChild]=temp;
+            p=minChild;
+        &#125;
+    &#125;
+&#125;
+//定义优先权队列，用来构建哈夫曼树
+typedef struct priorityQueue
+&#123;
+    HFMTNode** elements;
+    int n;
+    int maxsize;
+&#125;PriorityQueue;
+//创建优先权队列
+void CreatPQ(PriorityQueue *PQ,int msize)&#123;
+    PQ-&gt;maxsize=msize;
+    PQ-&gt;n=0;
+    PQ-&gt;elements=(HFMTNode**)malloc(msize*sizeof(HFMTNode*));
+&#125;
+//判断优先权队列是否已满
+int IsFull(PriorityQueue *PQ)&#123;
+    if(PQ-&gt;n==PQ-&gt;maxsize)&#123;
+        return 1;
+    &#125;else&#123;
+        return 0;
+    &#125;
+&#125;
+//向优先权队列中添加哈夫曼树结点
+void Append(PriorityQueue *PQ,HFMTNode* x)&#123;
+    if(IsFull(PQ)) return;
+    PQ-&gt;elements[PQ-&gt;n]=x;
+    PQ-&gt;n++;
+    Adjustup(PQ-&gt;elements,PQ-&gt;n-1);
+&#125;
+//取出优先权队列最前面的结点，即权重最小的结点
+HFMTNode* Serve(PriorityQueue *PQ)&#123;
+    //return空值
+    if(PQ-&gt;n==0) return;
+    HFMTNode* x=PQ-&gt;elements[0];
+    PQ-&gt;n--;
+    PQ-&gt;elements[0]=PQ-&gt;elements[PQ-&gt;n];
+    AdjustDown(PQ-&gt;elements,0,PQ-&gt;n-1);
+    return x;
+&#125;
+//创建哈夫曼树结点
+void MakeTree(HFMTNode *x,int w,HFMTNode* lchild,HFMTNode* rchild)&#123;
+    x-&gt;w=w;
+    x-&gt;lChild=lchild;
+    x-&gt;rChild=rchild;
+&#125;
+//创建哈夫曼树
+HFMTNode* CreateHFMTree(PriorityQueue *PQ,int w[],int m)&#123;
+    HFMTNode *x=(HFMTNode*)malloc(sizeof(HFMTNode)),*y=(HFMTNode*)malloc(sizeof(HFMTNode));
+    CreatPQ(PQ,m);
+    for(int i=0;i&lt;m;i++)&#123;
+        HFMTNode *temp=(HFMTNode*)malloc(sizeof(HFMTNode));
+        MakeTree(temp,w[i],NULL,NULL);
+        Append(PQ,temp);
+    &#125;
+    while (PQ-&gt;n&gt;1)
+    &#123;
+        x=Serve(PQ);
+        y=Serve(PQ);
+        HFMTNode *z=(HFMTNode*)malloc(sizeof(HFMTNode));
+        if(x-&gt;w&lt;y-&gt;w)&#123;
+            MakeTree(z,x-&gt;w+y-&gt;w,x,y);
+        &#125;else MakeTree(z,x-&gt;w+y-&gt;w,y,x);
+        Append(PQ,z);
+        
+    &#125;
+    x=Serve(PQ);
+    return x;
+    
+&#125;
+//哈夫曼编码
+int hfm_encoding(HFMTNode* node,char* string,int i,char code)&#123;
+    string[i]=code;
+    i++;
+
+    int o;
+    char* string1=(char*)malloc(10*sizeof(char));
+    for(o=0;o&lt;10;o++)&#123;
+        string1[o]=string[o];
+    &#125;
+    char* string2=(char*)malloc(10*sizeof(char));
+    for(o=0;o&lt;10;o++)&#123;
+        string2[o]=string[o];
+    &#125;
+    if(!node) return 0;
+    if(!node-&gt;lChild&amp;&amp;!node-&gt;rChild) &#123;
+        printf(&quot;encoding of weight %d :&quot;,node-&gt;w);
+        for(o=0;o&lt;i;o++)&#123;
+            printf(&quot;%c&quot;,string[o]);
+        &#125;
+        printf(&quot;\n&quot;);
+        return 0;
+    &#125;
+    //递归传递字符，如果是左子树则传入‘0’，右子树传入‘1’，并继承当前分支的编码结果
+    hfm_encoding(node-&gt;lChild,string1,i,&#39;0&#39;);
+    hfm_encoding(node-&gt;rChild,string2,i,&#39;1&#39;);
+    return 1;
+&#125;
+//哈夫曼解码
+int hfm_decoding(char input,int size,int *w,char* ch)&#123;
+    int i=0;
+    for(i=0;i&lt;size;i++)&#123;
+        if(ch[i]==input)&#123;
+            char *str;
+            sprintf(str, &quot;%d&quot;, w[i]);
+            printf(&quot;decode %c:1100&quot;,input);
+        &#125;
+    &#125;
+    
+&#125;
+int main()&#123;
+    BTNode* root;
+    int size;
+    int leaf=0;
+    int height=0;
+    //二叉树测试
+    //输入以   56#2#1##30###   为例
+    root=PreCreateBT(root);
+    printf(&quot;preorder_traversal:\n&quot;);
+    preorder_traversal(root);
+    printf(&quot;\ninorder_traversal:\n&quot;);
+    inorder_traversal(root);
+    printf(&quot;\npostorder_traversal:\n&quot;);
+    postorder_traversal(root);
+    size=TreeSize(root);
+    printf(&quot;\nsize of tree:%d&quot;,size);
+    TreeHeight(root,0,&amp;height);
+    printf(&quot;\nheight of tree:%d&quot;,height);
+    leaf=LeafSize(root);
+    printf(&quot;\nleaf of tree:%d\n&quot;,leaf);
+    SwapTree(root);
+    printf(&quot;after swaping the tree,preorder_traversal:\n&quot;);
+    preorder_traversal(root);
+    printf(&quot;\n&quot;);
+    int i,*w=(int*)malloc(6*sizeof(int));
+    char *ch=(char*)malloc(6*sizeof(char));
+    printf(&quot;input with data like \&quot;A:9\&quot;\n&quot;);
+    for(i=0;i&lt;6;i++)&#123;
+        scanf(&quot; %c:%d&quot;,ch+i,w+i);
+    &#125;
+    //观察哈夫曼树结点、权重的存储情况
+    // for(i=0;i&lt;6;i++)&#123;
+    //     printf(&quot;%c:%d &quot;,ch[i],w[i]);
+    // &#125;
+    PriorityQueue PQ;
+    CreateHFMTree(&amp;PQ,w,6);
+    printf(&quot;HFMTree&#39;s preorder_traversal:\n&quot;);
+    //printf(&quot;%d,%d&quot;,(*(PQ.elements))-&gt;lChild-&gt;w,(*(PQ.elements))-&gt;rChild-&gt;w);
+    preorder_traversal_hfm(*(PQ.elements));
+    printf(&quot;\n&quot;);
+    char* string1=(char*)malloc(10*sizeof(char));
+    char* string2=(char*)malloc(10*sizeof(char));
+    hfm_encoding((*(PQ.elements))-&gt;lChild,string1,0,&#39;0&#39;);
+    hfm_encoding((*(PQ.elements))-&gt;rChild,string2,0,&#39;1&#39;);
+    char a;
+    scanf(&quot;%c&quot;,&amp;a);
+    scanf(&quot;%c&quot;,&amp;a);
+    hfm_decoding(a,6,w,ch);
+&#125;
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 天机工程
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;bigbigbigwaterbucket
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+<script
+    src="https://giscus.app/client.js"
+    data-repo="bigbigbigwaterbucket/bigbigbigwaterbucket.github.io"
+    data-repo-id="R_kgDOKFcnSw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKFcnS84CaIBo"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="https://static-argvchs.netlify.app/css/giscus.css"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
+
+
+
+
+
+    
+</body>
+</html>
