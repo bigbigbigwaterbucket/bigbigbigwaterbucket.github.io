@@ -1,0 +1,1130 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title> | 天机工程</title>
+    <meta name="author" content="bigbigbigwaterbucket" />
+    <meta name="description" content="科技不是一题一解的死板学识，而是令我们超凡脱俗的产物。" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>天机工程</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;天机工程</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1></h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/12/29
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="复健！NJUPT数据结构实验报告"><a href="#复健！NJUPT数据结构实验报告" class="headerlink" title="复健！NJUPT数据结构实验报告"></a>复健！NJUPT数据结构实验报告</h1><p>摸鱼了太久，该罚</p>
+<p>狠狠写两篇数据结构实验报告！</p>
+<p>yysy，这两篇报告写下来收获颇丰啊，尤其是C语言的堆与栈存储</p>
+<span id="more"></span>
+
+<h4 id="实验三"><a href="#实验三" class="headerlink" title="实验三"></a>实验三</h4><p>1、参照课本程序2.1～2.7，编写程序，完成顺序表的初始化、查找、插入、删除、输出、撤销等操作。</p>
+<p>2、已知带表头结点单链表的类型定义如下：</p>
+<p>typedef struct node</p>
+<p>{</p>
+<p>ElemType  element;  &#x2F;&#x2F;结点的数据域</p>
+<p>struct node *link;   &#x2F;&#x2F;结点的指针域</p>
+<p>}node;</p>
+<p>typedef struct </p>
+<p>{</p>
+<p>struct node * head;</p>
+<p>int n;</p>
+<p>}headerList;</p>
+<p>参照课本程序2.8～2.14，编写程序，完成带表头结点单链表的初始化、查找、插入、删除、输出、撤销等操作。</p>
+<p>3、已知带表头结点一元多项式的类型定义如下：</p>
+<p>typedef struct pNode</p>
+<p>{</p>
+<p>int coef;</p>
+<p>int exp;</p>
+<p>struct pNode* link;</p>
+<p>} pNode;</p>
+<p>typedef struct </p>
+<p>{</p>
+<p>struct pNode *head;</p>
+<p>} polynominal;</p>
+<p>编写程序实现一元多项式的创建、输出、撤销以及两个一元多项式相加和相乘的操作。</p>
+<h4 id="实验四"><a href="#实验四" class="headerlink" title="实验四"></a>实验四</h4><p>1、已知待排序序列以顺序表结构实现，数据元素以及表结构定义如下：</p>
+<p>​	typedef struct entry      &#x2F;&#x2F;数据元素</p>
+<p>{				</p>
+<p>KeyType key;				&#x2F;&#x2F;排序关键字，KeyType应该为可比较类型</p>
+<p>DataType data;				&#x2F;&#x2F;data包含数据元素中的其他数据项</p>
+<p>};</p>
+<p>​	typedef struct list{				&#x2F;&#x2F;顺序表</p>
+<p>​			int n;				&#x2F;&#x2F;待排序数据元素数量</p>
+<p>​			EntryD[MaxSize];		&#x2F;&#x2F;静态数组存储数据元素</p>
+<p>}List;</p>
+<p>参照程序10.1～10.7，编写算法，分别实现顺序表的简单选择排序、直接插入排序、冒泡排序、快速排序、两路合并排序以及堆排序。</p>
+<p>2、编写算法，利用随机函数，在文件中随机产生n个关键字。（关键字定义为整型数据）</p>
+<p>3、编写程序，分别验证在简单选择排序、直接插入排序、冒泡排序、快速排序、两路合并排序以及堆排序，在待排序关键字个数为500、10000、50000、100000时，完成排序所需要的时间。（单位为：毫秒）。</p>
+<p>4、将排序结果存放于Excel工作表中，并以图表（簇状柱形图）的方式显示。</p>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+// 引入队列便于实现宽度优先遍历
+typedef struct &#123;
+    int* data;
+    int front;
+    int rear;
+    int size;
+&#125; Queue;
+
+void createQueue(Queue* q, int maxSize) &#123;
+    q-&gt;data = (int*)malloc(maxSize * sizeof(int));
+    q-&gt;front = 0;
+    q-&gt;rear = -1;
+    q-&gt;size = 0;
+&#125;
+
+void destroyQueue(Queue* q) &#123;
+    free(q-&gt;data);
+&#125;
+
+int isEmpty(Queue* q) &#123;
+    return q-&gt;size == 0;
+&#125;
+
+int isFull(Queue* q) &#123;
+    return q-&gt;size == 100;
+&#125;
+
+void enqueue(Queue* q, int item) &#123;
+    if (isFull(q)) &#123;
+        printf(&quot;Queue is full.\n&quot;);
+        return;
+    &#125;
+    q-&gt;rear = (q-&gt;rear + 1) % 100;
+    q-&gt;data[q-&gt;rear] = item;
+    q-&gt;size++;
+&#125;
+
+int dequeue(Queue* q) &#123;
+    if (isEmpty(q)) &#123;
+        printf(&quot;Queue is empty.\n&quot;);
+        return -1;
+    &#125;
+    int item = q-&gt;data[q-&gt;front];
+    q-&gt;front = (q-&gt;front + 1) % 100;
+    q-&gt;size--;
+    return item;
+&#125;
+
+int front(Queue* q) &#123;
+    if (isEmpty(q)) &#123;
+        printf(&quot;Queue is empty.\n&quot;);
+        return -1;
+    &#125;
+    return q-&gt;data[q-&gt;front];
+&#125;
+
+
+//1、邻接矩阵的基本操作
+typedef struct mGraph&#123;
+    int **a;
+    int n;   //图的结点数
+    int e;   //图的边数
+    int noEdge;
+&#125;mGraph;
+
+int Init_m(mGraph *mg,int nSize,int noEdgeValue)&#123;
+    int i,j;
+    mg-&gt;n=nSize;
+    mg-&gt;e=0;
+    mg-&gt;noEdge=noEdgeValue;
+    mg-&gt;a=(int**)malloc(nSize*sizeof(int*));
+    if(!mg-&gt;a) return 0;
+    for(i=0;i&lt;mg-&gt;n;i++)&#123;
+        mg-&gt;a[i]=(int*)malloc(nSize*sizeof(int));
+        for(j=0;j&lt;mg-&gt;n;j++) mg-&gt;a[i][j]=mg-&gt;noEdge;
+        mg-&gt;a[i][i]=0;
+    &#125;
+    return 1;
+&#125;
+
+void Destroy_m(mGraph *mg)&#123;
+    int i;
+    for(i=0;i&lt;mg-&gt;n;i++) free(mg-&gt;a[i]);
+    free(mg-&gt;a);
+&#125;
+
+int Exist_m(mGraph *mg,int u,int v)&#123;
+    if(u&lt;0||v&lt;0||u&gt;mg-&gt;n-1||v&gt;mg-&gt;n-1||u==v||mg-&gt;a[u][v]==mg-&gt;noEdge) return 0;
+    return 1;
+&#125;
+
+int Insert_m(mGraph *mg,int u,int v,int w)&#123;
+    if(u&lt;0||v&lt;0||u&gt;mg-&gt;n-1||v&gt;mg-&gt;n-1||u==v) return 0;
+    if(mg-&gt;a[u][v]!=mg-&gt;noEdge) return 0;
+    mg-&gt;a[u][v]=w;
+    mg-&gt;e++;
+    return 1;
+&#125;
+
+int Remove_m(mGraph *mg,int u,int v)&#123;
+    if(u&lt;0||v&lt;0||u&gt;mg-&gt;n-1||v&gt;mg-&gt;n-1||u==v) return 0;
+    if(mg-&gt;a[u][v]==mg-&gt;noEdge) return 0;
+    mg-&gt;a[u][v]=mg-&gt;noEdge;
+    mg-&gt;e--;
+    return 1;
+&#125;
+
+
+//2、邻接矩阵的深度优先遍历
+void DFS_m(int v,int *visited,mGraph *mg)&#123;
+    visited[v]=1;
+    printf(&quot;%d &quot;,v);
+    int i;
+    for(i=0;i&lt;mg-&gt;n;i++)&#123;
+        if(mg-&gt;a[v][i]!=_I32_MAX&amp;&amp;visited[i]!=1)&#123;
+            DFS_m(i,visited,mg);
+        &#125;
+    &#125;
+&#125;
+
+void DFS_main_m(mGraph mg)&#123;
+    int *visited=(int *)malloc(mg.n*sizeof(int));
+    int i;
+    for(i=0;i&lt;mg.n;i++)&#123;
+        visited[i]=0;
+    &#125;
+    for(i=0;i&lt;mg.n;i++)&#123;
+         if(!visited[i])&#123;
+            DFS_m(i,visited,&amp;mg);
+         &#125;
+    &#125;
+    free(visited);
+&#125;
+
+//2、邻接矩阵的宽度优先遍历
+void BFS_m(int v,int *visited,mGraph *mg)&#123;
+    Queue q;
+    createQueue(&amp;q,mg-&gt;n);
+    visited[v]=1;
+    enqueue(&amp;q,v);
+    int i;
+    while(!isEmpty(&amp;q))&#123;
+        v=front(&amp;q);
+        visited[v]=1;
+        printf(&quot;%d &quot;,v);
+        dequeue(&amp;q);
+        for(i=0;i&lt;mg-&gt;n;i++)&#123;
+            if(mg-&gt;a[v][i]!=_I32_MAX&amp;&amp;visited[i]!=1)&#123;
+                enqueue(&amp;q,i);
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+//main函数的作用只是遍历调用，防止没有边抵达的结点不被访问
+void BFS_main_m(mGraph mg)&#123;
+    int *visited=(int *)malloc(mg.n*sizeof(int));
+    int i;
+    for(i=0;i&lt;mg.n;i++)&#123;
+        visited[i]=0;
+    &#125;
+    for(i=0;i&lt;mg.n;i++)&#123;
+        if(!visited[i])&#123;
+            BFS_m(i,visited,&amp;mg);
+        &#125;
+    &#125;
+    free(visited);
+&#125;
+
+
+//1、邻接表的基本操作
+typedef struct eNode
+&#123;
+    int adjVex;   //与任意顶点u相邻接的顶点
+    int w;        //边的权值
+    struct eNode *nextArc; //指向下一个边结点
+&#125;ENode;
+
+typedef struct lGraph
+&#123;
+    int n;  //n为结点数
+    int e;  //e为边数
+    ENode **a;
+&#125;LGraph;
+
+int Init_l (LGraph *lg,int nSize)&#123;
+    int i;
+    lg-&gt;n= nSize;
+    lg-&gt;e=0;
+    lg-&gt;a= (ENode** ) malloc (nSize*sizeof (ENode*)); //动态生成长度为n的一维指针数组
+    if(!lg-&gt;a) return 0;
+    else&#123;
+        for(i=0;i&lt;lg-&gt;n;i++) lg-&gt;a[i]=NULL;     //将指针数组a置空
+    &#125;
+    return 1;
+&#125;
+
+void Destroy_l(LGraph* lg) &#123;
+    int i;
+    ENode* p, * q;
+    for (i = 0; i &lt; lg-&gt;n; i++) &#123;
+        p = lg-&gt;a[i];
+        q = p;            //邻接表释放内存要用两个指针，每次释放在后的指针的内存
+        while (p) &#123;
+            p = p-&gt;nextArc;
+            free(q);
+            q = p;
+        &#125;
+    &#125;
+    free(lg-&gt;a);
+&#125;
+
+int Exist_l(LGraph* lg, int u, int v) &#123;   //u为待搜索的母节点，v为要在u邻接结点中搜索的结点
+    ENode* p;
+    if (u &lt; 0 || v &lt; 0 || u &gt; lg-&gt;n - 1 || v &gt; lg-&gt;n - 1 || u == v)
+        return 0;
+    p = lg-&gt;a[u];
+    while (p &amp;&amp; p-&gt;adjVex != v)
+        p = p-&gt;nextArc;
+    if (!p)
+        return 0;
+    else
+        return 1;
+&#125;
+
+int Insert_l(LGraph* lg, int u, int v, int w) &#123;
+    ENode* p;
+    if (u &lt; 0 || v &lt; 0 || u &gt; lg-&gt;n - 1 || u == v)
+        return 0;
+    if (Exist_l(lg, u, v))
+        return 0;
+    p = (ENode*)malloc(sizeof(ENode));
+    if (!p)
+        return 0;
+    p-&gt;adjVex = v;
+    p-&gt;w = w;
+    p-&gt;nextArc = lg-&gt;a[u];   
+    lg-&gt;a[u] = p;     //后插入的结点在前面
+    lg-&gt;e++;
+    return 1;
+&#125;
+
+int Remove_l(LGraph* lg, int u, int v) &#123;
+    ENode* p, * q;
+    if (u &lt; 0 || v &lt; 0 || u &gt; lg-&gt;n - 1 || v &gt; lg-&gt;n - 1 || u == v)
+        return 0;
+    p = lg-&gt;a[u];
+    q = NULL;
+    while (p &amp;&amp; p-&gt;adjVex != v) &#123;
+        q = p;
+        p = p-&gt;nextArc;
+    &#125;
+    if (!p)
+        return 0;
+    if (q)  //如果待删除结点不是表头结点
+        q-&gt;nextArc = p-&gt;nextArc;
+    else   
+        lg-&gt;a[u] = p-&gt;nextArc;   //待删除元素是表头结点，则改变
+    free(p);
+    lg-&gt;e--;
+    return 1;
+&#125;
+
+//2、邻接表的深度优先遍历
+//深度搜索分为两个函数调用，一个函数用来搜索一个结点，主函数则遍历数组，对未被访问的调用DFS
+void DFS_l(int v,int *visited,LGraph *lg)&#123;
+    visited[v]=1;
+    printf(&quot;%d &quot;,v);    //邻接表表头存储的不是元素值，而是临界元素的地址！！
+    ENode *p;
+    for(p=lg-&gt;a[v];p;p=p-&gt;nextArc)&#123;
+        if(visited[p-&gt;adjVex]!=1) DFS_l(p-&gt;adjVex,visited,lg);        
+    &#125;
+
+&#125;
+
+void DFS_main_l(LGraph *lg)&#123;
+    int i;
+    int *visited=(int*)malloc(lg-&gt;n*sizeof(int));
+    for(i=0;i&lt;lg-&gt;n;i++)&#123;  //不要忘记对visited数组初始化0值
+        visited[i]=0;
+    &#125;
+    for(i=0;i&lt;lg-&gt;n;i++)&#123;
+        if(visited[i]!=1)&#123;
+            DFS_l(i,visited,lg);
+        &#125;
+    &#125;
+    free(visited);
+    
+&#125;
+
+
+//2、邻接表的宽度优先遍历
+void BFS_l(int v,int* visited,LGraph g)&#123;
+    ENode *w;
+    Queue q;
+    createQueue(&amp;q,g.n);
+    visited[v]=1;
+    printf(&quot;%d &quot;,v);
+    enqueue(&amp;q,v);
+    while(!isEmpty(&amp;q))&#123;
+        v=front(&amp;q);
+        dequeue(&amp;q);
+        for(w=g.a[v];w;w=w-&gt;nextArc)&#123;
+            if(!visited[w-&gt;adjVex])&#123;
+                visited[w-&gt;adjVex]=1;
+                printf(&quot;%d &quot;,w-&gt;adjVex);
+                enqueue(&amp;q,w-&gt;adjVex);
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+void BFS_main_l(LGraph g)&#123;
+    int *visited=(int *)malloc(g.n*sizeof(int));
+    int i;
+    for(i=0;i&lt;g.n;i++)&#123;
+        visited[i]=0;
+    &#125;
+    for(i=0;i&lt;g.n;i++)&#123;
+        if(!visited[i])&#123;
+            BFS_l(i,visited,g);
+        &#125;
+    &#125;
+    free(visited);
+&#125;
+
+
+//3、迪杰斯特拉算法实现航班最小换乘路线求解
+
+//Choose函数找到 经过上一次最短路线中，新结点邻接路线更新后的 所有路径中最短的，返回的minpos就是接下来确定最短路线的结点
+int Choose(int* d,int* s,int n)&#123;
+    int i,minpos;
+    int min;
+    min=999999;   //用999999代替无穷大，防止溢出
+    minpos=-1;
+    for(i=0;i&lt;n;i++)&#123;
+        if(d[i]&lt;min&amp;&amp;!s[i])&#123;
+            min=d[i];
+            minpos=i;
+        &#125;
+    &#125;
+    return minpos;
+    
+&#125;
+
+int Dijkstra(int v,int* d,int* path,mGraph g)&#123;
+    int i,k,w;
+    int *s;
+    if(v&lt;0||v&gt;g.n-1) return 0;
+    s=(int*)malloc(sizeof(int)*g.n);
+    for(i=0;i&lt;g.n;i++)&#123;  //初始化s数组(源点到i的最短路径是否确定)、d数组(源点到i的最短路径)与path数组
+        s[i]=0;
+        d[i]=g.a[v][i];
+        if(i!=v&amp;&amp;d[i]&lt;999999) path[i]=v;
+        else path[i]=-1;
+    &#125;
+    s[v]=1; d[v]=0;
+    for(i=1;i&lt;g.n-1;i++)&#123;
+        k=Choose(d,s,g.n);
+        if(k==-1) continue;
+        s[k]=1;
+        printf(&quot;%d &quot;,k);
+        for(w=0;w&lt;g.n;w++)&#123;
+            if(!s[w]&amp;&amp;d[k]+g.a[k][w]&lt;d[w])&#123;
+                d[w]=d[k]+g.a[k][w];
+                path[w]=k;
+            &#125;
+        &#125;
+    &#125;
+    //for(i=0;i&lt;g.n;i++) printf(&quot;%d &quot;,d[i]);
+    return 1;
+&#125;
+
+
+int main()&#123;
+    int nSize,edgeSize;
+    printf(&quot;输入图结点的个数:\n&quot;);
+    scanf(&quot;%d&quot;,&amp;nSize);
+    printf(&quot;输入图的边数:\n&quot;);
+    scanf(&quot;%d&quot;,&amp;edgeSize);
+    //1、邻接表与邻接矩阵的基本操作
+    mGraph mg;
+    Init_m(&amp;mg,nSize,_I32_MAX);
+    LGraph lg;
+    Init_l(&amp;lg,nSize);
+    int i,a,b,w;
+    
+    printf(&quot;以a b w形式输入%d条边，a为起始结点，b为终止结点\n&quot;,edgeSize);
+    for(i=0;i&lt;edgeSize;i++)&#123;
+        scanf(&quot;%d %d %d&quot;,&amp;a,&amp;b,&amp;w);
+        if(Insert_l(&amp;lg,a,b,w)!=1||Insert_m(&amp;mg,a,b,w)!=1)&#123;   //通过Insert函数构造图
+            printf(&quot;出错&quot;);
+            break;
+        &#125;
+    &#125;
+    //2、邻接表与邻接矩阵的遍历
+    printf(&quot;邻接表深度优先遍历结果：\n&quot;);
+    DFS_main_l(&amp;lg);
+    printf(&quot;\n邻接表宽度优先遍历结果：\n&quot;);
+    BFS_main_l(lg);
+    printf(&quot;\n邻接矩阵深度优先遍历结果：\n&quot;);
+    DFS_main_m(mg);
+    printf(&quot;\n邻接矩阵宽度优先遍历结果：\n&quot;);
+    BFS_main_m(mg);
+    int u,v;
+    printf(&quot;\n以a b形式输入待删除的边：\n&quot;);
+    scanf(&quot;%d %d&quot;,&amp;u,&amp;v);
+    Remove_l(&amp;lg,u,v);
+    Remove_m(&amp;mg,u,v);
+    printf(&quot;删除边%d-%d后邻接表深度优先遍历的结果:\n&quot;,u,v);
+    DFS_main_l(&amp;lg);
+    printf(&quot;\n删除边%d-%d后邻接矩阵深度优先遍历的结果:\n&quot;,u,v);
+    DFS_main_m(mg);
+
+    Destroy_l(&amp;lg);
+    Destroy_m(&amp;mg);
+    
+    //3、解决最小换乘次数问题
+    printf(&quot;\n输入航线城市的个数:\n&quot;);
+    scanf(&quot;%d&quot;,&amp;nSize);
+    printf(&quot;输入航线的边数:\n&quot;);
+    scanf(&quot;%d&quot;,&amp;edgeSize);
+    mGraph mg2;
+    Init_m(&amp;mg2,nSize,999999);
+    printf(&quot;飞机航班:以a b形式输入%d条航线，a为起始结点，b为终止结点\n&quot;,edgeSize);
+    for(i=0;i&lt;edgeSize;i++)&#123;
+        scanf(&quot;%d %d&quot;,&amp;a,&amp;b);
+        if(Insert_m(&amp;mg2,a,b,1)!=1)&#123;   //飞机航班权重均为1，只要求最少换乘次数即可
+            printf(&quot;出错&quot;);
+            break;
+        &#125;
+    &#125;
+    int *d=(int*)malloc(nSize*sizeof(int));
+    int *path=(int*)malloc(nSize*sizeof(int));
+    Dijkstra(0,d,path,mg2);
+    printf(&quot;\n以a b形式输入航线起始城市与终止城市:\n&quot;);
+    scanf(&quot;%d %d&quot;,&amp;a,&amp;b);
+    int pnode=b;
+    printf(&quot;最小换乘次数航线为:\n&quot;);
+    while(pnode!=-1)&#123;
+        if(path[pnode]!=-1) printf(&quot;%d &lt;-&quot;,pnode);
+        else printf(&quot;%d&quot;,pnode);
+        pnode=path[pnode];
+    &#125;
+
+&#125;
+</code></pre>
+<p>实验四的收获比较大，C语言中，List L;和List* L&#x3D;(List*)malloc(sizeof(List));两种定义方式是有很大区别的，第一种默认把List结构体存放在栈中，而第二种通过malloc申请的空间则是存放在堆中，栈空间小但读写速度快，堆则刚好相反。</p>
+<p><strong>Segmentation fault</strong>也是经典老朋友了啊nmd，指针越界、野指针等等问题，现在又遇到个申请空间超过栈上限的错误，累了…</p>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+#define KeyType int
+#define DataType char
+#define MaxSize 100001
+
+typedef struct entry           //数据元素
+&#123;				
+    KeyType key;				//排序关键字，KeyType应该为可比较类型
+    DataType data;				//data包含数据元素中的其他数据项
+&#125;Entry;
+
+typedef struct list&#123;				//顺序表
+    int n;				//待排序数据元素数量
+    Entry D[MaxSize];		//静态数组存储数据元素
+&#125;List;
+
+//简单选择排序
+int FindMin(List* list,int startIndex)&#123;
+  int i,minIndex=startIndex;
+  for(i=startIndex+1;i&lt;list-&gt;n;i++)&#123;
+    if(list-&gt;D[i].key&lt;list-&gt;D[minIndex].key)
+    minIndex=i;
+  &#125;
+  return minIndex;
+&#125;
+
+void Swap(Entry* D,int i,int j)&#123;
+  Entry temp;
+  if(i==j) return;
+  temp=*(D+i);
+  *(D+i)=*(D+j);
+  *(D+j)=temp;
+&#125;
+
+void SelectSort(List* list)&#123;
+  int minIndex,startIndex=0;
+  while (startIndex&lt;list-&gt;n-1)
+  &#123;
+    minIndex=FindMin(list,startIndex);
+    Swap(list-&gt;D,startIndex,minIndex);
+    startIndex++;
+  &#125; 
+&#125;
+
+//直接插入排序
+void InsertSort(List* list)&#123;
+  int i,j;        //i为待插入元素下标
+  Entry insertItem;
+  for(i=1;i&lt;list-&gt;n;i++)&#123;
+    insertItem=list-&gt;D[i];
+    for(j=i-1;j&gt;=0;j--)&#123;
+      if(insertItem.key&lt;list-&gt;D[j].key)
+        list-&gt;D[j+1]=list-&gt;D[j];
+      else break;
+    &#125;
+    list-&gt;D[j+1]=insertItem;
+  &#125;
+&#125;
+
+
+//冒泡排序
+void BubbleSort(List*list)&#123;
+  int i,j;
+  for(i=list-&gt;n-1;i&gt;0;i--)&#123;
+    int isSwap= 0;
+    for(j=0;j&lt;i;j++)&#123;
+      if(list-&gt;D[j].key&gt;list-&gt;D[j+1].key)&#123;
+        Swap(list-&gt;D,j,j+1);
+        isSwap=1;&#125;
+    &#125;
+    if (!isSwap)break;
+  &#125;
+&#125;
+
+
+int Partition(List*list,int low,int high)&#123;
+  int i=low,j=high+1;
+  Entry pivot=list-&gt;D[low];
+  do&#123;
+    do i++;while (i&lt;=high&amp;&amp;list-&gt;D[i].key&lt;pivot.key);
+    do j--;while (j&gt;=low&amp;&amp;list-&gt;D[j].key&gt;pivot.key);
+    if (i&lt;j) Swap(list-&gt;D,i,j);
+  &#125;while (i&lt;j);
+  Swap(list-&gt;D,j,low);
+  return j;
+&#125;
+
+//快速排序
+void QuickSort(List*list,int low,int high)&#123;
+  int k;
+  if(low&lt;high)&#123;
+    k=Partition(list,low,high);
+    QuickSort(list,low,k-1);
+    QuickSort(list,k+1,high);
+  &#125;
+&#125;
+
+void quickSort(List*list)&#123;
+  QuickSort(list,0,list-&gt;n-1);
+&#125;
+
+
+//两路合并排序
+void Merge(List*list,Entry*temp,int low,int n1,int n2)&#123;
+  int i=low,j=low+n1;
+  while (i&lt;=low +n1-1&amp;&amp;j&lt;=low+n1+n2-1)
+  &#123;if(list-&gt;D[i].key&lt;=list-&gt;D[j].key)
+  *temp++=list-&gt;D[i++];
+  else *temp++=list-&gt;D[j++];
+  &#125;
+  while (i&lt;=low+n1-1)
+  *temp++=list-&gt;D[i++];
+  while(j&lt;=low+n1+n2-1)
+  *temp++=list-&gt;D[j++];
+&#125;
+
+void MergeSort(List*list)&#123;
+  Entry temp[MaxSize];
+  int low,n1,n2,i,size=1;while (size&lt;list-&gt;n)
+  &#123;
+    low=0;while(low+size&lt;list-&gt;n)&#123;
+      n1=size;
+      if(low+size*2&lt;list-&gt;n)
+        n2=size;
+      else
+        n2=list-&gt;n-low-size;
+      Merge(list,temp+low,low,n1,n2);
+      low+=n1+n2;
+    &#125;
+    for(i=0;i&lt;low;i++)
+      list-&gt;D[i]=temp[i];
+    size*=2;
+  &#125;
+  
+&#125;
+
+
+//堆排序
+typedef struct maxheap
+&#123;
+  int n;
+  Entry D[MaxSize];
+&#125;MaxHeap;
+
+void AdjustDown(Entry *D, int i, int n) &#123;
+  int j = 2 * i + 1; // 左子节点的下标
+  Entry temp = D[i]; // 保存待调整节点的值
+  while (j &lt;= n) &#123;
+    // 选择左右子节点中较大的一个
+    if (j &lt; n &amp;&amp; D[j].key &lt; D[j + 1].key) &#123;
+      j++;
+    &#125;
+    // 如果待调整节点已经大于等于左右子节点中较大的一个，调整结束
+    if (temp.key &gt;= D[j].key) &#123;
+      break;
+    &#125;
+    // 否则将左右子节点中较大的一个提升到待调整节点的位置，继续向下调整
+    D[(j - 1) / 2] = D[j];
+    j = 2 * j + 1;
+  &#125;
+  // 将待调整节点放到最终的位置
+  D[(j - 1) / 2] = temp;
+&#125;
+
+void HeapSort(MaxHeap *hp)&#123;
+  int i;
+  for(i=(hp-&gt;n-2)/2;i&gt;=0;i--)
+    AdjustDown(hp-&gt;D,i,hp-&gt;n-1);
+  for(i=hp-&gt;n-1;i&gt;0;i--)&#123;
+    Swap(hp-&gt;D,0,i);
+    AdjustDown(hp-&gt;D,0,i-1);
+  &#125;
+&#125;
+
+void Sort_Timer_select(List* L,int size)&#123;
+  int i;
+  L-&gt;n=size;
+  if(size==10000)&#123;
+    FILE *fp;
+    fp=fopen(&quot;.\\data_before_sort.xls&quot;,&quot;w&quot;);
+    for(i=0;i&lt;size;i++)&#123;
+      L-&gt;D[i].key=rand();
+      fprintf(fp,&quot;%d\n&quot;,L-&gt;D[i].key);
+      fflush(fp);
+    &#125;
+    fclose(fp);
+  &#125;
+
+  clock_t start,end;
+  double time_used;
+  start=clock();
+  //printf(&quot;%lf\n&quot;,(double)start);
+  SelectSort(L);
+  end=clock();
+  //printf(&quot;%lf\n&quot;,(double)end);
+  time_used=((double)(end-start))/ CLOCKS_PER_SEC;
+  if(size==10000)&#123;
+    FILE *fp;
+    fp=fopen(&quot;.\\data_after_sort.xls&quot;,&quot;w&quot;);
+    for(i=0;i&lt;size;i++)&#123;
+      fprintf(fp,&quot;%d\n&quot;,L-&gt;D[i].key);
+      fflush(fp);    
+    &#125;
+      fclose(fp);
+  &#125;
+  printf(&quot;简单选择排序%d耗时:%lfms\n&quot;,size,time_used*1000);
+
+&#125;
+
+void Sort_Timer_insert(List* L,int size)&#123;
+  int i;
+  L-&gt;n=size;
+  for(i=0;i&lt;size;i++)&#123;
+    L-&gt;D[i].key=rand();
+  &#125;
+  clock_t start,end;
+  double time_used;
+  start=clock();
+  //printf(&quot;%lf\n&quot;,(double)start);
+  InsertSort(L);
+  end=clock();
+  //printf(&quot;%lf\n&quot;,(double)end);
+  time_used=((double)(end-start))/ CLOCKS_PER_SEC;
+  printf(&quot;直接插入排序%d耗时:%lfms\n&quot;,size,time_used*1000);
+&#125;
+
+void Sort_Timer_bubble(List* L,int size)&#123;
+  int i;
+  L-&gt;n=size;
+  for(i=0;i&lt;size;i++)&#123;
+    L-&gt;D[i].key=rand();
+  &#125;
+  clock_t start,end;
+  double time_used;
+  start=clock();
+  //printf(&quot;%lf\n&quot;,(double)start);
+  BubbleSort(L);
+  end=clock();
+  //printf(&quot;%lf\n&quot;,(double)end);
+  time_used=((double)(end-start))/ CLOCKS_PER_SEC;
+  printf(&quot;冒泡排序%d耗时:%lfms\n&quot;,size,time_used*1000);
+&#125;
+
+
+void Sort_Timer_quick(List* L,int size)&#123;
+  int i;
+  L-&gt;n=size;
+  for(i=0;i&lt;size;i++)&#123;
+    L-&gt;D[i].key=rand();
+  &#125;
+  clock_t start,end;
+  double time_used;
+  start=clock();
+  //printf(&quot;%lf\n&quot;,(double)start);
+  quickSort(L);
+  end=clock();
+  //printf(&quot;%lf\n&quot;,(double)end);
+  time_used=((double)(end-start))/ CLOCKS_PER_SEC;
+  printf(&quot;快速排序%d耗时:%lfms\n&quot;,size,time_used*1000);
+&#125;
+
+void Sort_Timer_merge(List* L,int size)&#123;
+  int i;
+  L-&gt;n=size;
+  for(i=0;i&lt;size;i++)&#123;
+    L-&gt;D[i].key=rand();
+  &#125;
+  clock_t start,end;
+  double time_used;
+  start=clock();
+  //printf(&quot;%lf\n&quot;,(double)start);
+  MergeSort(L);
+  end=clock();
+  //printf(&quot;%lf\n&quot;,(double)end);
+  time_used=((double)(end-start))/ CLOCKS_PER_SEC;
+  printf(&quot;两路合并排序%d耗时:%lfms\n&quot;,size,time_used*1000);
+&#125;
+
+void Sort_Timer_heap(MaxHeap* M,int size)&#123;
+  int i;
+  M-&gt;n=size;
+  for(i=0;i&lt;size;i++)&#123;
+    M-&gt;D[i].key=rand();
+  &#125;
+  clock_t start,end;
+  double time_used;
+  start=clock();
+  //printf(&quot;%lf\n&quot;,(double)start);
+  HeapSort(M);
+  end=clock();
+  //printf(&quot;%lf\n&quot;,(double)end);
+  time_used=((double)(end-start))/ CLOCKS_PER_SEC;
+  printf(&quot;堆排序%d耗时:%lfms\n&quot;,size,time_used*1000);
+&#125;
+
+int main()&#123;
+  int i,size;
+  printf(&quot;输入待排序序列的大小n:\n&quot;);
+  scanf(&quot;%d&quot;,&amp;size);
+  List* L=(List*)malloc(sizeof(List));     //使用malloc生成的数组定义在堆上，内存空间很大(G为单位)，而如果直接List L;生成的结构体是定义在栈上的，内存空间很有限！(KB单位)
+  MaxHeap* M=(MaxHeap*)malloc(sizeof(MaxHeap));
+  L-&gt;n=size;
+  M-&gt;n=size;
+  srand(time(NULL));
+  for(i=0;i&lt;size;i++)&#123;
+    L-&gt;D[i].key=rand();
+    M-&gt;D[i].key=L-&gt;D[i].key;
+  &#125;
+  printf(&quot;随机生成的待排序序列如下:\n&quot;);
+  for(int i=0;i&lt;size;i++)&#123;
+    printf(&quot;%d &quot;,L-&gt;D[i].key);
+    if(i==size-1) printf(&quot;\n&quot;);
+  &#125;
+
+  SelectSort(L);
+  printf(&quot;对随机序列按升序简单选择排序后:\n&quot;);
+  for(int i=0;i&lt;size;i++)&#123;
+    printf(&quot;%d &quot;,L-&gt;D[i].key);
+    if(i==size-1) printf(&quot;\n&quot;);
+  &#125;
+
+  InsertSort(L);
+  printf(&quot;对随机序列按升序直接插入排序后:\n&quot;);
+  for(int i=0;i&lt;size;i++)&#123;
+    printf(&quot;%d &quot;,L-&gt;D[i].key);
+    if(i==size-1) printf(&quot;\n&quot;);
+  &#125;
+
+  BubbleSort(L);
+  printf(&quot;对随机序列按升序冒泡排序后:\n&quot;);
+  for(int i=0;i&lt;size;i++)&#123;
+    printf(&quot;%d &quot;,L-&gt;D[i].key);
+    if(i==size-1) printf(&quot;\n&quot;);
+  &#125;
+
+  quickSort(L);
+  printf(&quot;对随机序列按升序快速排序后:\n&quot;);
+  for(int i=0;i&lt;size;i++)&#123;
+    printf(&quot;%d &quot;,L-&gt;D[i].key);
+    if(i==size-1) printf(&quot;\n&quot;);
+  &#125;
+
+  MergeSort(L);
+  printf(&quot;对随机序列按升序两路合并排序后:\n&quot;);
+  for(int i=0;i&lt;size;i++)&#123;
+    printf(&quot;%d &quot;,L-&gt;D[i].key);
+    if(i==size-1) printf(&quot;\n&quot;);
+  &#125;
+
+  HeapSort(M);
+  printf(&quot;对随机序列按升序堆排序后:\n&quot;);
+  for(int i=0;i&lt;size;i++)&#123;
+    printf(&quot;%d &quot;,L-&gt;D[i].key);
+    if(i==size-1) printf(&quot;\n&quot;);
+  &#125;
+  
+  printf(&quot;\n&quot;);
+  Sort_Timer_select(L,500);
+  Sort_Timer_select(L,10000);
+  Sort_Timer_select(L,50000);
+  Sort_Timer_select(L,100000);
+  
+  printf(&quot;\n&quot;);
+  Sort_Timer_insert(L,500);
+  Sort_Timer_insert(L,10000);
+  Sort_Timer_insert(L,50000);
+  Sort_Timer_insert(L,100000);
+  
+  printf(&quot;\n&quot;);
+  Sort_Timer_bubble(L,500);
+  Sort_Timer_bubble(L,10000);
+  Sort_Timer_bubble(L,50000);
+  Sort_Timer_bubble(L,100000);
+
+  printf(&quot;\n&quot;);
+  Sort_Timer_quick(L,500);
+  Sort_Timer_quick(L,10000);
+  Sort_Timer_quick(L,50000);
+  Sort_Timer_quick(L,100000);
+
+  printf(&quot;\n&quot;);
+  Sort_Timer_merge(L,500);
+  Sort_Timer_merge(L,10000);
+  Sort_Timer_merge(L,50000);
+  Sort_Timer_merge(L,100000);
+
+  printf(&quot;\n&quot;);
+  Sort_Timer_heap(M,500);
+  Sort_Timer_heap(M,10000);
+  Sort_Timer_heap(M,50000);
+  Sort_Timer_heap(M,100000);
+  
+  free(L);
+  free(M);
+
+&#125; 
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 天机工程
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;bigbigbigwaterbucket
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+<script
+    src="https://giscus.app/client.js"
+    data-repo="bigbigbigwaterbucket/bigbigbigwaterbucket.github.io"
+    data-repo-id="R_kgDOKFcnSw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKFcnS84CaIBo"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="https://static-argvchs.netlify.app/css/giscus.css"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
+
+
+
+
+
+    
+</body>
+</html>
