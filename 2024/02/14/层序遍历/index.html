@@ -157,143 +157,161 @@
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/10/30
+            2024/2/14
         </span>
         
         
     </div>
     
     <div class="content" v-pre>
-        <h1 id="每日1-1题-反转字符串1、2"><a href="#每日1-1题-反转字符串1、2" class="headerlink" title="每日1+1题(反转字符串1、2)"></a>每日1+1题(反转字符串1、2)</h1><h1 id="344-反转字符串"><a href="#344-反转字符串" class="headerlink" title="344.反转字符串"></a>344.反转字符串</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/reverse-string/">力扣题目链接(opens new window)</a></p>
-<span id="more"></span>
+        <h1 id="层序遍历"><a href="#层序遍历" class="headerlink" title="层序遍历"></a>层序遍历</h1><p>二叉树的层序遍历<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-level-order-traversal/description/">102. 二叉树的层序遍历 - 力扣（LeetCode）</a></p>
+<p>二叉树的右视图<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-right-side-view/">. - 力扣（LeetCode）</a></p>
+<p>填充右节点指针<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/populating-next-right-pointers-in-each-node-ii/description/">117. 填充每个节点的下一个右侧节点指针 II - 力扣（LeetCode）</a></p>
+<pre><code class="c++">#include &quot;bits/stdc++.h&quot;
 
-<p>编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。</p>
-<p>不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。</p>
-<p>你可以假设数组中的所有字符都是 ASCII 码表中的可打印字符。</p>
-<p>示例 1：<br>输入：[“h”,”e”,”l”,”l”,”o”]<br>输出：[“o”,”l”,”l”,”e”,”h”]</p>
-<p>示例 2：<br>输入：[“H”,”a”,”n”,”n”,”a”,”h”]<br>输出：[“h”,”a”,”n”,”n”,”a”,”H”]</p>
-<h1 id="541-反转字符串II"><a href="#541-反转字符串II" class="headerlink" title="541. 反转字符串II"></a>541. 反转字符串II</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/reverse-string-ii/">力扣题目链接(opens new window)</a></p>
-<p>给定一个字符串 s 和一个整数 k，从字符串开头算起, 每计数至 2k 个字符，就反转这 2k 个字符中的前 k 个字符。</p>
-<p>如果剩余字符少于 k 个，则将剩余字符全部反转。</p>
-<p>如果剩余字符小于 2k 但大于或等于 k 个，则反转前 k 个字符，其余字符保持原样。</p>
-<p>示例:</p>
-<p>输入: s &#x3D; “abcdefg”, k &#x3D; 2<br>输出: “bacdfeg”</p>
-<pre><code>//手写反转字符
-// Created by 徐昊岩 on 2023/10/30.
-//
-#include &lt;algorithm&gt;
-#include &quot;vector&quot;
-#include &quot;string&quot;
-#include &quot;iostream&quot;
+struct TreeNode &#123;
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+
+    TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;
+
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;
+
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;
+&#125;;
+
 using namespace std;
+
 class Solution &#123;
 public:
-    void reverseString(vector&lt;char&gt;&amp; s) &#123;
-        auto a=s.begin();
-        auto b=s.end()-1; //end不指向任何元素，记得-1!!!
-        char t;
-        while(a&lt;b)&#123;
-            t=*a;
-            *a=*b;
-            *b=t;
-            a++;
-            b--;
+    vector&lt;vector&lt;int&gt;&gt; levelOrder(TreeNode *root) &#123;
+        queue&lt;TreeNode *&gt; q;
+        vector&lt;vector&lt;int&gt;&gt; res;
+        TreeNode *ceng = root;
+        if (root == nullptr) return res;
+        q.emplace(root);
+        vector&lt;int&gt; part;
+        while (!q.empty()) &#123;
+            TreeNode *temp = q.front();
+            q.pop();
+            if (ceng == temp) &#123;
+                if (ceng != root) res.push_back(part);
+                part.clear();
+                ceng = nullptr;
+            &#125;
+            if (ceng == nullptr &amp;&amp; temp-&gt;left != nullptr) &#123;
+                ceng = temp-&gt;left;
+            &#125; else if (ceng == nullptr &amp;&amp; temp-&gt;right != nullptr) &#123;
+                ceng = temp-&gt;right;
+            &#125;
+            if (temp-&gt;left != nullptr) q.emplace(temp-&gt;left);
+            if (temp-&gt;right != nullptr) q.emplace(temp-&gt;right);
+            part.push_back(temp-&gt;val);
         &#125;
+        res.push_back(part);
+        return res;
     &#125;
 &#125;;
+
 class Solution2 &#123;
 public:
-    string reverseStr(string s, int k) &#123;
-        auto p=s.begin();
-        auto begin=s.begin();
-        int count=1;
-        while (p!=s.end())&#123;
-            if(count%(2*k)==0)&#123;
-                reverse(begin,begin+k);  //algorithm库的reverse实际反转的是[first,end)!!!!!
-                begin=p+1;
+    vector&lt;vector&lt;int&gt;&gt; levelOrder(TreeNode *root) &#123;
+        queue&lt;TreeNode *&gt; que;
+        if (root != NULL) que.push(root);
+        vector&lt;vector&lt;int&gt;&gt; result;
+        while (!que.empty()) &#123;
+            int size = que.size();   //与我的解法不一样，他注意到计数下一层的结点数可以不用确定一层有多少个，而我的解法是标记每层的开端
+            vector&lt;int&gt; vec;
+            // 这里一定要使用固定大小size，不要使用que.size()，因为que.size是不断变化的
+            for (int i = 0; i &lt; size; i++) &#123;
+                TreeNode *node = que.front();
+                que.pop();
+                vec.push_back(node-&gt;val);
+                if (node-&gt;left) que.push(node-&gt;left);
+                if (node-&gt;right) que.push(node-&gt;right);
             &#125;
-            if(s.end()-begin&lt;k)&#123;
-                reverse(begin,s.end());
-                break;
-            &#125; else if(s.end()-begin&lt;2*k &amp;&amp; s.end()-begin&gt;=k)&#123;
-                reverse(begin,begin+k);
-                break;
-            &#125;
-            p++;
-            count++;
+            result.push_back(vec);
         &#125;
-        return s;
+        return result;
     &#125;
 &#125;;
+
 class Solution3 &#123;
 public:
-    string reverseStr(string s, int k) &#123;
-        for (int i = 0; i &lt; s.size(); i += (2 * k)) &#123; //此题其实每次前进2*k个元素即可
-            // 1. 每隔 2k 个字符的前 k 个字符进行反转
-            // 2. 剩余字符小于 2k 但大于或等于 k 个，则反转前 k 个字符
-            if (i + k &lt;= s.size()) &#123;
-                reverse(s.begin() + i, s.begin() + i + k );
-            &#125; else &#123;
-                // 3. 剩余字符少于 k 个，则将剩余字符全部反转。
-                reverse(s.begin() + i, s.end());
+    vector&lt;int&gt; rightSideView(TreeNode *root) &#123;
+        queue&lt;TreeNode *&gt; q;
+        if (root != nullptr) q.emplace(root);
+        vector&lt;int&gt; res;
+        while (!q.empty()) &#123;
+            int size = q.size(); //q.size() is changing.So you may use &#39;size&#39;.
+            for (int i = 0; i &lt; size; i++) &#123;
+                TreeNode *temp = q.front();
+                q.pop();
+                if (temp-&gt;left) q.emplace(temp-&gt;left);
+                if (temp-&gt;right) q.emplace(temp-&gt;right);
+                if (i == size - 1) res.push_back(temp-&gt;val);
             &#125;
         &#125;
-        return s;
+        return res;
     &#125;
 &#125;;
-int main()&#123;
-    string a=&quot;nihao&quot;;
-    std::reverse(a.begin(), a.end()-1);
-    cout&lt;&lt;a;
-&#125;
-</code></pre>
-<h1 id="java学习"><a href="#java学习" class="headerlink" title="java学习"></a>java学习</h1><p>学到反射了，java的对象体系确实复杂，还是要多用才能体会到</p>
-<pre><code>package java_learning;
-import java_basic.Boy;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+class Node &#123;
+public:
+    int val;
+    Node *left;
+    Node *right;
+    Node *next;
 
-public class reflection &#123;
-    //反射是为了解决在运行期，对某个实例一无所知但需要调用其方法的情况
-    //通过Class实例(JVM为每一个加载到内存中的class创建的Class实例)获取class信息的方法称为反射（Reflection）。
-    public static void main(String args[]) throws Exception &#123;
-        Class cls = Boy.class;
-        printClassInfo(&quot;&quot;.getClass());
-        //printClassInfo(Runnable.class);
-        //printClassInfo(java.time.Month.class);
-        //printClassInfo(String[].class);
-        //printClassInfo(int.class);
-        System.out.println(cls.getDeclaredField(&quot;age&quot;)); //这里有个未处理报错
-        //unhandledException编译错误是提醒你需要处理可能的异常的
-        //getField只能获取public字段，要想获取私有字段需要getDeclaredField
-        Boy b1=new Boy();
-        Class cls_b1=Boy.class; //Class是用来展示底层信息的，方法字段的类型、修饰符等
-        Field f_b1=Boy.class.getDeclaredField(&quot;name&quot;);
-        f_b1.setAccessible(true); //访问私有字段是会出现Exception的，但可以设置为可以获取，这样就能访问无论什么限制符的字段了
-        System.out.println(f_b1.get(b1));
-        f_b1.set(b1,&quot;水桶&quot;); //通过反射机制改变私有字段，属实越界了
-        //但有时候setAccessible可能会失败，如果JVM运行期存在SecurityManager，那么它会根据规则进行检查，有可能阻止setAccessible(true)
-        System.out.println(b1.getName());
-        System.out.println(Boy.class.getMethod(&quot;shout&quot;)); //getMethod第一个参数要写函数名，后边要写函数参数的Class，这样才可以识别重载的函数
-        //似乎无法获得构造方法?
-        //System.out.println(cls_b1.getMethod(&quot;Boy&quot;));
-        //System.out.println(cls_b1.getMethod(&quot;Boy&quot;,String.class,int.class));
-        Method m_b1=Boy.class.getMethod(&quot;shout&quot;);
-        m_b1.invoke(b1); //字段是Field对象get获取，方法是Method对象invoke调用
-    &#125;
-    static void printClassInfo(Class cls) &#123;
-        System.out.println(&quot;Class name: &quot; + cls.getName());
-        System.out.println(&quot;Simple name: &quot; + cls.getSimpleName());
-        if (cls.getPackage() != null) &#123;
-            System.out.println(&quot;Package name: &quot; + cls.getPackage().getName());
+    Node() : val(0), left(nullptr), right(nullptr), next(nullptr) &#123;&#125;
+
+    Node(int _val) : val(_val), left(nullptr), right(nullptr), next(nullptr) &#123;&#125;
+
+    Node(int _val, Node *_left, Node *_right, Node *_next)
+            : val(_val), left(_left), right(_right), next(_next) &#123;&#125;
+&#125;;
+
+class Solution4 &#123;
+public:
+    Node *connect(Node *root) &#123;
+        queue&lt;Node*&gt; q;
+        if(root) q.emplace(root);
+        while(!q.empty())&#123;
+            int size=q.size();
+            if(size&lt;2)&#123;
+                Node* temp=q.front();
+                q.pop();
+                temp-&gt;next= nullptr;
+                if(temp-&gt;left) q.emplace(temp-&gt;left);
+                if(temp-&gt;right) q.emplace(temp-&gt;right);
+            &#125; else if(size&gt;=2) &#123;
+                Node *l1=q.front();
+                q.pop();
+                if(l1-&gt;left) q.emplace(l1-&gt;left);
+                if(l1-&gt;right) q.emplace(l1-&gt;right);
+                Node *l2=q.front();
+                q.pop();
+                if(l2-&gt;left) q.emplace(l2-&gt;left);
+                if(l2-&gt;right) q.emplace(l2-&gt;right);
+                l1-&gt;next=l2;
+                for(int i=0;i&lt;size-1;i++)&#123;
+                    Node* l3 = i==size-2? nullptr:q.front();
+                    if(l3!= nullptr)&#123;
+                        if(l3-&gt;left) q.emplace(l3-&gt;left);
+                        if(l3-&gt;right) q.emplace(l3-&gt;right);
+                        q.pop();
+                    &#125;
+                    l1=l2;
+                    l2=l3;
+                    l1-&gt;next=l2;
+                &#125;
+
+            &#125;
         &#125;
-        System.out.println(&quot;is interface: &quot; + cls.isInterface());
-        System.out.println(&quot;is enum: &quot; + cls.isEnum());
-        System.out.println(&quot;is array: &quot; + cls.isArray());
-        System.out.println(&quot;is primitive: &quot; + cls.isPrimitive());
+        return root;
     &#125;
-&#125;
+&#125;;
 </code></pre>
 
     </div>
