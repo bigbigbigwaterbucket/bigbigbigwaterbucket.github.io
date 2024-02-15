@@ -157,19 +157,27 @@
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2024/2/14
+            2024/2/15
         </span>
         
         
     </div>
     
     <div class="content" v-pre>
-        <h1 id="层序遍历"><a href="#层序遍历" class="headerlink" title="层序遍历"></a>层序遍历</h1><p>二叉树的层序遍历<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-level-order-traversal/description/">102. 二叉树的层序遍历 - 力扣（LeetCode）</a></p>
-<p>二叉树的右视图<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-right-side-view/">. - 力扣（LeetCode）</a></p>
-<p>填充右节点指针<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/populating-next-right-pointers-in-each-node-ii/description/">117. 填充每个节点的下一个右侧节点指针 II - 力扣（LeetCode）</a></p>
+        <h1 id="翻转二叉树"><a href="#翻转二叉树" class="headerlink" title="翻转二叉树"></a>翻转二叉树</h1><p>比起调用层序遍历，递归竟然更快</p>
+<p>难道数据结构的调用与操作时间开销很大？</p>
+<h1 id="226-翻转二叉树"><a href="#226-翻转二叉树" class="headerlink" title="226.翻转二叉树"></a>226.翻转二叉树</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/invert-binary-tree/">力扣题目链接(opens new window)</a></p>
+<p>翻转一棵二叉树。</p>
 <span id="more"></span>
 
-<pre><code class="c++">#include &quot;bits/stdc++.h&quot;
+<p><img src="https://code-thinking-1253855093.file.myqcloud.com/pics/20210203192644329.png" alt="226.翻转二叉树"></p>
+<p>这道题目背后有一个让程序员心酸的故事，听说 Homebrew的作者Max Howell，就是因为没在白板上写出翻转二叉树，最后被Google拒绝了。（真假不做判断，权当一个乐子哈）</p>
+<pre><code class="c++">//
+// Created by 徐昊岩 on 2024/2/15.
+//
+#include &quot;bits/stdc++.h&quot;
+
+using namespace std;
 
 struct TreeNode &#123;
     int val;
@@ -183,135 +191,43 @@ struct TreeNode &#123;
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;
 &#125;;
 
-using namespace std;
-
 class Solution &#123;
 public:
-    vector&lt;vector&lt;int&gt;&gt; levelOrder(TreeNode *root) &#123;
+    TreeNode *invertTree(TreeNode *root) &#123;
         queue&lt;TreeNode *&gt; q;
-        vector&lt;vector&lt;int&gt;&gt; res;
-        TreeNode *ceng = root;
-        if (root == nullptr) return res;
-        q.emplace(root);
-        vector&lt;int&gt; part;
+        if (root!= nullptr) q.emplace(root);  //if(root)还是if(!root)要注意
         while (!q.empty()) &#123;
-            TreeNode *temp = q.front();
-            q.pop();
-            if (ceng == temp) &#123;
-                if (ceng != root) res.push_back(part);
-                part.clear();
-                ceng = nullptr;
-            &#125;
-            if (ceng == nullptr &amp;&amp; temp-&gt;left != nullptr) &#123;
-                ceng = temp-&gt;left;
-            &#125; else if (ceng == nullptr &amp;&amp; temp-&gt;right != nullptr) &#123;
-                ceng = temp-&gt;right;
-            &#125;
-            if (temp-&gt;left != nullptr) q.emplace(temp-&gt;left);
-            if (temp-&gt;right != nullptr) q.emplace(temp-&gt;right);
-            part.push_back(temp-&gt;val);
-        &#125;
-        res.push_back(part);
-        return res;
-    &#125;
-&#125;;
-
-class Solution2 &#123;
-public:
-    vector&lt;vector&lt;int&gt;&gt; levelOrder(TreeNode *root) &#123;
-        queue&lt;TreeNode *&gt; que;
-        if (root != NULL) que.push(root);
-        vector&lt;vector&lt;int&gt;&gt; result;
-        while (!que.empty()) &#123;
-            int size = que.size();   //与我的解法不一样，他注意到计数下一层的结点数可以不用确定一层有多少个，而我的解法是标记每层的开端
-            vector&lt;int&gt; vec;
-            // 这里一定要使用固定大小size，不要使用que.size()，因为que.size是不断变化的
-            for (int i = 0; i &lt; size; i++) &#123;
-                TreeNode *node = que.front();
-                que.pop();
-                vec.push_back(node-&gt;val);
-                if (node-&gt;left) que.push(node-&gt;left);
-                if (node-&gt;right) que.push(node-&gt;right);
-            &#125;
-            result.push_back(vec);
-        &#125;
-        return result;
-    &#125;
-&#125;;
-
-class Solution3 &#123;
-public:
-    vector&lt;int&gt; rightSideView(TreeNode *root) &#123;
-        queue&lt;TreeNode *&gt; q;
-        if (root != nullptr) q.emplace(root);
-        vector&lt;int&gt; res;
-        while (!q.empty()) &#123;
-            int size = q.size(); //q.size() is changing.So you may use &#39;size&#39;.
-            for (int i = 0; i &lt; size; i++) &#123;
-                TreeNode *temp = q.front();
+            int size = q.size();
+            for(int i=0;i&lt;size;i++)&#123;
+                TreeNode *temp=q.front();
                 q.pop();
-                if (temp-&gt;left) q.emplace(temp-&gt;left);
-                if (temp-&gt;right) q.emplace(temp-&gt;right);
-                if (i == size - 1) res.push_back(temp-&gt;val);
-            &#125;
-        &#125;
-        return res;
-    &#125;
-&#125;;
-
-class Node &#123;
-public:
-    int val;
-    Node *left;
-    Node *right;
-    Node *next;
-
-    Node() : val(0), left(nullptr), right(nullptr), next(nullptr) &#123;&#125;
-
-    Node(int _val) : val(_val), left(nullptr), right(nullptr), next(nullptr) &#123;&#125;
-
-    Node(int _val, Node *_left, Node *_right, Node *_next)
-            : val(_val), left(_left), right(_right), next(_next) &#123;&#125;
-&#125;;
-
-class Solution4 &#123;
-public:
-    Node *connect(Node *root) &#123;
-        queue&lt;Node*&gt; q;
-        if(root) q.emplace(root);
-        while(!q.empty())&#123;
-            int size=q.size();
-            if(size&lt;2)&#123;
-                Node* temp=q.front();
-                q.pop();
-                temp-&gt;next= nullptr;
-                if(temp-&gt;left) q.emplace(temp-&gt;left);
-                if(temp-&gt;right) q.emplace(temp-&gt;right);
-            &#125; else if(size&gt;=2) &#123;
-                Node *l1=q.front();
-                q.pop();
-                if(l1-&gt;left) q.emplace(l1-&gt;left);
-                if(l1-&gt;right) q.emplace(l1-&gt;right);
-                Node *l2=q.front();
-                q.pop();
-                if(l2-&gt;left) q.emplace(l2-&gt;left);
-                if(l2-&gt;right) q.emplace(l2-&gt;right);
-                l1-&gt;next=l2;
-                for(int i=0;i&lt;size-1;i++)&#123;
-                    Node* l3 = i==size-2? nullptr:q.front();
-                    if(l3!= nullptr)&#123;
-                        if(l3-&gt;left) q.emplace(l3-&gt;left);
-                        if(l3-&gt;right) q.emplace(l3-&gt;right);
-                        q.pop();
-                    &#125;
-                    l1=l2;
-                    l2=l3;
-                    l1-&gt;next=l2;
+                if(temp-&gt;right== nullptr&amp;&amp;temp-&gt;left== nullptr) continue;
+                else&#123;
+                    TreeNode *t=temp-&gt;right;
+                    temp-&gt;right=temp-&gt;left;
+                    temp-&gt;left=t;
                 &#125;
-
+                if(temp-&gt;right!= nullptr) q.emplace(temp-&gt;right);
+                if(temp-&gt;left!= nullptr) q.emplace(temp-&gt;left);
             &#125;
         &#125;
         return root;
+    &#125;
+&#125;;
+class Solution2&#123;
+public:
+    TreeNode *invertTree(TreeNode *root)&#123;
+        if(!root) return root;
+        if(root-&gt;right== nullptr&amp;&amp;root-&gt;left== nullptr) return root;
+        else&#123;
+            TreeNode *temp=root;
+            TreeNode *t=temp-&gt;right;
+            temp-&gt;right=temp-&gt;left;
+            temp-&gt;left=t;
+            if(temp-&gt;left!= nullptr) invertTree(temp-&gt;left);
+            if(temp-&gt;right!= nullptr) invertTree(temp-&gt;right);
+            return root;
+        &#125;
     &#125;
 &#125;;
 </code></pre>

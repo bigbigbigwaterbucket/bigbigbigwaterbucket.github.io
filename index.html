@@ -167,6 +167,39 @@
         
 
 <div class="post">
+    <a href="/2024/02/15/%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/">
+        <h2 class="post-title"></h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/2/15
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="翻转二叉树"><a href="#翻转二叉树" class="headerlink" title="翻转二叉树"></a>翻转二叉树</h1><p>比起调用层序遍历，递归竟然更快</p>
+<p>难道数据结构的调用与操作时间开销很大？</p>
+<h1 id="226-翻转二叉树"><a href="#226-翻转二叉树" class="headerlink" title="226.翻转二叉树"></a>226.翻转二叉树</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/invert-binary-tree/">力扣题目链接(opens new window)</a></p>
+<p>翻转一棵二叉树。</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2024/02/15/%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2024/02/14/%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/">
         <h2 class="post-title"></h2>
     </a>
@@ -187,153 +220,6 @@
             <h1 id="层序遍历"><a href="#层序遍历" class="headerlink" title="层序遍历"></a>层序遍历</h1><p>二叉树的层序遍历<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-level-order-traversal/description/">102. 二叉树的层序遍历 - 力扣（LeetCode）</a></p>
 <p>二叉树的右视图<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-right-side-view/">. - 力扣（LeetCode）</a></p>
 <p>填充右节点指针<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/populating-next-right-pointers-in-each-node-ii/description/">117. 填充每个节点的下一个右侧节点指针 II - 力扣（LeetCode）</a></p>
-<pre><code class="c++">#include &quot;bits/stdc++.h&quot;
-
-struct TreeNode &#123;
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-
-    TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;
-
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;
-
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;
-&#125;;
-
-using namespace std;
-
-class Solution &#123;
-public:
-    vector&lt;vector&lt;int&gt;&gt; levelOrder(TreeNode *root) &#123;
-        queue&lt;TreeNode *&gt; q;
-        vector&lt;vector&lt;int&gt;&gt; res;
-        TreeNode *ceng = root;
-        if (root == nullptr) return res;
-        q.emplace(root);
-        vector&lt;int&gt; part;
-        while (!q.empty()) &#123;
-            TreeNode *temp = q.front();
-            q.pop();
-            if (ceng == temp) &#123;
-                if (ceng != root) res.push_back(part);
-                part.clear();
-                ceng = nullptr;
-            &#125;
-            if (ceng == nullptr &amp;&amp; temp-&gt;left != nullptr) &#123;
-                ceng = temp-&gt;left;
-            &#125; else if (ceng == nullptr &amp;&amp; temp-&gt;right != nullptr) &#123;
-                ceng = temp-&gt;right;
-            &#125;
-            if (temp-&gt;left != nullptr) q.emplace(temp-&gt;left);
-            if (temp-&gt;right != nullptr) q.emplace(temp-&gt;right);
-            part.push_back(temp-&gt;val);
-        &#125;
-        res.push_back(part);
-        return res;
-    &#125;
-&#125;;
-
-class Solution2 &#123;
-public:
-    vector&lt;vector&lt;int&gt;&gt; levelOrder(TreeNode *root) &#123;
-        queue&lt;TreeNode *&gt; que;
-        if (root != NULL) que.push(root);
-        vector&lt;vector&lt;int&gt;&gt; result;
-        while (!que.empty()) &#123;
-            int size = que.size();   //与我的解法不一样，他注意到计数下一层的结点数可以不用确定一层有多少个，而我的解法是标记每层的开端
-            vector&lt;int&gt; vec;
-            // 这里一定要使用固定大小size，不要使用que.size()，因为que.size是不断变化的
-            for (int i = 0; i &lt; size; i++) &#123;
-                TreeNode *node = que.front();
-                que.pop();
-                vec.push_back(node-&gt;val);
-                if (node-&gt;left) que.push(node-&gt;left);
-                if (node-&gt;right) que.push(node-&gt;right);
-            &#125;
-            result.push_back(vec);
-        &#125;
-        return result;
-    &#125;
-&#125;;
-
-class Solution3 &#123;
-public:
-    vector&lt;int&gt; rightSideView(TreeNode *root) &#123;
-        queue&lt;TreeNode *&gt; q;
-        if (root != nullptr) q.emplace(root);
-        vector&lt;int&gt; res;
-        while (!q.empty()) &#123;
-            int size = q.size(); //q.size() is changing.So you may use &#39;size&#39;.
-            for (int i = 0; i &lt; size; i++) &#123;
-                TreeNode *temp = q.front();
-                q.pop();
-                if (temp-&gt;left) q.emplace(temp-&gt;left);
-                if (temp-&gt;right) q.emplace(temp-&gt;right);
-                if (i == size - 1) res.push_back(temp-&gt;val);
-            &#125;
-        &#125;
-        return res;
-    &#125;
-&#125;;
-
-class Node &#123;
-public:
-    int val;
-    Node *left;
-    Node *right;
-    Node *next;
-
-    Node() : val(0), left(nullptr), right(nullptr), next(nullptr) &#123;&#125;
-
-    Node(int _val) : val(_val), left(nullptr), right(nullptr), next(nullptr) &#123;&#125;
-
-    Node(int _val, Node *_left, Node *_right, Node *_next)
-            : val(_val), left(_left), right(_right), next(_next) &#123;&#125;
-&#125;;
-
-class Solution4 &#123;
-public:
-    Node *connect(Node *root) &#123;
-        queue&lt;Node*&gt; q;
-        if(root) q.emplace(root);
-        while(!q.empty())&#123;
-            int size=q.size();
-            if(size&lt;2)&#123;
-                Node* temp=q.front();
-                q.pop();
-                temp-&gt;next= nullptr;
-                if(temp-&gt;left) q.emplace(temp-&gt;left);
-                if(temp-&gt;right) q.emplace(temp-&gt;right);
-            &#125; else if(size&gt;=2) &#123;
-                Node *l1=q.front();
-                q.pop();
-                if(l1-&gt;left) q.emplace(l1-&gt;left);
-                if(l1-&gt;right) q.emplace(l1-&gt;right);
-                Node *l2=q.front();
-                q.pop();
-                if(l2-&gt;left) q.emplace(l2-&gt;left);
-                if(l2-&gt;right) q.emplace(l2-&gt;right);
-                l1-&gt;next=l2;
-                for(int i=0;i&lt;size-1;i++)&#123;
-                    Node* l3 = i==size-2? nullptr:q.front();
-                    if(l3!= nullptr)&#123;
-                        if(l3-&gt;left) q.emplace(l3-&gt;left);
-                        if(l3-&gt;right) q.emplace(l3-&gt;right);
-                        q.pop();
-                    &#125;
-                    l1=l2;
-                    l2=l3;
-                    l1-&gt;next=l2;
-                &#125;
-
-            &#125;
-        &#125;
-        return root;
-    &#125;
-&#125;;
-</code></pre>
-
             
         </div>
     </div>
@@ -591,38 +477,6 @@ public:
         
     </div>
     <a href="/2023/11/19/java%E5%AD%A6%E4%B9%A0(cookie%E3%80%81session%E3%80%81JSP%E4%B8%8EMVC)/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/11/18/java(web%E7%BC%96%E7%A8%8B%E3%80%81servlet%E4%B8%8Etomcat)/">
-        <h2 class="post-title"></h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/18
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="java-web编程、servlet与tomcat"><a href="#java-web编程、servlet与tomcat" class="headerlink" title="java(web编程、servlet与tomcat)"></a>java(web编程、servlet与tomcat)</h1><p>学完TCP编程后，web编程只是对其的一个扩展，servlet封装了一些web编程接口，使得处理web编程更简单</p>
-<p>inputstream&#x2F;outputstream本质是创建一个输入&#x2F;输出流连接，连接是持续的，每次输入都会进入输入流中，不断read即可</p>
-<p>inputstream每次读入8位的2进制数，也就是一个字节的数据，并将8位二进制数转为整数(0-255)，inputstreamreader只不过多了一个编码方式，会把读入的二进制整数以固定编码方式解码</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2023/11/18/java(web%E7%BC%96%E7%A8%8B%E3%80%81servlet%E4%B8%8Etomcat)/" class="go-post">阅读全文</a>
 </div>
 
 
